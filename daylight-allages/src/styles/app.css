@@ -52,7 +52,7 @@
   text-transform: uppercase;
   color: var(--ink-3);
 }
-[data-world='primer'] .sectionLabel { letter-spacing: .1em; font-size: 11.5px; }
+[data-world='standard'] .sectionLabel { letter-spacing: .07em; font-size: 11.5px; }
 
 .sectionHead {
   display: flex;
@@ -155,12 +155,11 @@
   border: 1.5px solid;
   white-space: nowrap;
 }
-[data-world='primer'] .state {
+[data-world='standard'] .state {
   font-size: 12px;
-  letter-spacing: .04em;
+  letter-spacing: 0;
   text-transform: none;
-  border-width: var(--line);
-  padding: 4px 9px;
+  padding: 4px 10px;
   font-weight: 600;
 }
 [data-world='departures'] .state {
@@ -302,7 +301,9 @@
   height: 2.5px;
   background: var(--nav-on);
 }
-[data-world='primer'] .tab[aria-current='page']::before { width: 100%; height: var(--line); }
+/* the category standard marks the current tab with colour alone */
+[data-world='standard'] .tab[aria-current='page']::before { display: none; }
+[data-world='standard'] .tab[aria-current='page'] span { font-weight: 600; }
 .tab span {
   font-family: var(--font-data);
   font-size: 10px;
@@ -310,8 +311,8 @@
   letter-spacing: .1em;
   text-transform: uppercase;
 }
-[data-world='primer'] .tab span {
-  font-size: 11px; letter-spacing: 0; text-transform: none; font-weight: 600;
+[data-world='standard'] .tab span {
+  font-size: 10.5px; letter-spacing: -.005em; text-transform: none; font-weight: 500;
 }
 .tab__badge {
   position: absolute;
@@ -330,7 +331,6 @@
   border-radius: 99px;
   border: 1.5px solid var(--nav-bg);
 }
-[data-world='primer'] .tab__badge { border-color: var(--nav-bg); }
 
 /* ═══ sheets ═══════════════════════════════════════════════════ */
 
@@ -388,8 +388,8 @@
   text-transform: uppercase;
   color: var(--ink-2);
 }
-[data-world='primer'] .field__label {
-  font-size: 13px; letter-spacing: 0; text-transform: none; font-weight: 600;
+[data-world='standard'] .field__label {
+  font-size: 13.5px; letter-spacing: 0; text-transform: none; font-weight: 600;
 }
 .input, .textarea, .select {
   width: 100%;
@@ -483,7 +483,7 @@
   letter-spacing: .12em;
   text-transform: uppercase;
 }
-[data-world='primer'] .divider span { font-size: 12px; letter-spacing: 0; text-transform: none; }
+[data-world='standard'] .divider span { font-size: 12px; letter-spacing: 0; text-transform: none; }
 
 /* ═══ the message card — what actually leaves the phone ════════ */
 
@@ -739,7 +739,7 @@
   text-transform: uppercase;
   color: var(--ink-3);
 }
-[data-world='primer'] .detail__kind { font-size: 12px; letter-spacing: 0; text-transform: none; }
+[data-world='standard'] .detail__kind { font-size: 12.5px; letter-spacing: 0; text-transform: none; }
 .detail__priority {
   margin-left: auto;
   display: inline-flex;
@@ -786,8 +786,8 @@
   color: var(--ink-3);
   padding-top: 2px;
 }
-[data-world='primer'] .detail__facts dt {
-  font-size: 12.5px; letter-spacing: 0; text-transform: none; width: 60px;
+[data-world='standard'] .detail__facts dt {
+  font-size: 13px; letter-spacing: 0; text-transform: none; width: 62px;
 }
 .detail__facts dd { font-size: 14.5px; line-height: 1.35; color: var(--ink); }
 
@@ -832,7 +832,6 @@
   color: #fff;
   transition: background-color var(--fast) var(--ease), border-color var(--fast) var(--ease);
 }
-[data-world='primer'] .check__box { border-width: var(--line); border-color: var(--rule); }
 .check__box.is-done { background: var(--s-accepted); border-color: var(--s-accepted); }
 .check__label { font-size: 15px; line-height: 1.35; color: var(--ink); }
 .check__label.is-done {

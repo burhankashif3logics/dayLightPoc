@@ -15,7 +15,8 @@ import '@fontsource/barlow/500.css'
 import '@fontsource/barlow/600.css'
 import '@fontsource/barlow/700.css'
 import '@fontsource-variable/roboto-mono'
-import '@fontsource-variable/lexend'
+import '@fontsource-variable/archivo'
+import '@fontsource-variable/azeret-mono'
 import '@fontsource-variable/public-sans'
 
 createRoot(document.getElementById('root')!).render(

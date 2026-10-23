@@ -1,0 +1,163 @@
+/* ── Standard: header ───────────────────────────────────────── */
+
+.std-head {
+  flex: none;
+  background: var(--surface);
+  padding: 14px 20px 18px;
+  border-bottom: 1px solid var(--rule);
+}
+.std-head__top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+.std-head__tools { display: flex; align-items: center; gap: 6px; }
+.std-wm {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 17px;
+  font-weight: 700;
+  letter-spacing: -.025em;
+  color: var(--ink);
+}
+.std-wm__mark {
+  width: 24px;
+  height: 24px;
+  border-radius: var(--r-sm);
+  background: var(--accent);
+  color: #fff;
+  display: grid;
+  place-items: center;
+}
+.std-head__h1 { font-size: 30px; font-weight: 700; letter-spacing: -.03em; }
+.std-head__sub {
+  margin-top: 5px;
+  font-size: 15px;
+  line-height: 1.35;
+  color: var(--ink-2);
+  text-wrap: pretty;
+}
+.std-head__sub b { color: var(--ink); font-weight: 600; }
+
+/* ── the expected opening, built properly ───────────────────── */
+
+.std-sig { flex: none; padding: 14px 16px 4px; }
+
+.std-segs {
+  display: flex;
+  background: var(--surface-2);
+  border-radius: var(--r-md);
+  padding: 3px;
+}
+.std-segs button {
+  flex: 1;
+  min-height: 44px;
+  border-radius: var(--r-sm);
+  font-family: inherit;
+  font-size: 14.5px;
+  font-weight: 500;
+  color: var(--ink-2);
+  transition: background-color var(--fast) var(--ease), color var(--fast) var(--ease);
+}
+.std-segs button.is-on {
+  background: var(--surface);
+  color: var(--ink);
+  font-weight: 600;
+  box-shadow: 0 1px 2px rgba(16, 20, 24, .12);
+}
+
+.std-summary {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  padding: 16px 4px 6px;
+}
+.std-summary__n {
+  font-size: 34px;
+  font-weight: 700;
+  letter-spacing: -.035em;
+  line-height: 1;
+  color: var(--accent);
+}
+.std-summary__t {
+  font-size: 15.5px;
+  font-weight: 600;
+  letter-spacing: -.015em;
+  color: var(--ink);
+  line-height: 1.25;
+}
+.std-summary__t em {
+  display: block;
+  margin-top: 3px;
+  font-style: normal;
+  font-size: 13.5px;
+  font-weight: 400;
+  color: var(--ink-3);
+}
+
+/* ── cards ──────────────────────────────────────────────────── */
+
+.std-card {
+  display: block;
+  width: calc(100% - 32px);
+  margin: 0 16px 11px;
+  padding: 13px 15px 12px;
+  text-align: left;
+  background: var(--surface);
+  border: 1px solid var(--rule);
+  border-radius: var(--r-lg);
+  box-shadow: var(--shadow-1);
+  transition: box-shadow var(--fast) var(--ease), border-color var(--fast) var(--ease);
+}
+.std-card:hover { box-shadow: var(--shadow-2); border-color: var(--rule); }
+
+.std-card__top { display: flex; align-items: center; gap: 9px; margin-bottom: 9px; }
+.std-card__when {
+  margin-left: auto;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--ink-2);
+  white-space: nowrap;
+}
+.std-card__title {
+  display: block;
+  font-size: 17.5px;
+  font-weight: 600;
+  line-height: 1.25;
+  letter-spacing: -.02em;
+  color: var(--ink);
+  text-wrap: pretty;
+}
+.std-card__meta {
+  display: block;
+  margin-top: 4px;
+  font-size: 14.5px;
+  line-height: 1.35;
+  color: var(--ink-2);
+  text-wrap: pretty;
+}
+.std-card__owner {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  margin-top: 12px;
+  padding-top: 11px;
+  border-top: 1px solid var(--rule-soft);
+}
+.std-card__ownerText {
+  flex: 1;
+  min-width: 0;
+  font-size: 14px;
+  color: var(--ink-2);
+  line-height: 1.3;
+}
+.std-card__ownerText b { color: var(--ink); font-weight: 600; }
+.std-card__go { color: var(--ink-3); flex: none; }
+
+/* Standard sets its lists as cards, so the shared row rules step aside. */
+[data-world='standard'] .rows { border-top: 0; padding-top: 4px; }
+[data-world='standard'] .state { border-radius: var(--r-pill); font-weight: 600; }
+[data-world='standard'] .sectionHead { padding-top: 22px; }

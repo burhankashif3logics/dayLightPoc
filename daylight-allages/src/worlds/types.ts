@@ -1,7 +1,7 @@
 import type { FC, ReactNode } from 'react'
 import type { Item } from '../domain/types'
 
-export type WorldId = 'almanac' | 'primer' | 'departures'
+export type WorldId = 'almanac' | 'departures' | 'standard' | 'coupon'
 
 export interface HeaderProps {
   /** The screen's own name — Today, The week, My tasks. */

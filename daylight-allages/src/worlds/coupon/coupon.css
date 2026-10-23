@@ -1,0 +1,309 @@
+/* ── Coupon book: the navy rail, closing on a tear edge ─────── */
+
+.cpn-rail {
+  flex: none;
+  position: relative;
+  background: var(--nav-bg);
+  color: var(--nav-ink);
+  padding: 14px 16px 20px;
+}
+.cpn-rail__top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+.cpn-rail__tools { display: flex; align-items: center; gap: 2px; }
+.cpn-rail__tools .iconBtn { color: var(--nav-ink-2); }
+.cpn-rail__tools .iconBtn:hover { background: var(--nav-surface); color: var(--nav-ink); }
+
+.cpn-wm {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 15px;
+  font-weight: 800;
+  letter-spacing: -.045em;
+}
+.cpn-wm i {
+  width: 14px;
+  height: 2.5px;
+  background: var(--nav-on);
+  display: block;
+}
+.cpn-rail__meta {
+  font-family: var(--font-data);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: .15em;
+  text-transform: uppercase;
+  color: var(--nav-dim);
+  margin-right: 4px;
+}
+.cpn-rail__h1 { font-size: 27px; font-weight: 700; letter-spacing: -.045em; line-height: 1.08; }
+.cpn-rail__lede {
+  margin-top: 8px;
+  max-width: 32ch;
+  font-size: 13px;
+  line-height: 1.45;
+  color: var(--nav-ink-2);
+  text-wrap: pretty;
+}
+.cpn-rail__lede b { color: var(--nav-on); font-weight: 600; }
+
+/* the perforation the book tears along */
+.cpn-tear {
+  position: absolute;
+  left: 0; right: 0; bottom: 0;
+  height: 2px;
+  background: repeating-linear-gradient(90deg,
+    var(--nav-on) 0 7px, transparent 7px 13px);
+}
+
+/* ── the ledger line ────────────────────────────────────────── */
+
+.cpn-ledger {
+  flex: none;
+  background: var(--surface-2);
+  border-bottom: 1px solid var(--rule);
+}
+.cpn-ledger dl { display: flex; }
+.cpn-ledger dl > div {
+  flex: 1;
+  padding: 11px 10px 12px;
+  border-right: 1px solid var(--rule-soft);
+  text-align: center;
+}
+.cpn-ledger dl > div:last-child { border-right: 0; }
+.cpn-ledger dt {
+  font-family: var(--font-data);
+  font-size: 8.5px;
+  font-weight: 700;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+  margin-bottom: 4px;
+}
+.cpn-ledger dd {
+  font-family: var(--font-data);
+  font-size: 19px;
+  font-weight: 700;
+  letter-spacing: -.04em;
+  color: var(--ink);
+}
+.cpn-ledger--open { color: var(--accent-ink); }
+
+/* ── the coupon: two clipped layers, a 14px cut ─────────────── */
+
+[data-world='coupon'] .rows {
+  border-top: 0;
+  padding: 4px 16px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.cpn-coupon {
+  --edge: var(--rule);
+  --paper: var(--surface);
+  position: relative;
+  background: var(--edge);
+  padding: 1px;
+  filter: drop-shadow(var(--shadow-1));
+  clip-path: polygon(
+    0 var(--cut), var(--cut) 0,
+    calc(100% - var(--cut)) 0, 100% var(--cut),
+    100% calc(100% - var(--cut)), calc(100% - var(--cut)) 100%,
+    var(--cut) 100%, 0 calc(100% - var(--cut))
+  );
+  transition: filter var(--fast) var(--ease);
+}
+.cpn-coupon:hover { filter: drop-shadow(var(--shadow-2)); }
+
+/* the paper sits one printed hairline inside the cut edge */
+.cpn-coupon__paper {
+  position: relative;
+  background: var(--paper);
+  clip-path: polygon(
+    0 calc(var(--cut) - 1px), calc(var(--cut) - 1px) 0,
+    calc(100% - var(--cut) + 1px) 0, 100% calc(var(--cut) - 1px),
+    100% calc(100% - var(--cut) + 1px), calc(100% - var(--cut) + 1px) 100%,
+    calc(var(--cut) - 1px) 100%, 0 calc(100% - var(--cut) + 1px)
+  );
+}
+
+.cpn-coupon--handled { --edge: var(--rule-soft); --paper: #fbfaf6; filter: none; }
+.cpn-coupon--unowned { --edge: var(--control-edge); }
+.cpn-coupon--declined { --edge: color-mix(in srgb, var(--void) 45%, var(--bg)); }
+.cpn-coupon--waiting { --edge: var(--accent); }
+
+/* a full-bleed hit layer above the paper; children opt back in */
+.cpn-coupon__hit {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  background: transparent;
+}
+.cpn-coupon__hit:focus-visible { outline-offset: -4px; }
+.cpn-coupon__paper > *:not(.cpn-coupon__hit) { pointer-events: none; }
+
+.cpn-coupon__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 11px 14px 9px;
+  border-bottom: 1px solid var(--rule-soft);
+}
+.cpn-coupon__class,
+.cpn-coupon__code {
+  font-family: var(--font-data);
+  font-size: 8.5px;
+  font-weight: 700;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+}
+.cpn-coupon__code { color: var(--ink-2); }
+
+.cpn-coupon__title {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 13px 14px 11px;
+}
+.cpn-coupon__title h3 {
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: -.032em;
+  color: var(--ink);
+  text-wrap: pretty;
+}
+.cpn-coupon--handled .cpn-coupon__title h3 { color: var(--ink-3); }
+
+.cpn-coupon__fields {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  border-top: 1px solid var(--rule-soft);
+}
+.cpn-coupon__fields > div {
+  padding: 9px 12px 11px;
+  border-right: 1px solid var(--rule-soft);
+}
+.cpn-coupon__fields > div:last-child { border-right: 0; }
+.cpn-coupon__fields dt {
+  font-family: var(--font-data);
+  font-size: 8.5px;
+  font-weight: 700;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+  margin-bottom: 4px;
+}
+.cpn-coupon__fields dd {
+  font-family: var(--font-data);
+  font-size: 12.5px;
+  font-weight: 700;
+  letter-spacing: -.02em;
+  color: var(--nav-bg);
+  line-height: 1.25;
+}
+.cpn-coupon__fields dd.is-open { color: var(--accent-ink); }
+
+.cpn-coupon__foot {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 9px 14px 12px;
+  border-top: 1px solid var(--rule-soft);
+  font-size: 11.5px;
+  color: var(--ink-3);
+}
+
+/* ── the stamp ──────────────────────────────────────────────── */
+
+.cpn-stamp {
+  display: inline-block;
+  flex: none;
+  transform: rotate(var(--tilt, -7deg));
+  font-family: var(--font-data);
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  border: 2px solid currentColor;
+  border-radius: 3px;
+  padding: 4px 7px 3px;
+  line-height: 1;
+  white-space: nowrap;
+  animation: cpn-stamp-down var(--base) var(--ease) both;
+  filter: url(#ink-impression);
+}
+@supports not (filter: url(#ink-impression)) {
+  .cpn-stamp { filter: none; }
+}
+.cpn-stamp--sm {
+  font-size: 9px;
+  padding: 3px 5px 2px;
+  border-width: 1.5px;
+  letter-spacing: .1em;
+}
+
+.cpn-stamp--accepted {
+  color: var(--s-accepted); background: var(--s-accepted-wash);
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--s-accepted) 25%, transparent);
+}
+.cpn-stamp--waiting {
+  color: var(--s-waiting); border-color: var(--accent); background: var(--accent-wash);
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--accent) 50%, transparent);
+}
+.cpn-stamp--declined {
+  color: var(--s-declined); border-color: var(--void); background: var(--s-declined-wash);
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--void) 25%, transparent);
+}
+.cpn-stamp--asked-out {
+  color: var(--s-asked-out); background: var(--s-asked-out-wash);
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--s-asked-out) 25%, transparent);
+}
+.cpn-stamp--unowned {
+  color: var(--ink-3);
+  border-color: var(--control-edge);
+  border-style: dashed;
+  background: transparent;
+}
+.cpn-stamp--handled {
+  color: var(--s-handled); background: var(--s-handled-wash); box-shadow: none;
+}
+
+@keyframes cpn-stamp-down {
+  0%   { transform: rotate(calc(var(--tilt, -7deg) - 9deg)) scale(1.45); opacity: 0; }
+  55%  { transform: rotate(var(--tilt, -7deg)) scale(.97); opacity: 1; }
+  100% { transform: rotate(var(--tilt, -7deg)) scale(1); opacity: 1; }
+}
+
+.cpn-inkdefs { position: absolute; width: 0; height: 0; pointer-events: none; }
+
+/* this world sets its section labels in tracked mono caps */
+[data-world='coupon'] .sectionLabel { font-size: 8.5px; letter-spacing: .14em; }
+
+/* Wherever the shared sheet prints a state, this world prints it as ink:
+   mono tab-caps inside a 2px rule, starved by the same impression filter as
+   the stamps. It is not rotated — only a coupon's own stamp tilts. */
+[data-world='coupon'] .state {
+  font-size: 9.5px;
+  font-weight: 700;
+  letter-spacing: .12em;
+  border-width: 2px;
+  border-radius: 3px;
+  padding: 4px 7px 3px;
+  filter: url(#ink-impression);
+}
+@supports not (filter: url(#ink-impression)) {
+  [data-world='coupon'] .state { filter: none; }
+}
+[data-world='coupon'] .state--unowned { border-style: dashed; background: transparent; }
+[data-world='coupon'] .state--declined { border-color: var(--void); }
+[data-world='coupon'] .state--waiting { border-color: var(--accent); }

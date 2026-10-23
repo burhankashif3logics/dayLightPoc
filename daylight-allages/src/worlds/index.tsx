@@ -1,15 +1,17 @@
 import { createContext, useContext, useMemo, useState, type ReactNode } from 'react'
 import type { WorldDef, WorldId } from './types'
 import { almanac } from './almanac'
-import { primer } from './primer'
 import { departures } from './departures'
+import { standard } from './standard'
+import { coupon } from './coupon'
 
 import './almanac/tokens.css'
-import './primer/tokens.css'
 import './departures/tokens.css'
+import './standard/tokens.css'
+import './coupon/tokens.css'
 
-export const WORLDS: Record<WorldId, WorldDef> = { almanac, primer, departures }
-export const WORLD_ORDER: WorldId[] = ['almanac', 'primer', 'departures']
+export const WORLDS: Record<WorldId, WorldDef> = { almanac, departures, standard, coupon }
+export const WORLD_ORDER: WorldId[] = ['almanac', 'departures', 'standard', 'coupon']
 
 const KEY = 'daylight-allages/world'
 

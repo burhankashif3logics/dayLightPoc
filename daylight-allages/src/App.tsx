@@ -8,6 +8,7 @@ import { Family } from './screens/Family'
 import { Handled } from './screens/Handled'
 import { ItemDetail } from './screens/ItemDetail'
 import { Icon, type IconName } from './ui/Icon'
+import { InkDefs } from './worlds/coupon'
 import {
   assignmentsOf, handled, needsAnswer, openFor, visibleItems,
 } from './domain/rules'
@@ -39,6 +40,7 @@ function Phone() {
 
   return (
     <div className="phone" data-world={world.id}>
+      {world.id === 'coupon' && <InkDefs />}
       <div className="phone__body">
         {openId ? (
           <ItemDetail id={openId} onBack={() => setOpenId(null)} />
@@ -88,7 +90,7 @@ function Rig() {
         <span className="rig__mark" aria-hidden="true" />
         <div>
           <h1>Daylight</h1>
-          <p>All-ages POC · three worlds, one product</p>
+          <p>All-ages POC · four worlds, one product</p>
         </div>
       </div>
 

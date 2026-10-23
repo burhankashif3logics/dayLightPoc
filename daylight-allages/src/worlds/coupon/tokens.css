@@ -1,0 +1,85 @@
+/* ── Coupon book ──────────────────────────────────────────────
+   The world of the first POC (family-os-poc/), carried across so
+   both proposals can be compared in one place. Carrier navy and
+   Daylight gold on coupon stock; one grotesk, one mono. Values are
+   the originals, not an approximation.
+──────────────────────────────────────────────────────────────*/
+[data-world='coupon'] {
+  --font-display: 'Archivo Variable', 'Archivo', system-ui, sans-serif;
+  --font-body: 'Archivo Variable', 'Archivo', system-ui, sans-serif;
+  --font-data: 'Azeret Mono Variable', 'Azeret Mono', ui-monospace, monospace;
+
+  --bg: #f4f1e9;
+  --surface: #ffffff;
+  --surface-2: #ece7da;
+  --surface-sunk: #d9d3c4;
+
+  --rule: #d7d1c3;
+  --rule-soft: #e7e2d6;
+
+  --ink: #16222b;
+  --ink-2: #3f5465;
+  --ink-3: #566476;
+
+  --accent: #e8bb60;
+  --accent-ink: #74550f;
+  --accent-wash: #fdf7e9;
+  --on-accent: #16222b;
+
+  --nav-bg: #102b42;
+  --nav-surface: #27465e;
+  --nav-rule: #37536b;
+  --nav-ink: #ffffff;
+  --nav-ink-2: #c7dbe8;
+  --nav-dim: #80a0b6;
+  --nav-on: #e8bb60;
+
+  --s-unowned: #566476;
+  --s-unowned-wash: #ece7da;
+  --s-waiting: #74550f;
+  --s-waiting-wash: #fdf7e9;
+  --s-accepted: #1c5a3e;
+  --s-accepted-wash: #eff7f1;
+  --void: #c2362d;
+  --s-declined: #8d231c;
+  --s-declined-wash: #fcf1ef;
+  --s-asked-out: #4b2e83;
+  --s-asked-out-wash: #f0ecf8;
+  --s-handled: #5c666e;
+  --s-handled-wash: #eeece6;
+
+  --hatch: repeating-linear-gradient(45deg,
+    #efeadd 0 4px, #d9d3c4 4px 8px);
+  --hatch-dark: repeating-linear-gradient(45deg,
+    #e3ddcd 0 4px, #c9c2af 4px 8px);
+
+  --people-1: #b2593a;
+  --people-2: #27465e;
+  --people-3: #74550f;
+  --people-4: #1c5a3e;
+
+  --r-sm: 3px;
+  --r-md: 8px;
+  --r-lg: 12px;
+  --r-sheet: 20px;
+  --r-pill: 99px;
+
+  /* Lift — offset plus blur, never a halo. */
+  --shadow-1: 0 3px 9px rgba(16, 43, 66, .07);
+  --shadow-2: 0 6px 16px rgba(16, 43, 66, .11);
+  --shadow-sheet: 0 -2px 6px rgba(16, 43, 66, .08), 0 -14px 38px rgba(16, 43, 66, .17);
+
+  --shade: #000000;
+  --on-accepted: #ffffff;
+
+  --selection-bg: #f6e3b4;
+  --selection-ink: #16222b;
+  --focus-ring: #102b42;
+  --focus-width: 2px;
+  --focus-offset: 2px;
+  --scroll-thumb: #c3bba6;
+  --scroll-thumb-hover: #a39a81;
+
+  --control-edge: #8f8777;
+  --cut: 14px;
+}

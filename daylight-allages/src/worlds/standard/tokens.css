@@ -1,0 +1,84 @@
+/* ── Standard ─────────────────────────────────────────────────
+   The category standard, played straight: what a family organiser
+   ships, executed at full craft and without irony. The platform
+   sans is the correct display voice here — this world's whole
+   proposition is that it looks like the app people already know.
+──────────────────────────────────────────────────────────────*/
+[data-world='standard'] {
+  --font-display: -apple-system, BlinkMacSystemFont, 'SF Pro Display',
+    'Segoe UI', Roboto, system-ui, sans-serif;
+  --font-body: -apple-system, BlinkMacSystemFont, 'SF Pro Text',
+    'Segoe UI', Roboto, system-ui, sans-serif;
+  --font-data: -apple-system, BlinkMacSystemFont, 'SF Pro Text',
+    'Segoe UI', Roboto, system-ui, sans-serif;
+
+  --bg: #f5f6f8;
+  --surface: #ffffff;
+  --surface-2: #eef0f3;
+  --surface-sunk: #e7e9ed;
+
+  --rule: #dde1e6;
+  --rule-soft: #e8ebef;
+
+  --ink: #101418;
+  --ink-2: #545d68;
+  --ink-3: #78818c;
+
+  --accent: #2f5fd0;
+  --accent-ink: #27509f;
+  --accent-wash: #eaf0fd;
+  --on-accent: #ffffff;
+
+  --nav-bg: #ffffff;
+  --nav-surface: #f5f6f8;
+  --nav-rule: #dde1e6;
+  --nav-ink: #101418;
+  --nav-ink-2: #545d68;
+  --nav-dim: #78818c;
+  --nav-on: #2f5fd0;
+
+  --s-unowned: #5d6873;
+  --s-unowned-wash: #eef0f3;
+  --s-waiting: #a2630a;
+  --s-waiting-wash: #fdf3e2;
+  --s-accepted: #14714a;
+  --s-accepted-wash: #e8f5ee;
+  --s-declined: #b0342a;
+  --s-declined-wash: #fceceb;
+  --s-asked-out: #5340a8;
+  --s-asked-out-wash: #eeebfa;
+  --s-handled: #6b747e;
+  --s-handled-wash: #eef0f3;
+
+  --hatch: repeating-linear-gradient(45deg,
+    #f3f5f7 0 5px, #e2e6ea 5px 10px);
+  --hatch-dark: repeating-linear-gradient(45deg,
+    #e7e9ed 0 5px, #d5d9df 5px 10px);
+
+  --people-1: #c0392b;
+  --people-2: #2f5fd0;
+  --people-3: #a8730a;
+  --people-4: #14714a;
+
+  --r-sm: 7px;
+  --r-md: 11px;
+  --r-lg: 15px;
+  --r-sheet: 18px;
+  --r-pill: 99px;
+
+  --shadow-1: 0 1px 2px rgba(16, 20, 24, .06), 0 2px 7px rgba(16, 20, 24, .05);
+  --shadow-2: 0 2px 5px rgba(16, 20, 24, .09), 0 10px 26px rgba(16, 20, 24, .10);
+  --shadow-sheet: 0 -2px 10px rgba(16, 20, 24, .07), 0 -20px 56px rgba(16, 20, 24, .18);
+
+  --shade: #000000;
+  --on-accepted: #ffffff;
+
+  --selection-bg: #cfe0fb;
+  --selection-ink: #101418;
+  --focus-ring: #2f5fd0;
+  --focus-width: 2px;
+  --focus-offset: 2px;
+  --focus-radius: 8px;
+  --scroll-thumb: #c4cad1;
+  --scroll-thumb-hover: #a3abb4;
+}

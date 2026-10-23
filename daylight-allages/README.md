@@ -7,7 +7,7 @@ not inherited here.
 ## Why this exists
 
 The team's note was that young children will use this alongside adults. A
-child-only design drags the whole product childish, so none of these three worlds
+child-only design drags the whole product childish, so none of these worlds
 solves legibility with cartoon styling. Each solves it **structurally**:
 
 - every state is a **word, a colour and a shape** at once, so the screen survives
@@ -17,17 +17,27 @@ solves legibility with cartoon styling. Each solves it **structurally**:
 - tap targets are 44px and up, body text starts at 14.5px, and nothing critical is
   carried by colour alone.
 
-## Three worlds, one product
+## Four worlds, one product
 
-The domain, store, rules and every flow are written once. The three worlds are
+The domain, store, rules and every flow are written once. The four worlds are
 real presentation systems — different type, palette, density and signature move —
 not swapped colour variables.
 
 | World | Lineage | Signature move |
 |---|---|---|
 | **Almanac** | The newspaper weather page and its key | The **daylight band** — sun-up to sun-down with each obligation pinned at its hour, plus a permanent four-symbol key |
-| **Primer** | Mid-century picture-book printing | The **person-token** — a flat two-ink glyph per family member, with a dashed empty token for "no one" |
 | **Departures** | Public transport signage programs | The **status plate** — a fixed-width state word with elapsed time on the next unanswered item |
+| **Standard** | The category standard, played straight | The arrangement a visitor already expects — segmented control and a count of what needs an answer — built at full craft |
+| **Coupon book** | The first POC, carried across | The **stamp** — a state change stamps itself onto the ticket rather than rewriting a row |
+
+**Standard** is the convention option: what a family organiser ships, executed
+better than any of them do it. Its system sans and rounded cards are the point,
+not a shortfall — the whole proposition is that it looks like the app people
+already know.
+
+**Coupon book** is the design world of `family-os-poc/`, carried across at its
+original values so both proposals can be compared on the same data, on the same
+screens, without opening two projects.
 
 Switch worlds and roles in the rig to the left of the phone. Both are demo
 controls and sit outside the product.
