@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><title>Week Board</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0}
+body{width:390px;height:844px;overflow:hidden;font-family:Inter,sans-serif;background:#fbfcfa;color:#142c3b;-webkit-font-smoothing:antialiased}
+.top{background:#102b42;color:#fff;padding:52px 20px 18px}
+.brand{font-size:15px;font-weight:800;letter-spacing:-.04em}.brand i{font-style:normal;color:#e8bb60}
+.wk{display:flex;align-items:baseline;justify-content:space-between;margin-top:22px}
+.wk h1{font-size:25px;font-weight:700;letter-spacing:-.04em}
+.wk span{font-size:12px;color:#9fb6c4}
+.alert{margin-top:14px;display:flex;gap:9px;align-items:center;background:#ffffff14;border:1px solid #e8bb6059;border-radius:11px;padding:9px 11px}
+.alert b{color:#e8bb60;font-size:11px;letter-spacing:.09em;font-weight:700}
+.alert p{font-size:12.5px;color:#d7e2ea;line-height:1.35}
+.grid{padding:16px 0 0}
+.days{display:grid;grid-template-columns:62px repeat(7,1fr);padding:0 12px;gap:0}
+.days i{font-style:normal;font-size:9.5px;letter-spacing:.1em;color:#8699a2;font-weight:700;text-align:center;padding-bottom:7px}
+.days i.now{color:#102b42}
+.row{display:grid;grid-template-columns:62px repeat(7,1fr);padding:0 12px;align-items:stretch}
+.who{font-size:12px;font-weight:600;padding:9px 6px 9px 0;display:flex;align-items:center;gap:6px}
+.dot{width:7px;height:7px;border-radius:50%;flex:none}
+.cell{border-left:1px solid #e7ecea;border-bottom:1px solid #e7ecea;min-height:56px;padding:5px 3px;display:flex;flex-direction:column;gap:3px}
+.cell:last-child{border-right:1px solid #e7ecea}
+.row.r1 .cell{background:#102b420a}.row.r2 .cell{background:#e8bb6014}
+.row.r3 .cell{background:#4b3f7a0d}.row.r4 .cell{background:#c2503c0d}
+.cell.today{box-shadow:inset 0 0 0 1.5px #102b42}
+.chip{font-size:9px;line-height:1.2;font-weight:600;padding:3px 4px;border-radius:5px;background:#fff;border:1px solid #d9e2e0;color:#2c4a5b;overflow:hidden}
+.chip.ok::before{content:"✓ ";color:#2f6d4f}
+.chip.wait{border-color:#e8bb60;background:#fffaf0}
+.chip.wait::before{content:"◷ ";color:#9a7318}
+.chip.no{border-color:#e8a79b;background:#fdf4f2;text-decoration:line-through;color:#8c3426}
+.clash{font-size:8.5px;font-weight:800;letter-spacing:.06em;color:#fff;background:#c2503c;border-radius:4px;padding:2px 3px;text-align:center}
+.more{font-size:8.5px;color:#7e919a;font-weight:700;padding-left:2px}
+.sheet{margin:14px 12px 0;background:#fff;border:1px solid #e1e8e7;border-radius:16px;padding:14px;box-shadow:0 5px 16px #163d470a}
+.sheet h2{font-size:10.5px;letter-spacing:.11em;color:#667b83;font-weight:700}
+.sheet .it{display:flex;gap:10px;align-items:flex-start;padding-top:11px}
+.sheet .t{font-size:11px;font-weight:700;color:#537085;width:46px;flex:none;padding-top:1px}
+.sheet h3{font-size:14px;font-weight:600;letter-spacing:-.02em}
+.sheet p{font-size:11.5px;color:#64787f;padding-top:2px}
+.tab{position:absolute;bottom:0;left:0;width:390px;display:grid;grid-template-columns:repeat(5,1fr);background:#fbfcfaf2;border-top:1px solid #e3e9e7;padding:9px 0 26px}
+.tab div{text-align:center;font-size:9.5px;font-weight:600;color:#8295a0}
+.tab div.on{color:#102b42}
+.tab s{display:block;text-decoration:none;font-size:15px;line-height:1.5}
+</style></head><body>
+<div class="top">
+  <div class="brand">Day<i>light</i></div>
+  <div class="wk"><h1>Oct 20 – 26</h1><span>Hamilton family</span></div>
+  <div class="alert"><b>2</b><p>Wed basketball has no driver. Parker and Becker overlap Thu 5:30.</p></div>
+</div>
+<div class="grid">
+  <div class="days"><i></i><i>M</i><i>T</i><i class="now">W</i><i>T</i><i>F</i><i>S</i><i>S</i></div>
+  <div class="row r1"><div class="who"><span class="dot" style="background:#102b42"></span>Alicia</div>
+    <div class="cell"><span class="chip ok">Fruit</span></div><div class="cell"><span class="chip ok">Hat</span></div>
+    <div class="cell today"><span class="chip wait">Cash</span></div><div class="cell"></div>
+    <div class="cell"><span class="chip">Dentist</span></div><div class="cell"></div><div class="cell"></div></div>
+  <div class="row r2"><div class="who"><span class="dot" style="background:#e8bb60"></span>Taylor</div>
+    <div class="cell"></div><div class="cell"><span class="chip no">Ride</span></div>
+    <div class="cell today"><span class="chip">Pickup</span></div><div class="cell"><span class="chip wait">Drop</span></div>
+    <div class="cell"></div><div class="cell"><span class="chip ok">Shop</span></div><div class="cell"></div></div>
+  <div class="row r3"><div class="who"><span class="dot" style="background:#4b3f7a"></span>Parker</div>
+    <div class="cell"><span class="chip">Practice</span></div><div class="cell"></div>
+    <div class="cell today"><span class="chip">Bball</span><span class="more">+1</span></div>
+    <div class="cell"><div class="clash">CLASH</div></div>
+    <div class="cell"><span class="chip ok">Room</span></div><div class="cell"></div><div class="cell"></div></div>
+  <div class="row r4"><div class="who"><span class="dot" style="background:#c2503c"></span>Becker</div>
+    <div class="cell"></div><div class="cell"><span class="chip ok">Hat</span></div>
+    <div class="cell today"></div><div class="cell"><div class="clash">CLASH</div></div>
+    <div class="cell"><span class="chip wait">Cleats</span></div><div class="cell"></div><div class="cell"></div></div>
+</div>
+<div class="sheet"><h2>WEDNESDAY, OCT 22</h2>
+  <div class="it"><div class="t">4:15 PM</div><div><h3>Basketball practice</h3><p>Parker · Lincoln Middle gym · no driver yet</p></div></div>
+  <div class="it"><div class="t">6:00 PM</div><div><h3>Pickup from practice</h3><p>Taylor accepted · 18 min from home</p></div></div>
+  <div class="it"><div class="t">Any</div><div><h3>Tournament cash, $40</h3><p>Alicia · waiting on Taylor to confirm he has it</p></div></div>
+</div>
+<div class="tab"><div class="on"><s>▦</s>Week</div><div><s>⌂</s>Today</div><div><s>◉</s>Mine</div><div><s>⚇</s>Family</div><div><s>✓</s>Handled</div></div>
+</body></html>

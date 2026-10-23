@@ -1,0 +1,98 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: var(--sans);
+  font-variation-settings: "wdth" 100;
+  color: var(--ink);
+  background: var(--board);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+h1,
+h2,
+h3,
+h4,
+p,
+figure {
+  margin: 0;
+}
+
+button {
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+  border: 0;
+  background: none;
+  padding: 0;
+  text-align: left;
+}
+
+input,
+textarea,
+select {
+  font: inherit;
+  color: inherit;
+}
+
+ul,
+ol {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* The parts we did not draw still carry the design. */
+::selection {
+  background: var(--gold);
+  color: var(--navy-deep);
+}
+
+:focus-visible {
+  outline: 2px solid var(--navy);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+.shell ::-webkit-scrollbar {
+  width: 9px;
+  height: 9px;
+}
+.shell ::-webkit-scrollbar-track {
+  background: transparent;
+}
+.shell ::-webkit-scrollbar-thumb {
+  background: #cfc8b8;
+  border-radius: 99px;
+  border: 2px solid var(--stock);
+}
+.shell ::-webkit-scrollbar-thumb:hover {
+  background: #b9b1a0;
+}
+.shell * {
+  scrollbar-width: thin;
+  scrollbar-color: #cfc8b8 transparent;
+}
+
+input,
+textarea {
+  caret-color: var(--navy);
+}
+
+/* Numerals in the data fields line up or they are not data. */
+.tnum {
+  font-family: var(--mono);
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: "tnum" 1;
+}

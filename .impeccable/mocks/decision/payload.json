@@ -1,0 +1,128 @@
+{
+  "title": "Daylight — how the family's week is arranged",
+  "question": "The world is pinned by the client's Daylight prototype (navy, gold, warm off-white). This choice is composition: how the five core screens are organised. The roll led with The Week Board; one challenger beat it on both axes and rides as a full alternate.",
+  "options": [
+    {
+      "id": "dealt-week-grid",
+      "label": "The Week Board",
+      "kicker": "THE ROLL",
+      "lineage": "the whole week in one gaze, people down the side",
+      "thesis": "Seven day columns against a row per family member, so an unowned Wednesday is a visible hole rather than a buried list item.",
+      "palette": ["#102b42", "#fbfcfa", "#e8bb60", "#c2503c", "#537085"],
+      "materials": ["navy header rail", "cell grid on warm ground", "gold owner chips"],
+      "viewport": "A navy rail names the week and the family. Under it, a scrollable grid: Alicia, Taylor, Parker, Becker as rows, Mon–Sun as columns. Each cell holds up to two item chips, a +N overflow, and a red hairline where two items overlap in time. Today's column sits in a lighter ground. Tapping a cell opens the day's list below the grid, not a modal. Tab bar: Week, Today, Mine, Family, Handled.",
+      "risk": "Four rows × seven columns on a 390px phone means small cells; the grid has to earn its density or it becomes a chart nobody taps.",
+      "raised": [
+        {
+          "from": "challenger-zoo-map",
+          "raise": "Colour commits at region scale: each person's row carries a tinted ground across its full width, instead of a palette of small accent dots."
+        },
+        {
+          "from": "challenger-centre-rail",
+          "raise": "Every status reads without colour — accepted, waiting, declined and handled each get their own printed mark, so the grid survives greyscale and colour-blindness."
+        }
+      ],
+      "html": ".impeccable/mocks/decision/dealt-week-grid.html",
+      "htmlFrame": "390x844"
+    },
+    {
+      "id": "challenger-ticket-wallet",
+      "label": "The Coupon Book",
+      "verdict": "wins",
+      "lineage": "jet-age airline ticket wallet — carbon coupons, tear-off legs, the VOID stamp",
+      "thesis": "Every obligation is a coupon with legs, and a state change stamps itself onto the coupon instead of quietly rewriting a row: nothing disappears, it cancels.",
+      "palette": ["#102b42", "#fbfcfa", "#e8bb60", "#c2503c", "#4b3f7a"],
+      "materials": ["hairline-ruled field boxes", "carbon numerals", "rotated rubber stamp"],
+      "viewport": "Today is a short stack of coupons on the warm ground. Each coupon is hairline-ruled into named fields — WHO / WHEN / WHERE — set in carbon numerals, with a perforation line separating a ride's drop-off leg from its pickup leg so the two drivers are two owned stubs. The live coupon's state sits as a stamp across its corner: ACCEPTED in navy, WAITING in gold outline, DECLINED struck through in red, HANDLED in grey. Accept and Decline are standard full-width buttons under the fields. Handled is the spent-stub pile. Tab bar unchanged.",
+      "case": "Beats The Week Board on both axes: a stub is as instantly readable as a calendar grid, and it is the only structure that renders the product's actual thesis — assign, accept, decline with a reason, reassign — as a visible state machine. A ride's two legs are two coupons, and a grandparent with no account is simply an unstamped coupon reading WAITING.",
+      "risk": "The stamp is a signature move; used on more than state it becomes a costume. Two legs per ride adds a row of structure the family may not want on small tasks.",
+      "html": ".impeccable/mocks/decision/challenger-ticket-wallet.html",
+      "htmlFrame": "390x844",
+      "hero": "https://impeccable.style/worlds/cards/vernacular-ephemera-jet-age-ticket-wallet-hero.webp",
+      "board": "https://impeccable.style/worlds/cards/vernacular-ephemera-jet-age-ticket-wallet.webp"
+    },
+    {
+      "id": "dealt-answer-queue",
+      "label": "The Answer Queue",
+      "lineage": "the app opens on what is waiting on you, and nothing else",
+      "thesis": "The first screen is only the items that need a decision from you right now; the plan is one level down.",
+      "palette": ["#102b42", "#fbfcfa", "#e8bb60", "#c2503c", "#537085"],
+      "materials": ["full-width decision cards", "navy count rail", "two-button footer per card"],
+      "viewport": "A navy rail states the count — '3 need you' — and nothing else. Below it, one full-width card per open decision, in priority order: a ride with no driver 19 hours out, Taylor's decline waiting to be reassigned, Becker's request for cleats. Each card carries the fact, the reason when there is one, and two real buttons. Clearing the queue reveals an authored empty state naming what is next, not 'nothing here'. Week, Mine, Family, Handled sit in the tab bar.",
+      "risk": "Hides the week behind a tab; a parent who wants to see Thursday has to go looking, and the screen is empty most of the day — which is either the point or a dead app.",
+      "html": ".impeccable/mocks/decision/dealt-answer-queue.html",
+      "htmlFrame": "390x844"
+    },
+    {
+      "id": "dealt-day-spine",
+      "label": "The Day Spine",
+      "lineage": "hours as a measured vertical rail, duration drawn to length",
+      "thesis": "The day is a vertical time rail where a block's height is its real duration, so two people double-booked at 5:30 is something you see rather than something you are told.",
+      "palette": ["#102b42", "#fbfcfa", "#e8bb60", "#c2503c", "#537085"],
+      "materials": ["hour rule rail", "duration blocks", "untimed tray"],
+      "viewport": "A thin hour rail runs down the left on the warm ground, 6 AM to 10 PM. Events and rides sit at their time as blocks whose height is their length, labelled with owner and place; overlapping blocks share the column side by side and tint red at the overlap. Tasks with no time collect in a tray pinned under the rail, which is also where module 8's 'event with no time' flag lives. The navy header carries the date and the day's one unresolved thing.",
+      "risk": "Family life is mostly untimed — chores, requests, 'sometime Thursday' — and a time rail makes the untimed tray the real screen while the beautiful part sits half empty.",
+      "html": ".impeccable/mocks/decision/dealt-day-spine.html",
+      "htmlFrame": "390x844"
+    },
+    {
+      "id": "challenger-split-flap",
+      "label": "The Departures Board",
+      "verdict": "competitive",
+      "lineage": "rail concourse split-flap board at rush hour",
+      "thesis": "Today is a departures board: rows ranked by time, fixed columns, and the status cell flips character by character the moment someone accepts.",
+      "palette": ["#102b42", "#fbfcfa", "#e8bb60", "#c2503c"],
+      "materials": ["fixed character cells", "condensed caps", "per-character flip"],
+      "viewport": "Time, who, where, status — four columns that never move, rows ranked by departure. A decline restyles its row without breaking the grid.",
+      "case": "Holds audience identification outright: every parent reads a departures board instantly, and time-ranked rides are exactly what it was built for. Loses on product clarity — untimed chores and kid requests have no departure time, so a third of the product has no row.",
+      "risk": "A board is an instrument the audience reads, and handing a working screen its bezel is a costume; only the flip and the fixed cells transfer.",
+      "hero": "https://impeccable.style/worlds/cards/signals-instruments-split-flap-concourse-hero.webp",
+      "board": "https://impeccable.style/worlds/cards/signals-instruments-split-flap-concourse.webp"
+    },
+    {
+      "id": "challenger-doujin-catalog",
+      "label": "The Marked Catalog",
+      "verdict": "competitive",
+      "lineage": "convention circle catalog — stamp-sized cells, hand-circled, a route planned between them",
+      "thesis": "The whole week packs into one dense grid of stamp-sized cells, and you mark your route through it by hand: circled is yours to answer, struck through is handled.",
+      "palette": ["#102b42", "#fbfcfa", "#e8bb60", "#c2503c"],
+      "materials": ["edge-to-edge cell grid", "hand marks as state", "two views of one space"],
+      "viewport": "Fourteen days as packed cells, forty of them marked, with the same items addressable from the day view.",
+      "case": "Holds product clarity: hand marks are literally this product's state vocabulary, and catalog-cell-to-hall-map is the week-to-day move the app needs anyway. Loses audience identification — density at stamp scale asks a tired parent to scan rather than read, and the marks need teaching.",
+      "risk": "Newsprint grey fights the pinned warm world; only the density, the marked states and the two-views-one-space topology transfer.",
+      "hero": "https://impeccable.style/worlds/cards/pop-culture-shelf-doujin-event-catalog-hero.webp",
+      "board": "https://impeccable.style/worlds/cards/pop-culture-shelf-doujin-event-catalog.webp"
+    },
+    {
+      "id": "challenger-zoo-map",
+      "label": "The Guide Map",
+      "verdict": "declined",
+      "lineage": "zoo and gardens guide map — swelling lobes of flat colour",
+      "thesis": "Family areas as lobes of flat colour, divided by coastline rather than by rules.",
+      "palette": ["#8ED462", "#F5F1E4", "#FF705D", "#2C2E2A"],
+      "materials": ["flat unmodulated colour", "morphing coastline"],
+      "viewport": "One lobe dominates the screen; the coast does all the dividing.",
+      "case": "Loses both axes: a coastline cannot encode a time or an owner, and a parent answering a decline in a parking lot does not identify with a day out.",
+      "kept": "Colour commits at region scale — whole tinted grounds, not scattered accent dots.",
+      "risk": "Its palette also overrides the client's pinned world.",
+      "hero": "https://impeccable.style/worlds/cards/aww2-zoo-gardens-guide-map-hero.webp"
+    },
+    {
+      "id": "challenger-centre-rail",
+      "label": "The Centre Rail",
+      "verdict": "declined",
+      "lineage": "reference-setting page with a vermilion key rail and a ruling engine",
+      "thesis": "Two short columns round a central rail of keys, every rule drawn at one device pixel.",
+      "palette": ["#141210", "#EFE7D7", "#C8372A"],
+      "materials": ["hairline ruling engine", "printed-mark states", "no radius"],
+      "viewport": "A small dense block held inside a wide annotation margin.",
+      "case": "Loses both axes: two columns of brevier text on a 390px phone is unreadable, and a reference page is the wrong artifact for a task you answer in ten seconds.",
+      "kept": "States as printed marks — hairline at rest, filled when pressed, struck when spent — so status survives greyscale.",
+      "risk": "Its zero-radius discipline contradicts the pinned Daylight card language.",
+      "hero": "https://impeccable.style/worlds/cards/rw-centre-rail-reference-setting-hero.webp"
+    }
+  ],
+  "reroll": { "registers": ["safer", "bolder"] },
+  "buildPath": { "value": "code", "toggle": false },
+  "steer": true
+}

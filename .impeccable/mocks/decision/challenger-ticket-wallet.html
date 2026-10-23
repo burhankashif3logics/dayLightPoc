@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><title>Coupon Book</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Roboto+Mono:wght@500;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0}
+body{width:390px;height:844px;overflow:hidden;font-family:Inter,sans-serif;background:#fbfcfa;color:#142c3b;-webkit-font-smoothing:antialiased}
+.top{background:#102b42;color:#fff;padding:52px 20px 20px}
+.brand{font-size:15px;font-weight:800;letter-spacing:-.04em}.brand i{font-style:normal;color:#e8bb60}
+.top h1{font-size:27px;font-weight:700;letter-spacing:-.045em;margin-top:20px}
+.top p{font-size:13px;color:#bdd0dc;margin-top:5px;line-height:1.4}
+.wrap{padding:16px 16px 0}
+.cp{background:#fff;border:1px solid #d9e3e1;border-radius:14px;margin-bottom:12px;position:relative;overflow:hidden;box-shadow:0 5px 16px #163d470a}
+.cp .hd{display:flex;justify-content:space-between;align-items:center;padding:11px 14px;border-bottom:1px solid #e7ecea}
+.cp .hd em{font-style:normal;font-family:"Roboto Mono",monospace;font-size:10px;letter-spacing:.11em;color:#537085;font-weight:700}
+.cp .hd b{font-family:"Roboto Mono",monospace;font-size:10px;color:#8a9aa2;font-weight:500}
+.cp h3{font-size:17px;font-weight:650;letter-spacing:-.03em;padding:13px 14px 0}
+.flds{display:grid;grid-template-columns:1fr 1fr 1fr;margin:12px 0 0;border-top:1px solid #e7ecea}
+.flds div{padding:9px 12px;border-right:1px solid #e7ecea}
+.flds div:last-child{border-right:0}
+.flds span{display:block;font-family:"Roboto Mono",monospace;font-size:8.5px;letter-spacing:.12em;color:#8a9aa2;font-weight:700}
+.flds strong{display:block;font-family:"Roboto Mono",monospace;font-size:13px;font-weight:700;color:#102b42;padding-top:4px;letter-spacing:-.01em}
+.perf{border-top:1px dashed #c3cfcd;margin:0;position:relative}
+.perf::before,.perf::after{content:"";position:absolute;top:-6px;width:11px;height:11px;border-radius:50%;background:#fbfcfa;border:1px solid #d9e3e1}
+.perf::before{left:-6px}.perf::after{right:-6px}
+.leg{display:flex;justify-content:space-between;align-items:center;padding:11px 14px}
+.leg p{font-size:12.5px;color:#54686f}.leg p b{color:#142c3b;font-weight:600}
+.stamp{position:absolute;right:11px;top:44px;transform:rotate(-7deg);font-family:"Roboto Mono",monospace;font-size:11px;font-weight:700;letter-spacing:.14em;padding:4px 8px;border:2px solid;border-radius:3px}
+.s-ok{color:#1d5c3f;border-color:#1d5c3f;background:#f1faf4}
+.s-wait{color:#8a6412;border-color:#e8bb60;background:#fffaef}
+.s-no{color:#9c3927;border-color:#c2503c;background:#fdf3f1}
+.acts{display:grid;grid-template-columns:1fr 1fr;gap:9px;padding:0 14px 14px}
+.btn{height:42px;border-radius:10px;font-size:13.5px;font-weight:600;display:flex;align-items:center;justify-content:center;border:1px solid}
+.pri{background:#102b42;color:#fff;border-color:#102b42}
+.sec{background:#fff;color:#2c4a5b;border-color:#cfdad8}
+.one{padding:0 14px 14px}
+.hdr{display:flex;justify-content:space-between;align-items:baseline;padding:4px 2px 10px}
+.hdr h2{font-size:10.5px;letter-spacing:.12em;color:#667b83;font-weight:700}
+.hdr span{font-size:11.5px;color:#7d9099}
+.tab{position:absolute;bottom:0;left:0;width:390px;display:grid;grid-template-columns:repeat(5,1fr);background:#fbfcfaf2;border-top:1px solid #e3e9e7;padding:9px 0 26px}
+.tab div{text-align:center;font-size:9.5px;font-weight:600;color:#8295a0}
+.tab div.on{color:#102b42}
+.tab s{display:block;text-decoration:none;font-size:15px;line-height:1.5}
+</style></head><body>
+<div class="top">
+  <div class="brand">Day<i>light</i></div>
+  <h1>Wednesday</h1>
+  <p>Three coupons open. Wednesday's drop-off still has nobody's name on it.</p>
+</div>
+<div class="wrap">
+  <div class="hdr"><h2>OPEN</h2><span>Oct 22</span></div>
+
+  <div class="cp">
+    <div class="hd"><em>RIDE · TWO LEGS</em><b>RD-0412</b></div>
+    <h3>Basketball practice</h3>
+    <div class="flds">
+      <div><span>WHO</span><strong>PARKER</strong></div>
+      <div><span>WHEN</span><strong>4:15 PM</strong></div>
+      <div><span>WHERE</span><strong>LINCOLN</strong></div>
+    </div>
+    <div class="leg"><p><b>Drop-off</b> · asked Grandma Ruth 2:10 PM</p><span class="stamp s-wait" style="position:static;transform:rotate(-4deg)">WAITING</span></div>
+    <div class="perf"></div>
+    <div class="leg"><p><b>Pickup 6:00 PM</b> · Taylor</p><span class="stamp s-ok" style="position:static;transform:rotate(-4deg)">ACCEPTED</span></div>
+    <div class="acts"><div class="btn sec">Ask someone else</div><div class="btn pri">I'll drive</div></div>
+  </div>
+
+  <div class="cp">
+    <div class="hd"><em>TASK · TODAY</em><b>TK-0398</b></div>
+    <span class="stamp s-no">DECLINED</span>
+    <h3>Tournament cash, $40</h3>
+    <div class="flds">
+      <div><span>WHO</span><strong>TAYLOR</strong></div>
+      <div><span>WHEN</span><strong>TONIGHT</strong></div>
+      <div><span>WHERE</span><strong>—</strong></div>
+    </div>
+    <div class="leg"><p>“No cash on me until Friday.” — Taylor, 11:04 AM</p></div>
+    <div class="acts"><div class="btn sec">Reply</div><div class="btn pri">Reassign</div></div>
+  </div>
+
+  <div class="cp">
+    <div class="hd"><em>REQUEST · FROM BECKER</em><b>RQ-0071</b></div>
+    <h3>Soccer cleats, size 4</h3>
+    <div class="flds">
+      <div><span>WHO</span><strong>UNASSIGNED</strong></div>
+      <div><span>WHEN</span><strong>BY FRI</strong></div>
+      <div><span>WHERE</span><strong>—</strong></div>
+    </div>
+  </div>
+</div>
+<div class="tab"><div><s>▦</s>Week</div><div class="on"><s>⌂</s>Today</div><div><s>◉</s>Mine</div><div><s>⚇</s>Family</div><div><s>✓</s>Handled</div></div>
+</body></html>

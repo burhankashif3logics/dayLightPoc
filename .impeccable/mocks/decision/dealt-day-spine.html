@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><title>Day Spine</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0}
+body{width:390px;height:844px;overflow:hidden;font-family:Inter,sans-serif;background:#fbfcfa;color:#142c3b;-webkit-font-smoothing:antialiased}
+.top{background:#102b42;color:#fff;padding:52px 20px 18px}
+.brand{font-size:15px;font-weight:800;letter-spacing:-.04em}.brand i{font-style:normal;color:#e8bb60}
+.top h1{font-size:25px;font-weight:700;letter-spacing:-.045em;margin-top:18px}
+.top p{font-size:12.5px;color:#bdd0dc;margin-top:6px;line-height:1.4}
+.top p b{color:#e8bb60;font-weight:600}
+.rail{position:relative;padding:14px 16px 0;height:432px;overflow:hidden}
+.hr{position:relative;height:54px;border-top:1px solid #e7ecea}
+.hr em{position:absolute;left:0;top:-7px;font-style:normal;font-size:10px;font-weight:700;color:#95a6ad;background:#fbfcfa;padding-right:6px;letter-spacing:.04em}
+.lane{position:absolute;left:62px;right:16px;top:0;bottom:0}
+.blk{position:absolute;border-radius:9px;padding:7px 9px;border:1px solid;overflow:hidden}
+.blk strong{display:block;font-size:12.5px;font-weight:650;letter-spacing:-.02em;line-height:1.2}
+.blk span{display:block;font-size:10.5px;margin-top:3px;font-weight:500}
+.b-nav{background:#eef3f6;border-color:#c6d6df;color:#1d3c50}
+.b-nav span{color:#577486}
+.b-gold{background:#fffaef;border-color:#e8bb60;color:#6f5210}
+.b-gold span{color:#8a6a1e}
+.b-red{background:#fdf3f1;border-color:#c2503c;color:#8c3426}
+.b-red span{color:#a0503f}
+.ov{position:absolute;left:0;right:0;background:#c2503c1f;border-top:1.5px solid #c2503c;border-bottom:1.5px solid #c2503c}
+.ovl{position:absolute;right:4px;font-size:8.5px;font-weight:800;letter-spacing:.08em;color:#fff;background:#c2503c;padding:2px 5px;border-radius:4px}
+.tray{margin:0 16px;background:#fff;border:1px solid #e1e8e7;border-radius:16px;padding:14px;box-shadow:0 5px 16px #163d470a}
+.tray .h{display:flex;align-items:baseline;justify-content:space-between}
+.tray h2{font-size:10.5px;letter-spacing:.12em;color:#667b83;font-weight:700}
+.tray .h span{font-size:11px;color:#8699a2}
+.it{display:flex;align-items:center;gap:10px;padding-top:12px}
+.box{width:19px;height:19px;border-radius:5px;border:1.5px solid #cad5d3;flex:none}
+.box.on{background:#102b42;border-color:#102b42}
+.it div{flex:1}
+.it strong{display:block;font-size:14px;font-weight:600;letter-spacing:-.02em}
+.it span{display:block;font-size:11.5px;color:#6b7f86;padding-top:1px}
+.flag{font-size:9px;font-weight:800;letter-spacing:.07em;color:#8a6412;background:#fffaef;border:1px solid #e8bb60;border-radius:5px;padding:3px 5px}
+.tab{position:absolute;bottom:0;left:0;width:390px;display:grid;grid-template-columns:repeat(5,1fr);background:#fbfcfaf2;border-top:1px solid #e3e9e7;padding:9px 0 26px}
+.tab div{text-align:center;font-size:9.5px;font-weight:600;color:#8295a0}
+.tab div.on{color:#102b42}
+.tab s{display:block;text-decoration:none;font-size:15px;line-height:1.5}
+</style></head><body>
+<div class="top">
+  <div class="brand">Day<i>light</i></div>
+  <h1>Thursday, Oct 23</h1>
+  <p><b>5:30 PM is double-booked.</b> Taylor is on two drives at once.</p>
+</div>
+<div class="rail">
+  <div class="hr"><em>3 PM</em></div>
+  <div class="hr"><em>4 PM</em></div>
+  <div class="hr"><em>5 PM</em></div>
+  <div class="hr"><em>6 PM</em></div>
+  <div class="hr"><em>7 PM</em></div>
+  <div class="hr"><em>8 PM</em></div>
+  <div class="hr"><em>9 PM</em></div>
+  <div class="lane">
+    <div class="blk b-nav" style="top:40px;height:46px;left:0;right:0"><strong>Parker · after-school club</strong><span>Lincoln Middle · Alicia collects</span></div>
+    <div class="ov" style="top:132px;height:50px"></div>
+    <div class="ovl" style="top:136px">OVERLAP</div>
+    <div class="blk b-red" style="top:128px;height:58px;left:0;width:48%"><strong>Becker drop</strong><span>Taylor · 5:30</span></div>
+    <div class="blk b-red" style="top:128px;height:58px;right:0;width:48%"><strong>Parker pickup</strong><span>Taylor · 5:30</span></div>
+    <div class="blk b-gold" style="top:196px;height:38px;left:0;right:0"><strong>Grocery run</strong><span>Nobody has accepted this yet</span></div>
+    <div class="blk b-nav" style="top:252px;height:52px;left:0;right:0"><strong>Dinner · sheet-pan chicken</strong><span>Alicia accepted</span></div>
+  </div>
+</div>
+<div class="tray">
+  <div class="h"><h2>NO TIME SET</h2><span>4 items</span></div>
+  <div class="it"><span class="box on"></span><div><strong>Soccer team fruit</strong><span>Alicia · handled 9:12 AM</span></div></div>
+  <div class="it"><span class="box"></span><div><strong>Tournament cash, $40</strong><span>Taylor declined — “not until Friday”</span></div><span class="flag">REASSIGN</span></div>
+  <div class="it"><span class="box"></span><div><strong>Becker's cleats, size 4</strong><span>Request · by Friday</span></div></div>
+  <div class="it"><span class="box"></span><div><strong>Crazy Hat Day prep</strong><span>Parker · no time set</span></div><span class="flag">NEEDS TIME</span></div>
+</div>
+<div class="tab"><div><s>▦</s>Week</div><div class="on"><s>⌂</s>Today</div><div><s>◉</s>Mine</div><div><s>⚇</s>Family</div><div><s>✓</s>Handled</div></div>
+</body></html>

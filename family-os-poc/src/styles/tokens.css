@@ -1,0 +1,74 @@
+/* Daylight — the coupon book.
+   Carrier navy and Daylight gold on coupon stock; one grotesk, one mono. */
+
+:root {
+  /* Ground and paper */
+  --stock: #f4f1e9;
+  --stock-sunk: #ece7da;
+  --board: #d9d3c4;
+  --coupon: #ffffff;
+  --coupon-dim: #fbfaf6;
+
+  /* Ink */
+  --navy: #102b42;
+  --navy-deep: #0b1e2e;
+  --navy-soft: #27465e;
+  --ink: #16222b;
+  --ink-2: #3f5465;
+  --ink-3: #566476;
+
+  /* Interactive boundaries clear WCAG 1.4.11 (3:1); a control reads heavier
+     than a divider, which is the right hierarchy. Placeholders are text. */
+  --control-edge: #8f8777;
+  --placeholder: #667280;
+
+  /* Rules — hairlines are the whole structure */
+  --rule: #d7d1c3;
+  --rule-soft: #e7e2d6;
+  --rule-navy: #37536b;
+
+  /* State */
+  --gold: #e8bb60;
+  --gold-ink: #74550f;
+  --gold-wash: #fdf7e9;
+  --void: #c2362d;
+  --void-ink: #8d231c;
+  --void-wash: #fcf1ef;
+  --go: #1c5a3e;
+  --go-wash: #eff7f1;
+  --carbon: #4b2e83;
+  --carbon-wash: #f0ecf8;
+  --spent: #5c666e;
+  --spent-wash: #eeece6;
+
+  /* Type */
+  --sans: "Archivo Variable", "Archivo", system-ui, sans-serif;
+  --mono: "Azeret Mono Variable", "Azeret Mono", ui-monospace, monospace;
+
+  /* Measure */
+  --shell-w: 390px;
+  --gut: 16px;
+  --radius: 12px;
+  --radius-sm: 8px;
+  --tabbar-h: 78px;
+
+  /* Lift — offset plus blur, never a halo. Only sheets and toasts lift. */
+  --lift-high: 0 14px 38px rgba(16, 43, 66, 0.17), 0 2px 6px rgba(16, 43, 66, 0.08);
+
+  /* Motion — state, not choreography */
+  --fast: 140ms;
+  --base: 200ms;
+  --slow: 320ms;
+  --ease: cubic-bezier(0.22, 0.61, 0.36, 1);
+
+  color-scheme: light;
+  accent-color: var(--navy);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --fast: 1ms;
+    --base: 1ms;
+    --slow: 1ms;
+  }
+}

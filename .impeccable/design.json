@@ -1,0 +1,383 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-10-23T00:00:00Z",
+  "title": "Design System: Daylight — Family OS",
+  "extensions": {
+    "colorMeta": {
+      "stock": {
+        "role": "neutral",
+        "displayName": "Coupon Stock",
+        "canonical": "#f4f1e9",
+        "tonalRamp": ["#27241c", "#413d32", "#5c5648", "#787060", "#968d7a", "#b5ab96", "#d4cab4", "#f4f1e9"]
+      },
+      "stock-sunk": {
+        "role": "neutral",
+        "displayName": "Sunk Stock",
+        "canonical": "#ece7da",
+        "tonalRamp": ["#262317", "#3f3b2c", "#595343", "#746c5a", "#908774", "#ada38e", "#cbc0a9", "#ece7da"]
+      },
+      "board": {
+        "role": "neutral",
+        "displayName": "Board",
+        "canonical": "#d9d3c4",
+        "tonalRamp": ["#232015", "#3b3729", "#55503e", "#6f6a55", "#8b856d", "#a8a187", "#c5bea5", "#d9d3c4"]
+      },
+      "coupon": {
+        "role": "neutral",
+        "displayName": "Coupon White",
+        "canonical": "#ffffff",
+        "tonalRamp": ["#262626", "#3f3f3f", "#595959", "#747474", "#909090", "#adadad", "#cbcbcb", "#ffffff"]
+      },
+      "coupon-dim": {
+        "role": "neutral",
+        "displayName": "Dimmed Coupon",
+        "canonical": "#fbfaf6",
+        "tonalRamp": ["#262520", "#3f3e37", "#59584f", "#747268", "#908e83", "#adaa9f", "#cbc8bc", "#fbfaf6"]
+      },
+      "handled-ground": {
+        "role": "neutral",
+        "displayName": "Handled Ground",
+        "canonical": "#e7e3d6",
+        "tonalRamp": ["#252318", "#3e3b2d", "#585442", "#726e59", "#8e8971", "#aba58b", "#c9c2a7", "#e7e3d6"]
+      },
+      "navy": {
+        "role": "primary",
+        "displayName": "Carrier Navy",
+        "canonical": "#102b42",
+        "tonalRamp": ["#071420", "#0b1e2e", "#102b42", "#1a4162", "#275c89", "#4683b6", "#86b2d6", "#cfe1ee"]
+      },
+      "navy-deep": {
+        "role": "primary",
+        "displayName": "Rail Navy",
+        "canonical": "#0b1e2e",
+        "tonalRamp": ["#040c13", "#071420", "#0b1e2e", "#113047", "#1b4a6c", "#2f7099", "#64a1c8", "#bcd8ea"]
+      },
+      "navy-soft": {
+        "role": "primary",
+        "displayName": "Rail Navy Light",
+        "canonical": "#27465e",
+        "tonalRamp": ["#0b1420", "#122334", "#1b3349", "#27465e", "#365f80", "#4d81a8", "#86aeca", "#d0e0ea"]
+      },
+      "ink": {
+        "role": "neutral",
+        "displayName": "Ink",
+        "canonical": "#16222b",
+        "tonalRamp": ["#0a1013", "#16222b", "#223644", "#31505f", "#45707f", "#6797a4", "#9fc1ca", "#d9e8ec"]
+      },
+      "ink-2": {
+        "role": "neutral",
+        "displayName": "Ink Two",
+        "canonical": "#3f5465",
+        "tonalRamp": ["#141c23", "#22303b", "#2f4150", "#3f5465", "#53708a", "#7191a9", "#a2b9c9", "#dde6ec"]
+      },
+      "ink-3": {
+        "role": "neutral",
+        "displayName": "Ink Three",
+        "canonical": "#566476",
+        "tonalRamp": ["#1b2129", "#2b333e", "#3b4654", "#4b586a", "#566476", "#7b8a9c", "#a7b3c0", "#dee4ea"]
+      },
+      "rule": {
+        "role": "neutral",
+        "displayName": "Rule",
+        "canonical": "#d7d1c3",
+        "tonalRamp": ["#232014", "#3b3728", "#54503d", "#6f6954", "#8a846c", "#a7a086", "#c4bda4", "#d7d1c3"]
+      },
+      "rule-soft": {
+        "role": "neutral",
+        "displayName": "Soft Rule",
+        "canonical": "#e7e2d6",
+        "tonalRamp": ["#252218", "#3e3a2d", "#585342", "#726d59", "#8e8871", "#aba48b", "#c9c1a7", "#e7e2d6"]
+      },
+      "rule-navy": {
+        "role": "neutral",
+        "displayName": "Navy Rule",
+        "canonical": "#37536b",
+        "tonalRamp": ["#101a22", "#1b2c39", "#273e51", "#37536b", "#486d8c", "#648ead", "#9ab6ca", "#d6e3eb"]
+      },
+      "gold": {
+        "role": "secondary",
+        "displayName": "Daylight Gold",
+        "canonical": "#e8bb60",
+        "tonalRamp": ["#30230a", "#4b3710", "#674b17", "#85631f", "#a57c28", "#c69a3d", "#e8bb60", "#f7e4b7"]
+      },
+      "gold-ink": {
+        "role": "secondary",
+        "displayName": "Gold Ink",
+        "canonical": "#74550f",
+        "tonalRamp": ["#1f1704", "#352607", "#4c370a", "#64470d", "#74550f", "#a97d19", "#d7a93c", "#f0dca6"]
+      },
+      "gold-wash": {
+        "role": "secondary",
+        "displayName": "Gold Wash",
+        "canonical": "#fdf7e9",
+        "tonalRamp": ["#2d2415", "#483a22", "#645131", "#826a41", "#a28654", "#c2a474", "#e0cba4", "#fdf7e9"]
+      },
+      "void": {
+        "role": "tertiary",
+        "displayName": "Void Red",
+        "canonical": "#c2362d",
+        "tonalRamp": ["#2d0b08", "#470f0c", "#631611", "#811e17", "#a1281f", "#c2362d", "#dc6f66", "#f6cdc9"]
+      },
+      "void-ink": {
+        "role": "tertiary",
+        "displayName": "Void Ink",
+        "canonical": "#8d231c",
+        "tonalRamp": ["#260806", "#3d0c09", "#55110d", "#6e1813", "#8d231c", "#b73b31", "#d8827a", "#f5d4d0"]
+      },
+      "void-wash": {
+        "role": "tertiary",
+        "displayName": "Void Wash",
+        "canonical": "#fcf1ef",
+        "tonalRamp": ["#2d1c1a", "#48302d", "#644542", "#825c58", "#a27772", "#c29791", "#e0bfba", "#fcf1ef"]
+      },
+      "go": {
+        "role": "tertiary",
+        "displayName": "Accepted Green",
+        "canonical": "#1c5a3e",
+        "tonalRamp": ["#05170f", "#0a2a1c", "#11402b", "#1c5a3e", "#2a7c56", "#3da074", "#79c3a0", "#cde9db"]
+      },
+      "go-wash": {
+        "role": "tertiary",
+        "displayName": "Go Wash",
+        "canonical": "#eff7f1",
+        "tonalRamp": ["#1a2620", "#2c4036", "#405b4d", "#567767", "#6f9483", "#8db2a2", "#b5d2c4", "#eff7f1"]
+      },
+      "carbon": {
+        "role": "tertiary",
+        "displayName": "Carbon Purple",
+        "canonical": "#4b2e83",
+        "tonalRamp": ["#140a26", "#22123f", "#321a5a", "#3f2470", "#4b2e83", "#6a47ab", "#9a80c9", "#dcd2ec"]
+      },
+      "carbon-wash": {
+        "role": "tertiary",
+        "displayName": "Carbon Wash",
+        "canonical": "#f0ecf8",
+        "tonalRamp": ["#1f1a2b", "#342c46", "#4a4062", "#61557f", "#7b6f9b", "#9a8fb5", "#c2b9d4", "#f0ecf8"]
+      },
+      "spent": {
+        "role": "tertiary",
+        "displayName": "Spent Grey",
+        "canonical": "#5c666e",
+        "tonalRamp": ["#1d2124", "#2e3337", "#3f464b", "#505960", "#5c666e", "#808b93", "#aab3b9", "#e0e4e7"]
+      },
+      "spent-wash": {
+        "role": "tertiary",
+        "displayName": "Spent Wash",
+        "canonical": "#eeece6",
+        "tonalRamp": ["#26251f", "#3f3d35", "#59564c", "#737064", "#8f8b7e", "#aca89a", "#cac6b9", "#eeece6"]
+      },
+      "terracotta": {
+        "role": "tertiary",
+        "displayName": "Terracotta",
+        "canonical": "#b2593a",
+        "tonalRamp": ["#2a120a", "#431c10", "#5d2817", "#7a351f", "#99452a", "#b2593a", "#cf8f76", "#f0d8cd"]
+      }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Display", "purpose": "The rail headline naming the day. One per screen." },
+      "headline": { "displayName": "Headline", "purpose": "The rail headline on secondary screens: detail, inbox, settings." },
+      "title": { "displayName": "Title", "purpose": "A coupon's own title. The largest type that ever sits on paper." },
+      "subtitle": { "displayName": "Subtitle", "purpose": "Weekday heads, sheet heads, empty-state heads." },
+      "body": { "displayName": "Body", "purpose": "Coupon notes, rail lede (32ch cap), empty-state copy (30ch cap)." },
+      "body-strong": { "displayName": "Body Strong", "purpose": "Buttons, list-row titles, switch-row titles." },
+      "fine": { "displayName": "Fine", "purpose": "Field hints, settings notes, secondary person lines." },
+      "label": { "displayName": "Label", "purpose": "Mono tab-caps field names, band tags, perforation labels. The smallest type in the system." },
+      "label-lg": { "displayName": "Label Large", "purpose": "Section-rule heads." },
+      "data": { "displayName": "Data", "purpose": "Field values, item codes, times. Tabular figures always." },
+      "numeral-display": { "displayName": "Numeral Display", "purpose": "The handled count. The only large mono in the system." }
+    },
+    "shadows": [
+      { "name": "coupon-rest", "value": "drop-shadow(0 3px 9px rgba(16, 43, 66, 0.07))", "purpose": "The ticket lying on the stock. A filter, not a box-shadow, so it follows the notched clip path." },
+      { "name": "coupon-hover", "value": "drop-shadow(0 6px 16px rgba(16, 43, 66, 0.12))", "purpose": "The only hover elevation inside the product, driven from the coupon's full-bleed hit layer." },
+      { "name": "primary-seat", "value": "0 1px 2px rgba(16, 43, 66, 0.3)", "purpose": "The navy primary button's single press-ready millimetre." },
+      { "name": "lift-high", "value": "0 14px 38px rgba(16, 43, 66, 0.17), 0 2px 6px rgba(16, 43, 66, 0.08)", "purpose": "Sheets and toasts: the only two surfaces that leave the page." },
+      { "name": "inset-ring", "value": "inset 0 0 0 1px #cbc5b7", "purpose": "The universal border. Tightens to navy on hover, 2px navy on input focus, so nothing reflows." },
+      { "name": "switch-knob", "value": "0 1px 3px rgba(16, 43, 66, 0.3)", "purpose": "The toggle knob's seat. The only shadow on a control smaller than a button." }
+    ],
+    "motion": [
+      { "name": "fast", "value": "140ms", "purpose": "Colour, ring and hover changes on buttons, chips, pills, rows, inputs." },
+      { "name": "base", "value": "200ms", "purpose": "The stamp landing, toasts rising, switch travel, sheet backdrop fade." },
+      { "name": "slow", "value": "320ms", "purpose": "The sheet rising 26px into place." },
+      { "name": "ease", "value": "cubic-bezier(0.22, 0.61, 0.36, 1)", "purpose": "The only easing curve in the system." },
+      { "name": "reduced-motion", "value": "prefers-reduced-motion: reduce → fast/base/slow all 1ms", "purpose": "Collapses every duration at the token level, so one override disables all animation." },
+      { "name": "stamp-down", "value": "@keyframes stamp-down: rotate(tilt - 9deg) scale(1.45) opacity 0 → 55% rotate(tilt + 1.5deg) scale(0.97) → rotate(tilt) scale(1)", "purpose": "The signature entrance. Plays on a state change, never as mount decoration." }
+    ],
+    "breakpoints": [
+      { "name": "device-collapse", "value": "1180px" },
+      { "name": "phone", "value": "460px" },
+      { "name": "shell", "value": "390px" }
+    ],
+    "filters": [
+      { "name": "ink-impression", "value": "feTurbulence(fractalNoise, baseFrequency 0.62 0.78, numOctaves 2, seed 9) → feColorMatrix threshold (1.9, -1.08) → feComposite out of SourceGraphic → feDisplacementMap(scale 1.1, R/G)", "purpose": "Gives every stamp its broken, ink-starved impression. Defined once in the app shell, applied to stamps and nothing else, with a @supports-not fallback to no filter." }
+    ],
+    "assets": [
+      { "name": "raster-provenance", "value": "none", "purpose": "No raster asset of any kind ships in this build. Every mark is CSS, inline SVG path data, or the ink filter; there is no image provenance to record." },
+      { "name": "fonts", "value": "@fontsource-variable/archivo, @fontsource-variable/azeret-mono", "purpose": "Both faces are self-hosted variable fonts. No webfont CDN and no system display face." },
+      { "name": "icons", "value": "25 inline SVG paths on a 24-unit box at 1.6px stroke", "purpose": "One drawn set, one stroke weight. No icon font, no emoji, no glyph substitutes." }
+    ]
+  },
+  "components": [
+    {
+      "name": "Coupon",
+      "kind": "card",
+      "refersTo": "coupon",
+      "description": "The system's signature container: a notched ticket built from two clipped layers so the printed hairline follows the diagonal cuts. Its head prints a classification slot — kind and day the system already holds — and the item code; it is not a kicker.",
+      "html": "<article class=\"ds-coupon\"><div class=\"ds-coupon-paper\"><header class=\"ds-coupon-head\"><span class=\"ds-coupon-class\">RIDE &middot; TOMORROW</span><span class=\"ds-coupon-code\">RD-4182</span></header><div class=\"ds-coupon-title\"><h3>Basketball practice ride</h3><p>Westside Rec, courts 2 and 3</p></div><dl class=\"ds-fields\"><div class=\"ds-field\"><dt>WHO</dt><dd>Taylor</dd></div><div class=\"ds-field\"><dt>WHEN</dt><dd>WED 4:45 PM</dd></div><div class=\"ds-field\"><dt>WHERE</dt><dd>Westside Rec</dd></div></dl></div></article>",
+      "css": ".ds-coupon { --cut: 14px; --edge: #d7d1c3; --paper: #ffffff; position: relative; background: var(--edge); padding: 1px; filter: drop-shadow(0 3px 9px rgba(16,43,66,0.07)); clip-path: polygon(0 var(--cut), var(--cut) 0, calc(100% - var(--cut)) 0, 100% var(--cut), 100% calc(100% - var(--cut)), calc(100% - var(--cut)) 100%, var(--cut) 100%, 0 calc(100% - var(--cut))); transition: filter 140ms cubic-bezier(0.22,0.61,0.36,1); font-family: \"Archivo Variable\", Archivo, system-ui, sans-serif; } .ds-coupon:hover { filter: drop-shadow(0 6px 16px rgba(16,43,66,0.12)); } .ds-coupon-paper { background: var(--paper); clip-path: polygon(0 calc(var(--cut) - 1px), calc(var(--cut) - 1px) 0, calc(100% - var(--cut) + 1px) 0, 100% calc(var(--cut) - 1px), 100% calc(100% - var(--cut) + 1px), calc(100% - var(--cut) + 1px) 100%, calc(var(--cut) - 1px) 100%, 0 calc(100% - var(--cut) + 1px)); } .ds-coupon-head { display: flex; align-items: center; gap: 8px; padding: 11px 14px 10px; border-bottom: 1px solid #e7e2d6; } .ds-coupon-class { font-family: \"Azeret Mono Variable\", \"Azeret Mono\", ui-monospace, monospace; font-size: 9.5px; font-weight: 700; letter-spacing: 0.13em; color: #3f5465; text-transform: uppercase; } .ds-coupon-code { margin-left: auto; font-family: \"Azeret Mono Variable\", \"Azeret Mono\", ui-monospace, monospace; font-variant-numeric: tabular-nums; font-size: 10px; font-weight: 500; letter-spacing: 0.06em; color: #566476; } .ds-coupon-title { padding: 13px 14px 0; } .ds-coupon-title h3 { margin: 0; font-size: 18px; font-weight: 600; letter-spacing: -0.032em; line-height: 1.2; color: #16222b; text-wrap: balance; } .ds-coupon-title p { margin: 5px 0 0; font-size: 13px; line-height: 1.45; color: #3f5465; } .ds-fields { display: grid; grid-template-columns: repeat(3, 1fr); margin: 12px 0 0; border-top: 1px solid #e7e2d6; border-bottom: 1px solid #e7e2d6; } .ds-field { padding: 9px 12px 10px; border-right: 1px solid #e7e2d6; min-width: 0; } .ds-field:last-child { border-right: 0; } .ds-fields dt { font-family: \"Azeret Mono Variable\", \"Azeret Mono\", ui-monospace, monospace; font-size: 8.5px; font-weight: 700; letter-spacing: 0.14em; color: #566476; text-transform: uppercase; } .ds-fields dd { margin: 4px 0 0; font-family: \"Azeret Mono Variable\", \"Azeret Mono\", ui-monospace, monospace; font-variant-numeric: tabular-nums; font-size: 12.5px; font-weight: 700; letter-spacing: -0.02em; line-height: 1.25; color: #102b42; }"
+    },
+    {
+      "name": "Stamp",
+      "kind": "custom",
+      "refersTo": "stamp-waiting",
+      "description": "The signature move. A state change stamps its own word onto the coupon: five words, five border treatments, legible in greyscale.",
+      "html": "<svg class=\"ds-inkdefs\" aria-hidden=\"true\" focusable=\"false\"><defs><filter id=\"ds-ink-impression\" x=\"-12%\" y=\"-25%\" width=\"124%\" height=\"150%\"><feTurbulence type=\"fractalNoise\" baseFrequency=\"0.62 0.78\" numOctaves=\"2\" seed=\"9\" result=\"grain\"/><feColorMatrix in=\"grain\" type=\"matrix\" values=\"0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  1.9 0 0 0 -1.08\" result=\"starve\"/><feComposite in=\"SourceGraphic\" in2=\"starve\" operator=\"out\" result=\"broken\"/><feDisplacementMap in=\"broken\" in2=\"grain\" scale=\"1.1\" xChannelSelector=\"R\" yChannelSelector=\"G\"/></filter></defs></svg><span class=\"ds-stamp ds-stamp-unclaimed\">UNCLAIMED</span> <span class=\"ds-stamp ds-stamp-waiting\">WAITING</span> <span class=\"ds-stamp ds-stamp-accepted\">ACCEPTED</span> <span class=\"ds-stamp ds-stamp-declined\">DECLINED</span> <span class=\"ds-stamp ds-stamp-handled\">HANDLED</span>",
+      "css": ".ds-inkdefs { position: absolute; width: 0; height: 0; pointer-events: none; } .ds-stamp { display: inline-block; transform: rotate(-7deg); margin: 8px 6px; font-family: \"Azeret Mono Variable\", \"Azeret Mono\", ui-monospace, monospace; font-size: 10.5px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; border: 2px solid currentColor; border-radius: 3px; padding: 4px 7px 3px; line-height: 1; white-space: nowrap; filter: url(#ds-ink-impression); animation: ds-stamp-down 200ms cubic-bezier(0.22,0.61,0.36,1) both; } @supports not (filter: url(#ds-ink-impression)) { .ds-stamp { filter: none; } } .ds-stamp-accepted { color: #1c5a3e; background: #eff7f1; box-shadow: inset 0 0 0 1px rgba(28,90,62,0.25); } .ds-stamp-waiting { color: #74550f; border-color: #e8bb60; background: #fdf7e9; box-shadow: inset 0 0 0 1px rgba(232,187,96,0.5); } .ds-stamp-declined { color: #8d231c; border-color: #c2362d; background: #fcf1ef; box-shadow: inset 0 0 0 1px rgba(194,54,45,0.25); } .ds-stamp-unclaimed { color: #566476; border-color: #b4ad9c; border-style: dashed; background: transparent; } .ds-stamp-handled { color: #5c666e; border-color: #a7aeb2; background: #eeece6; } @keyframes ds-stamp-down { 0% { transform: rotate(-16deg) scale(1.45); opacity: 0; } 55% { transform: rotate(-5.5deg) scale(0.97); opacity: 1; } 100% { transform: rotate(-7deg) scale(1); opacity: 1; } } @media (prefers-reduced-motion: reduce) { .ds-stamp { animation-duration: 1ms; } }"
+    },
+    {
+      "name": "Perforation",
+      "kind": "custom",
+      "refersTo": "coupon",
+      "description": "A dashed rule bitten at both ends by punched holes ringed in the coupon's own edge colour, dividing a ride's two owned legs.",
+      "html": "<div class=\"ds-perf-demo\"><div class=\"ds-perf\" role=\"separator\"><span class=\"ds-perf-label\">PICKUP</span></div></div>",
+      "css": ".ds-perf-demo { --edge: #d7d1c3; background: #ffffff; padding: 22px 0; margin: 0 8px; } .ds-perf { position: relative; height: 0; border-top: 1px dashed #c6c0b1; } .ds-perf::before, .ds-perf::after { content: \"\"; position: absolute; top: -8px; width: 16px; height: 16px; border-radius: 50%; background: #f4f1e9; box-shadow: inset 0 0 0 1px var(--edge); } .ds-perf::before { left: -8px; } .ds-perf::after { right: -8px; } .ds-perf-label { position: absolute; top: -7px; left: 50%; transform: translateX(-50%); background: #ffffff; padding: 0 8px; font-family: \"Azeret Mono Variable\", \"Azeret Mono\", ui-monospace, monospace; font-size: 8.5px; font-weight: 700; letter-spacing: 0.14em; color: #566476; text-transform: uppercase; }"
+    },
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Navy fill on a 1px seat, 44px tall. Always placed inside the coupon it acts on, never floating over content.",
+      "html": "<button class=\"ds-btn ds-btn-primary\"><svg width=\"17\" height=\"17\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M4 16.4v2.2h2.8v-2.2M17.2 16.4v2.2H20v-2.2M3.4 16.4h17.2v-4.1l-1.8-4.2a1.6 1.6 0 0 0-1.5-1H6.7a1.6 1.6 0 0 0-1.5 1l-1.8 4.2v4.1ZM3.8 12.4h16.4\"/></svg><span>I'll drive</span></button>",
+      "css": ".ds-btn { min-height: 44px; padding: 0 14px; border: 0; border-radius: 8px; display: inline-flex; align-items: center; justify-content: center; gap: 7px; font-family: \"Archivo Variable\", Archivo, system-ui, sans-serif; font-size: 14px; font-weight: 600; letter-spacing: -0.012em; cursor: pointer; transition: background 140ms cubic-bezier(0.22,0.61,0.36,1), box-shadow 140ms cubic-bezier(0.22,0.61,0.36,1), transform 140ms cubic-bezier(0.22,0.61,0.36,1); } .ds-btn-primary { background: #102b42; color: #fff; box-shadow: 0 1px 2px rgba(16,43,66,0.3); } .ds-btn-primary:hover { background: #27465e; } .ds-btn-primary:focus-visible { outline: 2px solid #102b42; outline-offset: 2px; } .ds-btn-primary:active { transform: translateY(1px); }"
+    },
+    {
+      "name": "Secondary Button",
+      "kind": "button",
+      "refersTo": "button-secondary",
+      "description": "The default variant: coupon-white with a warm 1px inset ring that tightens to navy on hover. No reflow, because the border is a ring.",
+      "html": "<button class=\"ds-btn ds-btn-secondary\"><span>Ask someone else</span></button>",
+      "css": ".ds-btn { min-height: 44px; padding: 0 14px; border: 0; border-radius: 8px; display: inline-flex; align-items: center; justify-content: center; gap: 7px; font-family: \"Archivo Variable\", Archivo, system-ui, sans-serif; font-size: 14px; font-weight: 600; letter-spacing: -0.012em; cursor: pointer; transition: background 140ms cubic-bezier(0.22,0.61,0.36,1), box-shadow 140ms cubic-bezier(0.22,0.61,0.36,1), transform 140ms cubic-bezier(0.22,0.61,0.36,1); } .ds-btn-secondary { background: #ffffff; color: #102b42; box-shadow: inset 0 0 0 1px #cbc5b7; } .ds-btn-secondary:hover { background: #f7f5ef; box-shadow: inset 0 0 0 1px #102b42; } .ds-btn-secondary:focus-visible { outline: 2px solid #102b42; outline-offset: 2px; } .ds-btn-secondary:active { transform: translateY(1px); }"
+    },
+    {
+      "name": "Void Button",
+      "kind": "button",
+      "refersTo": "button-void",
+      "description": "Decline and destructive actions only: void wash with void ink and a warm-red ring that tightens to void red.",
+      "html": "<button class=\"ds-btn ds-btn-void\"><span>Decline with a reason</span></button>",
+      "css": ".ds-btn { min-height: 44px; padding: 0 14px; border: 0; border-radius: 8px; display: inline-flex; align-items: center; justify-content: center; gap: 7px; font-family: \"Archivo Variable\", Archivo, system-ui, sans-serif; font-size: 14px; font-weight: 600; letter-spacing: -0.012em; cursor: pointer; transition: background 140ms cubic-bezier(0.22,0.61,0.36,1), box-shadow 140ms cubic-bezier(0.22,0.61,0.36,1), transform 140ms cubic-bezier(0.22,0.61,0.36,1); } .ds-btn-void { background: #fcf1ef; color: #8d231c; box-shadow: inset 0 0 0 1px #e0b4ae; } .ds-btn-void:hover { background: #f9e6e2; box-shadow: inset 0 0 0 1px #c2362d; } .ds-btn-void:focus-visible { outline: 2px solid #102b42; outline-offset: 2px; } .ds-btn-void:active { transform: translateY(1px); }"
+    },
+    {
+      "name": "Text Field",
+      "kind": "input",
+      "refersTo": "input",
+      "description": "Mono tab-caps label over a coupon-white field with a 1px warm ring that doubles to 2px navy on focus. No glow, no size change. The placeholder colour shown here is the build's own (#9aa3a9, 2.57:1) and is below AA — reproduced for fidelity, not endorsed.",
+      "html": "<label class=\"ds-formfield\"><span class=\"ds-formfield-label\">REASON</span><input class=\"ds-input\" type=\"text\" placeholder=\"Working until 6\" /><span class=\"ds-formfield-hint\">Taylor sees this on the coupon.</span></label>",
+      "css": ".ds-formfield { display: block; font-family: \"Archivo Variable\", Archivo, system-ui, sans-serif; } .ds-formfield-label { display: block; font-family: \"Azeret Mono Variable\", \"Azeret Mono\", ui-monospace, monospace; font-size: 9px; font-weight: 700; letter-spacing: 0.14em; color: #3f5465; text-transform: uppercase; margin-bottom: 6px; } .ds-input { width: 100%; min-height: 44px; padding: 10px 12px; border: 0; border-radius: 8px; background: #ffffff; box-shadow: inset 0 0 0 1px #cbc5b7; font-family: inherit; font-size: 14.5px; color: #16222b; caret-color: #102b42; transition: box-shadow 140ms cubic-bezier(0.22,0.61,0.36,1); } .ds-input::placeholder { color: #9aa3a9; } .ds-input:hover { box-shadow: inset 0 0 0 1px #102b42; } .ds-input:focus { outline: none; box-shadow: inset 0 0 0 2px #102b42; } .ds-formfield-hint { display: block; font-size: 11.5px; color: #566476; margin-top: 5px; line-height: 1.4; }"
+    },
+    {
+      "name": "Flag Band",
+      "kind": "chip",
+      "refersTo": "band-gold",
+      "description": "The alert pattern. A ruled band set straight on the stock with a tab-caps tag in the state colour, never a rounded card.",
+      "html": "<div class=\"ds-bandwrap\"><div class=\"ds-band ds-band-gold\"><span class=\"ds-band-tag\">WAITING</span><p>Grandma Jo hasn't replied about Wednesday's drop-off.</p><button class=\"ds-band-go\" aria-label=\"Open\"><svg width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M9.5 5 16.2 12l-6.7 7\"/></svg></button></div><div class=\"ds-band ds-band-void\"><span class=\"ds-band-tag\">OVERDUE</span><p>Tournament cash was declined and nobody picked it up.</p></div></div>",
+      "css": ".ds-bandwrap { background: #f4f1e9; padding: 16px 0; font-family: \"Archivo Variable\", Archivo, system-ui, sans-serif; } .ds-band { display: flex; align-items: baseline; gap: 10px; margin: 0 16px; padding: 9px 0; border-top: 1px solid #d7d1c3; border-bottom: 1px solid #d7d1c3; font-size: 12.5px; line-height: 1.4; color: #16222b; } .ds-band + .ds-band { border-top: 0; } .ds-band p { flex: 1; min-width: 0; margin: 0; } .ds-band-tag { font-family: \"Azeret Mono Variable\", \"Azeret Mono\", ui-monospace, monospace; font-size: 8.5px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; flex: none; padding: 2px 5px; border-radius: 2px; } .ds-band-gold .ds-band-tag { color: #74550f; background: #fdf7e9; box-shadow: inset 0 0 0 1px #e8bb60; } .ds-band-void .ds-band-tag { color: #8d231c; background: #fcf1ef; box-shadow: inset 0 0 0 1px #c2362d; } .ds-band-go { width: 26px; height: 26px; display: grid; place-items: center; border: 0; background: none; border-radius: 5px; color: #3f5465; cursor: pointer; flex: none; align-self: center; margin: -6px 0; } .ds-band-go:hover { background: rgba(16,43,66,0.07); color: #102b42; } .ds-band-go:focus-visible { outline: 2px solid #102b42; outline-offset: 2px; }"
+    },
+    {
+      "name": "Tab Bar",
+      "kind": "nav",
+      "refersTo": "tabbar",
+      "description": "Fixed navy five-tab bar, 78px tall, one navy hairline on top. The current tab goes gold with a 26px gold mark at the top edge.",
+      "html": "<nav class=\"ds-tabbar\"><button class=\"ds-tab\" aria-current=\"page\"><svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M4 10.2 12 3.6l8 6.6M6 9.2V20h12V9.2M10.2 20v-5.4h3.6V20\"/></svg><span>Today</span></button><button class=\"ds-tab\"><svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M3.5 7.5h17M6.5 3.5v3M17.5 3.5v3M4.5 5.5h15a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-15a1 1 0 0 1-1-1v-13a1 1 0 0 1 1-1ZM8 11.5v6M16 11.5v6\"/></svg><span>Week</span></button><button class=\"ds-tab\"><svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M12 12.4a4 4 0 1 0 0-8 4 4 0 0 0 0 8ZM4.6 20.2c.9-3.4 3.8-5.4 7.4-5.4s6.5 2 7.4 5.4\"/></svg><span>Mine</span><span class=\"ds-tab-count\">3</span></button><button class=\"ds-tab\"><svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M8.4 11a3 3 0 1 0 0-6 3 3 0 0 0 0 6ZM16.4 11.6a2.4 2.4 0 1 0 0-4.8 2.4 2.4 0 0 0 0 4.8ZM2.8 19.6c.7-2.9 2.9-4.6 5.6-4.6s4.9 1.7 5.6 4.6M15.4 14.4c2.6 0 4.6 1.4 5.3 3.9\"/></svg><span>Family</span></button><button class=\"ds-tab\"><svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M4.5 12.6 9.4 17.5 19.5 7.4\"/></svg><span>Handled</span></button></nav>",
+      "css": ".ds-tabbar { position: relative; height: 78px; display: grid; grid-template-columns: repeat(5, 1fr); background: #102b42; padding-bottom: 16px; font-family: \"Archivo Variable\", Archivo, system-ui, sans-serif; } .ds-tabbar::before { content: \"\"; position: absolute; inset: 0 0 auto 0; height: 1px; background: #37536b; } .ds-tab { position: relative; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 3px; border: 0; background: none; cursor: pointer; color: #80a0b6; font-family: inherit; font-size: 10px; font-weight: 600; letter-spacing: -0.005em; transition: color 140ms cubic-bezier(0.22,0.61,0.36,1); } .ds-tab:hover { color: #c7dbe8; } .ds-tab:focus-visible { outline: 2px solid #e8bb60; outline-offset: -4px; } .ds-tab[aria-current=\"page\"] { color: #e8bb60; } .ds-tab[aria-current=\"page\"]::before { content: \"\"; position: absolute; top: 0; width: 26px; height: 2px; background: #e8bb60; } .ds-tab-count { position: absolute; top: 6px; right: 50%; margin-right: -20px; min-width: 15px; height: 15px; padding: 0 4px; border-radius: 99px; background: #c2362d; color: #fff; font-family: \"Azeret Mono Variable\", \"Azeret Mono\", ui-monospace, monospace; font-size: 9px; font-weight: 700; line-height: 15px; text-align: center; border: 1.5px solid #102b42; }"
+    },
+    {
+      "name": "Section Rule",
+      "kind": "custom",
+      "refersTo": "band-gold",
+      "description": "The wallet's coupon head: a mono tab-caps section name, a hairline running to the right, and an optional date at the end.",
+      "html": "<div class=\"ds-rulewrap\"><div class=\"ds-rule\"><h2>OPEN</h2><span class=\"ds-rule-line\"></span><span class=\"ds-rule-meta\">WED 22 OCT</span></div></div>",
+      "css": ".ds-rulewrap { background: #f4f1e9; padding: 8px 0; } .ds-rule { display: flex; align-items: center; gap: 9px; padding: 22px 16px 10px; } .ds-rule h2 { margin: 0; font-family: \"Azeret Mono Variable\", \"Azeret Mono\", ui-monospace, monospace; font-size: 10px; font-weight: 700; letter-spacing: 0.15em; color: #3f5465; text-transform: uppercase; flex: none; } .ds-rule-line { flex: 1; height: 1px; background: #d7d1c3; } .ds-rule-meta { font-family: \"Azeret Mono Variable\", \"Azeret Mono\", ui-monospace, monospace; font-size: 10px; letter-spacing: 0.08em; color: #566476; flex: none; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Coupon Book",
+    "overview": "A family obligation is a coupon in a jet-age airline ticket wallet. Nothing in this world is a same-size rounded card with a small coloured pill for status; every obligation is a notched, hairline-ruled ticket that carries its own printed record of who, when, where, and what has been stamped on it so far. When a state changes, the coupon is stamped — the word lands on the paper with a broken, ink-starved impression and stays there. Nothing disappears; it cancels.\n\nThe material is coupon stock (#f4f1e9) under white ticket bodies, structured entirely by one-pixel hairlines. Carrier navy owns the three fixed chrome surfaces — the header rail, the primary button, the five-tab bar — and Daylight gold is the single accent, reserved for waiting and for the current tab. Density is high and deliberately clerical: 8.5–10px mono tab-caps field names over 12.5–18px sans values, a 16px gutter, 12px between coupons. The whole system is printed rather than rendered: no gradient, no glass, no blur anywhere inside the product shell, and no raster assets of any kind ship in this build — every mark is CSS, inline SVG path data, or an SVG filter, so there is no image provenance to record.\n\nThe build's one piece of real material trickery is the stamp's ink. A single SVG filter (#ink-impression) runs fractal-noise turbulence through a colour-matrix threshold, composites it out of the source to starve the ink, then displaces the result so the edges break. It is applied to every stamp and to nothing else, and it degrades to no filter where filter: url() is unsupported.",
+    "keyCharacteristics": [
+      "Notched ticket silhouettes, cut on an 8-vertex polygon, never a rounded card",
+      "Hairlines carry all structure; shadow is a 3px/9px drop at rest and nothing more",
+      "State is a stamped word with its own border weight and style, legible in greyscale",
+      "One grotesk, one mono; the mono owns every number, code, time and field name",
+      "Navy chrome, gold as the only accent, coupon stock as the only ground"
+    ],
+    "rules": [
+      {
+        "name": "The Greyscale Survival Rule",
+        "body": "No state is carried by colour alone. The word is the load-bearing signal — UNCLAIMED / WAITING / ACCEPTED / DECLINED / HANDLED — and the border treatment is corroboration, not substitute: a 2px solid border for the three live states, a dashed border for UNCLAIMED, a flat grey border and no inner ring for HANDLED. Lean on the word, because the borders themselves are hairline-faint (the UNCLAIMED dash sits at 2.2:1 on paper). Audit test: screenshot the screen in greyscale; if you cannot name every item's state from its text alone, the state is under-specified.",
+        "section": "colors"
+      },
+      {
+        "name": "The Region-Scale Colour Rule",
+        "body": "When colour commits, it commits across a whole region, not as scattered dots. The Handled screen takes its tinted ground across its full width and all the way to the tab bar; it does not sprinkle accent marks on stock.",
+        "section": "colors"
+      },
+      {
+        "name": "The Derived Ink Rule",
+        "body": "Secondary and tertiary ink are derived from the navy foreground, never toward neutral grey, and the ink set is verified as a matrix — every ink against every ground, not only the pairs that happen to exist today. All of them clear 4.5:1. Ink Three is the weakest and sets the floor: 6.03:1 on coupon white, 5.35:1 on stock, 5.11:1 on spent wash, and 4.70:1 on the Handled tinted ground, its tightest pair and the reason the token sits at its current value. When adding an ink or a ground, re-run the whole matrix rather than the one pair in front of you. One text value sits outside the ink system and outside AA: the input placeholder (#9aa3a9, 2.57:1 on coupon white). It is not a licensed text colour and must not be copied onto new surfaces.",
+        "section": "colors"
+      },
+      {
+        "name": "The Side-Tab Prohibition",
+        "body": "Tone is carried by recolouring the coupon's edge and paper, never by adding a coloured accent bar down one side. Side-tab accents were removed from this build deliberately and are not available to new surfaces.",
+        "section": "colors"
+      },
+      {
+        "name": "The Measured-In-Mono Rule",
+        "body": "Azeret Mono is reserved for what was counted or named by the system: numerals, item codes, times, durations, counts, and field names. It never sets a sentence a person would speak. Every mono numeral carries tabular figures (font-variant-numeric: tabular-nums, \"tnum\" 1) so columns of data line up — unlined numerals are not data.",
+        "section": "typography"
+      },
+      {
+        "name": "The Two-Face Rule",
+        "body": "Two families, no third. If a surface seems to need a display face, it needs Archivo at 27px and -0.045em instead.",
+        "section": "typography"
+      },
+      {
+        "name": "The Offset-Plus-Blur Rule",
+        "body": "Every shadow in this system has vertical offset and blur and no spread — light comes from above and shadow is never a halo. A spread-only glow around an element is not available.",
+        "section": "elevation"
+      },
+      {
+        "name": "The Flat Spent Rule",
+        "body": "A spent coupon drops its shadow entirely (filter: none) and steps its paper down a tone. Finished work lies flat on the stock.",
+        "section": "elevation"
+      },
+      {
+        "name": "The State-Only Motion Rule",
+        "body": "Motion reports a state change — a stamp landing, a sheet arriving, a ring tightening. Nothing moves to decorate, nothing loops, and nothing animates on scroll.",
+        "section": "components"
+      }
+    ],
+    "dos": [
+      "Do build every obligation surface as a notched coupon: two clipped layers, 14px cut, edge colour on the outer and paper on the inner.",
+      "Do carry state with a stamped word plus its own border weight and style, so the screen survives greyscale.",
+      "Do set every number, code, time, count and field name in Azeret Mono with tabular figures, and everything a person would say in Archivo.",
+      "Do use the 16px gutter and a 12px coupon stack; set field dividers as hairlines, never as gaps.",
+      "Do draw borders as 1px inset rings and tighten them to navy on hover or 2px navy on focus, so nothing reflows.",
+      "Do keep gold to waiting, the current tab and the single accent mark; keep void red to declined and overdue.",
+      "Do commit colour at region scale — a whole tinted ground, like the Handled screen — rather than scattering accent dots.",
+      "Do put the primary action inside the coupon it belongs to.",
+      "Do re-run the whole ink-by-ground contrast matrix when adding an ink or a ground; the tightest pair in the build is Ink Three on the Handled tinted ground at 4.70:1.",
+      "Do draw every icon from the one 24-box stroked SVG set at 1.6px weight."
+    ],
+    "donts": [
+      "Don't add a coloured accent bar down a coupon's side. Tone is carried by --edge and --paper; side tabs were removed from this build deliberately.",
+      "Don't render a flag as a rounded alert card. A flag is a ruled band on the stock with a tab-caps tag.",
+      "Don't introduce a gradient, a glass blur, or a backdrop-filter inside the product shell. The three that exist (the desk texture, the device body, the demo panel) are all outside the phone.",
+      "Don't use a shadow with spread and no offset. Every shadow is offset plus blur.",
+      "Don't add a third type family, a system display face, or an emoji or glyph icon in place of the drawn SVG set.",
+      "Don't introduce a kicker or eyebrow above a heading. No kicker pattern is licensed by this system; the coupon head's classification line is the kind and day the system already holds, not a label invented for a surface.",
+      "Don't put the primary action in a floating button over the content.",
+      "Don't let a status be carried by a small coloured pill alone, and don't let an item quietly leave the plan — it gets stamped HANDLED and moves to the log.",
+      "Don't animate anything that is not reporting a state change, and don't bypass the three duration tokens.",
+      "Don't ship a raster asset into this system. No image file exists in this build; every mark is CSS, inline SVG path data, or the ink filter."
+    ]
+  }
+}

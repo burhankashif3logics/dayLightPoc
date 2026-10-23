@@ -1,0 +1,21 @@
+# Dependencies and build output
+node_modules/
+dist/
+
+# OS and editor noise
+.DS_Store
+
+# Browser-automation scratch captures
+.playwright-mcp/
+
+# Impeccable working files: screenshots and downloaded world references.
+# The durable records (DESIGN.md, design.json, the surface brief) are tracked.
+.impeccable/review/
+.impeccable/refs/
+
+# Client kickoff transcript — meeting notes, not code. Excluded by default;
+# remove this line if the team wants it in the repo.
+Family OS kick off meeting.docx
+
+# Decision-page session logs
+.impeccable/questions/

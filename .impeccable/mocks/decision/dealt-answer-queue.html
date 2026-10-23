@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><title>Answer Queue</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0}
+body{width:390px;height:844px;overflow:hidden;font-family:Inter,sans-serif;background:#fbfcfa;color:#142c3b;-webkit-font-smoothing:antialiased}
+.top{background:#102b42;color:#fff;padding:52px 20px 26px}
+.brand{font-size:15px;font-weight:800;letter-spacing:-.04em}.brand i{font-style:normal;color:#e8bb60}
+.cnt{display:flex;align-items:baseline;gap:12px;margin-top:26px}
+.cnt b{font-size:58px;font-weight:700;letter-spacing:-.06em;line-height:.9;color:#e8bb60}
+.cnt span{font-size:19px;font-weight:600;letter-spacing:-.03em;color:#fff}
+.top p{font-size:13px;color:#bdd0dc;margin-top:12px;line-height:1.45}
+.wrap{padding:18px 16px 0}
+.c{background:#fff;border:1px solid #e1e8e7;border-radius:16px;padding:16px;margin-bottom:12px;box-shadow:0 5px 16px #163d470a}
+.c .mt{display:flex;align-items:center;gap:7px}
+.c .mt em{font-style:normal;font-size:10px;letter-spacing:.11em;font-weight:700;color:#537085}
+.c .mt i{font-style:normal;font-size:10.5px;color:#8a9aa2;margin-left:auto;font-weight:500}
+.urg{width:6px;height:6px;border-radius:50%;background:#c2503c;flex:none}
+.c h3{font-size:18px;font-weight:650;letter-spacing:-.03em;margin-top:9px;line-height:1.22}
+.c p{font-size:13px;color:#5b6f77;line-height:1.45;margin-top:6px}
+.quote{border-top:1px solid #edf1f0;margin-top:12px;padding-top:11px;font-size:13px;color:#4a5e66;line-height:1.45}
+.quote b{font-weight:600;color:#142c3b}
+.acts{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-top:14px}
+.btn{height:44px;border-radius:11px;font-size:14px;font-weight:600;display:flex;align-items:center;justify-content:center;border:1px solid}
+.pri{background:#102b42;color:#fff;border-color:#102b42}
+.sec{background:#fff;color:#2c4a5b;border-color:#cfdad8}
+.full{grid-column:span 2}
+.quiet{text-align:center;font-size:12.5px;color:#7d9099;padding:8px 0 0}
+.tab{position:absolute;bottom:0;left:0;width:390px;display:grid;grid-template-columns:repeat(5,1fr);background:#fbfcfaf2;border-top:1px solid #e3e9e7;padding:9px 0 26px}
+.tab div{text-align:center;font-size:9.5px;font-weight:600;color:#8295a0}
+.tab div.on{color:#102b42}
+.tab div.on s{color:#102b42}
+.tab s{display:block;text-decoration:none;font-size:15px;line-height:1.5}
+.badge{position:relative}
+.badge::after{content:"3";position:absolute;top:-2px;right:22px;background:#c2503c;color:#fff;font-size:8.5px;font-weight:700;width:14px;height:14px;border-radius:50%;line-height:14px}
+</style></head><body>
+<div class="top">
+  <div class="brand">Day<i>light</i></div>
+  <div class="cnt"><b>3</b><span>need you</span></div>
+  <p>Nothing else is waiting on you today. The week is under Week.</p>
+</div>
+<div class="wrap">
+  <div class="c">
+    <div class="mt"><span class="urg"></span><em>NO DRIVER · 19 HOURS OUT</em><i>Wed 4:15 PM</i></div>
+    <h3>Basketball practice drop-off</h3>
+    <p>Parker, Lincoln Middle gym. Taylor has the 6:00 PM pickup. Grandma Ruth was asked at 2:10 PM and hasn't answered.</p>
+    <div class="acts"><div class="btn sec">Ask someone else</div><div class="btn pri">I'll drive</div></div>
+  </div>
+  <div class="c">
+    <div class="mt"><em>TAYLOR DECLINED</em><i>11:04 AM</i></div>
+    <h3>Tournament cash, $40</h3>
+    <div class="quote">“<b>No cash on me until Friday.</b>” Needs a new owner before tonight.</div>
+    <div class="acts"><div class="btn sec">Reply</div><div class="btn pri">Reassign</div></div>
+  </div>
+  <div class="c">
+    <div class="mt"><em>REQUEST FROM BECKER</em><i>Yesterday 8:41 PM</i></div>
+    <h3>Soccer cleats, size 4</h3>
+    <p>“Mine are too small, coach said by Friday.” Photo attached.</p>
+    <div class="acts"><div class="btn sec">Reply to Becker</div><div class="btn pri">Make it a task</div></div>
+  </div>
+  <p class="quiet">Clear these and Today goes quiet until 6 PM.</p>
+</div>
+<div class="tab"><div><s>▦</s>Week</div><div class="on badge"><s>⌂</s>Today</div><div><s>◉</s>Mine</div><div><s>⚇</s>Family</div><div><s>✓</s>Handled</div></div>
+</body></html>
