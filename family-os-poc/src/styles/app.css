@@ -698,7 +698,7 @@
 .btn--void {
   background: var(--void-wash);
   color: var(--void-ink);
-  box-shadow: inset 0 0 0 1px #e0b4ae;
+  box-shadow: inset 0 0 0 1px var(--void-edge);
 }
 .btn--void:hover:not(:disabled) {
   background: #f9e6e2;

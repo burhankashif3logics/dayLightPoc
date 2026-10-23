@@ -76,6 +76,18 @@
         "canonical": "#566476",
         "tonalRamp": ["#1b2129", "#2b333e", "#3b4654", "#4b586a", "#566476", "#7b8a9c", "#a7b3c0", "#dee4ea"]
       },
+      "control-edge": {
+        "role": "neutral",
+        "displayName": "Control Edge",
+        "canonical": "#8f8777",
+        "tonalRamp": ["#1f1d19", "#35322b", "#4c483e", "#645f52", "#7c7667", "#8f8777", "#b5afa2", "#dcd8cf"]
+      },
+      "placeholder": {
+        "role": "neutral",
+        "displayName": "Placeholder",
+        "canonical": "#667280",
+        "tonalRamp": ["#1e2227", "#2f353d", "#414954", "#535d6a", "#667280", "#8b96a3", "#b3bbc4", "#dfe3e8"]
+      },
       "rule": {
         "role": "neutral",
         "displayName": "Rule",
@@ -191,7 +203,7 @@
       { "name": "coupon-hover", "value": "drop-shadow(0 6px 16px rgba(16, 43, 66, 0.12))", "purpose": "The only hover elevation inside the product, driven from the coupon's full-bleed hit layer." },
       { "name": "primary-seat", "value": "0 1px 2px rgba(16, 43, 66, 0.3)", "purpose": "The navy primary button's single press-ready millimetre." },
       { "name": "lift-high", "value": "0 14px 38px rgba(16, 43, 66, 0.17), 0 2px 6px rgba(16, 43, 66, 0.08)", "purpose": "Sheets and toasts: the only two surfaces that leave the page." },
-      { "name": "inset-ring", "value": "inset 0 0 0 1px #cbc5b7", "purpose": "The universal border. Tightens to navy on hover, 2px navy on input focus, so nothing reflows." },
+      { "name": "inset-ring", "value": "inset 0 0 0 1px #8f8777", "purpose": "The universal border — Control Edge on a control, Soft Rule (#e7e2d6) on a divider. Tightens to navy on hover, 2px navy on input focus, so nothing reflows." },
       { "name": "switch-knob", "value": "0 1px 3px rgba(16, 43, 66, 0.3)", "purpose": "The toggle knob's seat. The only shadow on a control smaller than a button." }
     ],
     "motion": [
@@ -205,7 +217,11 @@
     "breakpoints": [
       { "name": "device-collapse", "value": "1180px" },
       { "name": "phone", "value": "460px" },
+      { "name": "sheet-containment", "value": "461px" },
       { "name": "shell", "value": "390px" }
+    ],
+    "frameScaffolding": [
+      { "name": "dialog-containment", "value": "@media (min-width: 461px): sheet body at --shell-w, border-radius 20px 20px 35px 35px, max-height 700px, backdrop lightened to rgba(9,22,33,0.3)", "purpose": "A <dialog> is top-layer and cannot be clipped by the shell, so on the device-framed demo the bottom sheet escaped the phone. This block puts it back inside the frame. Demo-frame scaffolding, not product design: on a real phone the uncontained full-width sheet is the correct behaviour, and this is not a system rule about dialogs." }
     ],
     "filters": [
       { "name": "ink-impression", "value": "feTurbulence(fractalNoise, baseFrequency 0.62 0.78, numOctaves 2, seed 9) → feColorMatrix threshold (1.9, -1.08) → feComposite out of SourceGraphic → feDisplacementMap(scale 1.1, R/G)", "purpose": "Gives every stamp its broken, ink-starved impression. Defined once in the app shell, applied to stamps and nothing else, with a @supports-not fallback to no filter." }
@@ -229,9 +245,9 @@
       "name": "Stamp",
       "kind": "custom",
       "refersTo": "stamp-waiting",
-      "description": "The signature move. A state change stamps its own word onto the coupon: five words, five border treatments, legible in greyscale.",
+      "description": "The signature move. A state change stamps its own word onto the coupon: five words, five border treatments, legible in greyscale. The word is load-bearing; the UNCLAIMED dashed border now corroborates it at 3.56:1 rather than carrying it.",
       "html": "<svg class=\"ds-inkdefs\" aria-hidden=\"true\" focusable=\"false\"><defs><filter id=\"ds-ink-impression\" x=\"-12%\" y=\"-25%\" width=\"124%\" height=\"150%\"><feTurbulence type=\"fractalNoise\" baseFrequency=\"0.62 0.78\" numOctaves=\"2\" seed=\"9\" result=\"grain\"/><feColorMatrix in=\"grain\" type=\"matrix\" values=\"0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  1.9 0 0 0 -1.08\" result=\"starve\"/><feComposite in=\"SourceGraphic\" in2=\"starve\" operator=\"out\" result=\"broken\"/><feDisplacementMap in=\"broken\" in2=\"grain\" scale=\"1.1\" xChannelSelector=\"R\" yChannelSelector=\"G\"/></filter></defs></svg><span class=\"ds-stamp ds-stamp-unclaimed\">UNCLAIMED</span> <span class=\"ds-stamp ds-stamp-waiting\">WAITING</span> <span class=\"ds-stamp ds-stamp-accepted\">ACCEPTED</span> <span class=\"ds-stamp ds-stamp-declined\">DECLINED</span> <span class=\"ds-stamp ds-stamp-handled\">HANDLED</span>",
-      "css": ".ds-inkdefs { position: absolute; width: 0; height: 0; pointer-events: none; } .ds-stamp { display: inline-block; transform: rotate(-7deg); margin: 8px 6px; font-family: \"Azeret Mono Variable\", \"Azeret Mono\", ui-monospace, monospace; font-size: 10.5px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; border: 2px solid currentColor; border-radius: 3px; padding: 4px 7px 3px; line-height: 1; white-space: nowrap; filter: url(#ds-ink-impression); animation: ds-stamp-down 200ms cubic-bezier(0.22,0.61,0.36,1) both; } @supports not (filter: url(#ds-ink-impression)) { .ds-stamp { filter: none; } } .ds-stamp-accepted { color: #1c5a3e; background: #eff7f1; box-shadow: inset 0 0 0 1px rgba(28,90,62,0.25); } .ds-stamp-waiting { color: #74550f; border-color: #e8bb60; background: #fdf7e9; box-shadow: inset 0 0 0 1px rgba(232,187,96,0.5); } .ds-stamp-declined { color: #8d231c; border-color: #c2362d; background: #fcf1ef; box-shadow: inset 0 0 0 1px rgba(194,54,45,0.25); } .ds-stamp-unclaimed { color: #566476; border-color: #b4ad9c; border-style: dashed; background: transparent; } .ds-stamp-handled { color: #5c666e; border-color: #a7aeb2; background: #eeece6; } @keyframes ds-stamp-down { 0% { transform: rotate(-16deg) scale(1.45); opacity: 0; } 55% { transform: rotate(-5.5deg) scale(0.97); opacity: 1; } 100% { transform: rotate(-7deg) scale(1); opacity: 1; } } @media (prefers-reduced-motion: reduce) { .ds-stamp { animation-duration: 1ms; } }"
+      "css": ".ds-inkdefs { position: absolute; width: 0; height: 0; pointer-events: none; } .ds-stamp { display: inline-block; transform: rotate(-7deg); margin: 8px 6px; font-family: \"Azeret Mono Variable\", \"Azeret Mono\", ui-monospace, monospace; font-size: 10.5px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; border: 2px solid currentColor; border-radius: 3px; padding: 4px 7px 3px; line-height: 1; white-space: nowrap; filter: url(#ds-ink-impression); animation: ds-stamp-down 200ms cubic-bezier(0.22,0.61,0.36,1) both; } @supports not (filter: url(#ds-ink-impression)) { .ds-stamp { filter: none; } } .ds-stamp-accepted { color: #1c5a3e; background: #eff7f1; box-shadow: inset 0 0 0 1px rgba(28,90,62,0.25); } .ds-stamp-waiting { color: #74550f; border-color: #e8bb60; background: #fdf7e9; box-shadow: inset 0 0 0 1px rgba(232,187,96,0.5); } .ds-stamp-declined { color: #8d231c; border-color: #c2362d; background: #fcf1ef; box-shadow: inset 0 0 0 1px rgba(194,54,45,0.25); } .ds-stamp-unclaimed { color: #566476; border-color: #8f8777; border-style: dashed; background: transparent; } .ds-stamp-handled { color: #5c666e; border-color: #a7aeb2; background: #eeece6; } @keyframes ds-stamp-down { 0% { transform: rotate(-16deg) scale(1.45); opacity: 0; } 55% { transform: rotate(-5.5deg) scale(0.97); opacity: 1; } 100% { transform: rotate(-7deg) scale(1); opacity: 1; } } @media (prefers-reduced-motion: reduce) { .ds-stamp { animation-duration: 1ms; } }"
     },
     {
       "name": "Perforation",
@@ -255,7 +271,7 @@
       "refersTo": "button-secondary",
       "description": "The default variant: coupon-white with a warm 1px inset ring that tightens to navy on hover. No reflow, because the border is a ring.",
       "html": "<button class=\"ds-btn ds-btn-secondary\"><span>Ask someone else</span></button>",
-      "css": ".ds-btn { min-height: 44px; padding: 0 14px; border: 0; border-radius: 8px; display: inline-flex; align-items: center; justify-content: center; gap: 7px; font-family: \"Archivo Variable\", Archivo, system-ui, sans-serif; font-size: 14px; font-weight: 600; letter-spacing: -0.012em; cursor: pointer; transition: background 140ms cubic-bezier(0.22,0.61,0.36,1), box-shadow 140ms cubic-bezier(0.22,0.61,0.36,1), transform 140ms cubic-bezier(0.22,0.61,0.36,1); } .ds-btn-secondary { background: #ffffff; color: #102b42; box-shadow: inset 0 0 0 1px #cbc5b7; } .ds-btn-secondary:hover { background: #f7f5ef; box-shadow: inset 0 0 0 1px #102b42; } .ds-btn-secondary:focus-visible { outline: 2px solid #102b42; outline-offset: 2px; } .ds-btn-secondary:active { transform: translateY(1px); }"
+      "css": ".ds-btn { min-height: 44px; padding: 0 14px; border: 0; border-radius: 8px; display: inline-flex; align-items: center; justify-content: center; gap: 7px; font-family: \"Archivo Variable\", Archivo, system-ui, sans-serif; font-size: 14px; font-weight: 600; letter-spacing: -0.012em; cursor: pointer; transition: background 140ms cubic-bezier(0.22,0.61,0.36,1), box-shadow 140ms cubic-bezier(0.22,0.61,0.36,1), transform 140ms cubic-bezier(0.22,0.61,0.36,1); } .ds-btn-secondary { background: #ffffff; color: #102b42; box-shadow: inset 0 0 0 1px #8f8777; } .ds-btn-secondary:hover { background: #f7f5ef; box-shadow: inset 0 0 0 1px #102b42; } .ds-btn-secondary:focus-visible { outline: 2px solid #102b42; outline-offset: 2px; } .ds-btn-secondary:active { transform: translateY(1px); }"
     },
     {
       "name": "Void Button",
@@ -269,9 +285,9 @@
       "name": "Text Field",
       "kind": "input",
       "refersTo": "input",
-      "description": "Mono tab-caps label over a coupon-white field with a 1px warm ring that doubles to 2px navy on focus. No glow, no size change. The placeholder colour shown here is the build's own (#9aa3a9, 2.57:1) and is below AA — reproduced for fidelity, not endorsed.",
+      "description": "Mono tab-caps label over a coupon-white field with a 1px Control Edge ring that doubles to 2px navy on focus. No glow, no size change. Ring and placeholder are both system tokens that clear their thresholds (3.56:1 and 4.90:1 on this ground).",
       "html": "<label class=\"ds-formfield\"><span class=\"ds-formfield-label\">REASON</span><input class=\"ds-input\" type=\"text\" placeholder=\"Working until 6\" /><span class=\"ds-formfield-hint\">Taylor sees this on the coupon.</span></label>",
-      "css": ".ds-formfield { display: block; font-family: \"Archivo Variable\", Archivo, system-ui, sans-serif; } .ds-formfield-label { display: block; font-family: \"Azeret Mono Variable\", \"Azeret Mono\", ui-monospace, monospace; font-size: 9px; font-weight: 700; letter-spacing: 0.14em; color: #3f5465; text-transform: uppercase; margin-bottom: 6px; } .ds-input { width: 100%; min-height: 44px; padding: 10px 12px; border: 0; border-radius: 8px; background: #ffffff; box-shadow: inset 0 0 0 1px #cbc5b7; font-family: inherit; font-size: 14.5px; color: #16222b; caret-color: #102b42; transition: box-shadow 140ms cubic-bezier(0.22,0.61,0.36,1); } .ds-input::placeholder { color: #9aa3a9; } .ds-input:hover { box-shadow: inset 0 0 0 1px #102b42; } .ds-input:focus { outline: none; box-shadow: inset 0 0 0 2px #102b42; } .ds-formfield-hint { display: block; font-size: 11.5px; color: #566476; margin-top: 5px; line-height: 1.4; }"
+      "css": ".ds-formfield { display: block; font-family: \"Archivo Variable\", Archivo, system-ui, sans-serif; } .ds-formfield-label { display: block; font-family: \"Azeret Mono Variable\", \"Azeret Mono\", ui-monospace, monospace; font-size: 9px; font-weight: 700; letter-spacing: 0.14em; color: #3f5465; text-transform: uppercase; margin-bottom: 6px; } .ds-input { width: 100%; min-height: 44px; padding: 10px 12px; border: 0; border-radius: 8px; background: #ffffff; box-shadow: inset 0 0 0 1px #8f8777; font-family: inherit; font-size: 14.5px; color: #16222b; caret-color: #102b42; transition: box-shadow 140ms cubic-bezier(0.22,0.61,0.36,1); } .ds-input::placeholder { color: #667280; } .ds-input:hover { box-shadow: inset 0 0 0 1px #102b42; } .ds-input:focus { outline: none; box-shadow: inset 0 0 0 2px #102b42; } .ds-formfield-hint { display: block; font-size: 11.5px; color: #566476; margin-top: 5px; line-height: 1.4; }"
     },
     {
       "name": "Flag Band",
@@ -321,8 +337,18 @@
       },
       {
         "name": "The Derived Ink Rule",
-        "body": "Secondary and tertiary ink are derived from the navy foreground, never toward neutral grey, and the ink set is verified as a matrix — every ink against every ground, not only the pairs that happen to exist today. All of them clear 4.5:1. Ink Three is the weakest and sets the floor: 6.03:1 on coupon white, 5.35:1 on stock, 5.11:1 on spent wash, and 4.70:1 on the Handled tinted ground, its tightest pair and the reason the token sits at its current value. When adding an ink or a ground, re-run the whole matrix rather than the one pair in front of you. One text value sits outside the ink system and outside AA: the input placeholder (#9aa3a9, 2.57:1 on coupon white). It is not a licensed text colour and must not be copied onto new surfaces.",
+        "body": "Secondary and tertiary ink are derived from the navy foreground, never toward neutral grey, and the ink set is verified as a matrix — every ink against every ground, not only the pairs that happen to exist today. All of them clear 4.5:1. Ink Three is the weakest and sets the floor: 6.03:1 on coupon white, 5.35:1 on stock, 5.11:1 on spent wash, and 4.70:1 on the Handled tinted ground, its tightest pair and the reason the token sits at its current value. When adding an ink or a ground, re-run the whole matrix rather than the one pair in front of you. Placeholder text is part of this set, not an exception to it (#667280, 4.90:1 on the coupon-white field it actually sits in).",
         "section": "colors"
+      },
+      {
+        "name": "The Rendered-Matrix Rule",
+        "body": "A combinatorial token matrix over-reports: it flags pairs the build never composites. Verify against the rendered DOM — each element against its own real background — and treat the token matrix as a list of candidates, not verdicts. Measured that way the build holds: 5 placeholders, worst 4.90:1; 41 control boundaries, worst 3.15:1. Two combinations the matrix flags are genuinely unrendered today and are the live trap for whoever builds next: on the Handled tinted ground, Control Edge falls to 2.77:1 and Placeholder to 3.82:1. The Handled ground is the constraining case for any control placed on it, and needs a darker boundary before it carries one.",
+        "section": "colors"
+      },
+      {
+        "name": "The Control-Reads-Heavier Rule",
+        "body": "An interactive boundary is information, so every control's edge uses Control Edge and clears 3:1 against its own background (WCAG 1.4.11, a AA criterion and therefore in scope, not a stylistic preference). Decorative hairlines — the section rule, interior field dividers, the dashed empty state, the log's closing rule — stay light on purpose, because they carry nothing a finger needs. The consequence is the correct hierarchy: a control reads heavier than a divider. One control has not been brought onto the token — the void button keeps a warm-red literal ring at roughly 1.7:1 — so copy the secondary button's edge, not the void button's, when building a new control.",
+        "section": "shapes"
       },
       {
         "name": "The Side-Tab Prohibition",
@@ -364,7 +390,9 @@
       "Do keep gold to waiting, the current tab and the single accent mark; keep void red to declined and overdue.",
       "Do commit colour at region scale — a whole tinted ground, like the Handled screen — rather than scattering accent dots.",
       "Do put the primary action inside the coupon it belongs to.",
-      "Do re-run the whole ink-by-ground contrast matrix when adding an ink or a ground; the tightest pair in the build is Ink Three on the Handled tinted ground at 4.70:1.",
+      "Do verify contrast against the rendered DOM, not only the token matrix; the matrix flags pairs the build never composites.",
+      "Do give every interactive boundary Control Edge (#8f8777) so it clears 3:1, and leave decorative hairlines light.",
+      "Do re-check Control Edge (2.77:1) and Placeholder (3.82:1) before putting a control or an input on the Handled tinted ground; that ground is the constraining case and needs a darker boundary first.",
       "Do draw every icon from the one 24-box stroked SVG set at 1.6px weight."
     ],
     "donts": [
@@ -373,6 +401,7 @@
       "Don't introduce a gradient, a glass blur, or a backdrop-filter inside the product shell. The three that exist (the desk texture, the device body, the demo panel) are all outside the phone.",
       "Don't use a shadow with spread and no offset. Every shadow is offset plus blur.",
       "Don't add a third type family, a system display face, or an emoji or glyph icon in place of the drawn SVG set.",
+      "Don't read a control's faint resting edge as licence for a new one: the void button's warm-red literal ring (~1.7:1) is a defect the build carries, not the pattern to copy.",
       "Don't introduce a kicker or eyebrow above a heading. No kicker pattern is licensed by this system; the coupon head's classification line is the kind and day the system already holds, not a label invented for a surface.",
       "Don't put the primary action in a floating button over the content.",
       "Don't let a status be carried by a small coloured pill alone, and don't let an item quietly leave the plan — it gets stamped HANDLED and moves to the log.",

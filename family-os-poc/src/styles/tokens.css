@@ -20,6 +20,7 @@
   /* Interactive boundaries clear WCAG 1.4.11 (3:1); a control reads heavier
      than a divider, which is the right hierarchy. Placeholders are text. */
   --control-edge: #8f8777;
+  --void-edge: #bf5a4f;
   --placeholder: #667280;
 
   /* Rules — hairlines are the whole structure */

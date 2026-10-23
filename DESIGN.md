@@ -14,6 +14,8 @@ colors:
   ink: "#16222b"
   ink-2: "#3f5465"
   ink-3: "#566476"
+  control-edge: "#8f8777"
+  placeholder: "#667280"
   rule: "#d7d1c3"
   rule-soft: "#e7e2d6"
   rule-navy: "#37536b"
@@ -311,7 +313,9 @@ Carrier navy and Daylight gold printed on warm coupon stock: a palette of inks o
 - **Coupon White** (`{colors.coupon}`) / **Dimmed Coupon** (`{colors.coupon-dim}`): Ticket paper, and the spent ticket's paper.
 - **Handled Ground** (`{colors.handled-ground}`): The Handled screen's full-width tinted ground.
 - **Ink** (`{colors.ink}`), **Ink Two** (`{colors.ink-2}`), **Ink Three** (`{colors.ink-3}`): Primary prose, secondary prose, and tertiary labels. All three are blue-cast, derived from the navy foreground rather than stepped toward neutral grey.
-- **Rule** (`{colors.rule}`) / **Soft Rule** (`{colors.rule-soft}`) / **Navy Rule** (`{colors.rule-navy}`): Section hairlines and the default coupon edge; interior field dividers; the one hairline above the navy tab bar.
+- **Control Edge** (`{colors.control-edge}`): The boundary of anything a finger acts on — the secondary button, every input, textarea and select, chips, pills, the checklist box, the switch track at rest, the sheet grip, the inline detail action. One token for all ten usages, set warm-dark enough to clear WCAG 1.4.11's 3:1 non-text threshold.
+- **Placeholder** (`{colors.placeholder}`): Input and textarea placeholder text. A real token with a role, not a literal: placeholders are text and are held to the text threshold.
+- **Rule** (`{colors.rule}`) / **Soft Rule** (`{colors.rule-soft}`) / **Navy Rule** (`{colors.rule-navy}`): Section hairlines and the default coupon edge; interior field dividers; the one hairline above the navy tab bar. These stay deliberately light — they divide, they do not invite a touch.
 - **Terracotta** (`{colors.terracotta}`): A person identity tint only. Avatars are filled from a fixed per-person set — navy, accepted green, carbon purple, terracotta — and terracotta appears nowhere else in the system.
 
 ### Named Rules
@@ -320,7 +324,9 @@ Carrier navy and Daylight gold printed on warm coupon stock: a palette of inks o
 
 **The Region-Scale Colour Rule.** When colour commits, it commits across a whole region, not as scattered dots. The Handled screen takes its tinted ground across its full width and all the way to the tab bar; it does not sprinkle accent marks on stock.
 
-**The Derived Ink Rule.** Secondary and tertiary ink are derived from the navy foreground, never toward neutral grey, and the ink set is verified as a *matrix* — every ink against every ground, not only the pairs that happen to exist today. All of them clear 4.5:1. Ink Three is the weakest and sets the floor: 6.03:1 on coupon white, 5.35:1 on stock, 5.11:1 on spent wash, and 4.70:1 on the Handled tinted ground, its tightest pair and the reason the token sits at its current value. When adding an ink or a ground, re-run the whole matrix rather than the one pair in front of you. One text value sits outside the ink system and outside AA: the input placeholder (`#9aa3a9`, 2.57:1 on coupon white). It is not a licensed text colour and must not be copied onto new surfaces.
+**The Derived Ink Rule.** Secondary and tertiary ink are derived from the navy foreground, never toward neutral grey, and the ink set is verified as a *matrix* — every ink against every ground, not only the pairs that happen to exist today. All of them clear 4.5:1. Ink Three is the weakest and sets the floor: 6.03:1 on coupon white, 5.35:1 on stock, 5.11:1 on spent wash, and 4.70:1 on the Handled tinted ground, its tightest pair and the reason the token sits at its current value. When adding an ink or a ground, re-run the whole matrix rather than the one pair in front of you. Placeholder text is part of this set, not an exception to it (`{colors.placeholder}`, 4.90:1 on the coupon-white field it actually sits in).
+
+**The Rendered-Matrix Rule.** A combinatorial token matrix over-reports: it flags pairs the build never composites. Verify against the rendered DOM — each element against its own real background — and treat the token matrix as a list of candidates, not verdicts. Measured that way the build holds: 5 placeholders, worst 4.90:1; 41 control boundaries, worst 3.15:1. Two combinations the matrix flags are genuinely unrendered today and are the live trap for whoever builds next: on the Handled tinted ground, Control Edge falls to 2.77:1 and Placeholder to 3.82:1. The Handled ground is the constraining case for any control placed on it, and needs a darker boundary before it carries one.
 
 **The Side-Tab Prohibition.** Tone is carried by recolouring the coupon's edge and paper, never by adding a coloured accent bar down one side. Side-tab accents were removed from this build deliberately and are not available to new surfaces.
 
@@ -363,6 +369,8 @@ The rail is 54px of top padding (safe area) with 18px below, closing on a 2px da
 
 Responsive behaviour exists only to get the device frame out of the way. Above 1180px the desk, the device and the two demo panels sit in a three-column grid; at 1180px they collapse to one centred column capped at 420px; at 460px the frame, its padding, its shadow and its radii all go away and the shell becomes the full viewport at `100dvh`. The product itself has no breakpoints: it is a phone surface at every width.
 
+One piece of the responsive layer is frame scaffolding rather than product design: a `<dialog>` lives in the top layer and cannot be clipped by the shell, so above 461px a block constrains the bottom sheet back inside the device — shell-width body, a device-matched bottom radius, a lightened backdrop. It exists only because the demo renders a phone inside a desktop page. On a real phone an unclipped full-width sheet is the correct behaviour, and nothing here is a system rule about dialogs.
+
 Every interactive target is at least 44px tall — buttons, inputs, checklist rows, the leg button variant — with 38–42px allowed only for quiet inline actions and chips inside a sheet.
 
 ## Elevation & Depth
@@ -374,7 +382,7 @@ This system is printed, not lifted. Depth comes from hairlines, tonal paper step
 - **Coupon hovered** (`filter: drop-shadow(0 6px 16px rgba(16, 43, 66, 0.12))`): The only hover elevation in the product, triggered from the coupon's full-bleed hit layer.
 - **Primary seat** (`box-shadow: 0 1px 2px rgba(16, 43, 66, 0.3)`): The navy button's single press-ready millimetre.
 - **Floating** (`--lift-high: 0 14px 38px rgba(16, 43, 66, 0.17), 0 2px 6px rgba(16, 43, 66, 0.08)`): Sheets and toasts, the only two things that leave the page.
-- **Inset ring** (`box-shadow: inset 0 0 0 1px <colour>`): The universal border. 1px at rest, 1px navy on hover, 2px navy on input focus.
+- **Inset ring** (`box-shadow: inset 0 0 0 1px <colour>`): The universal border — Control Edge on a control, Soft Rule on a divider. 1px at rest, 1px navy on hover, 2px navy on input focus.
 
 ### Named Rules
 
@@ -388,6 +396,8 @@ The coupon is the system's one signature silhouette and it is built from two cli
 
 Everything else is rectangular with restrained radii: 8px on buttons, inputs, chips, list rows, stubs and notices; 12px on grouped containers and the empty state; 3px on the stamp; 5px on a checklist box; 99px pill radius only for badges, pills, the switch and the sheet grip. The sheet rises with 20px top corners and square bottoms. Nothing in the product is a circle except avatars, small icon marks, and the perforation's punched holes.
 
+**The Control-Reads-Heavier Rule.** An interactive boundary is information, so every control's edge uses Control Edge and clears 3:1 against its own background (WCAG 1.4.11, a AA criterion and therefore in scope, not a stylistic preference). Decorative hairlines — the section rule, interior field dividers, the dashed empty state, the log's closing rule — stay light on purpose, because they carry nothing a finger needs. The consequence is the correct hierarchy: a control reads heavier than a divider. One control has not been brought onto the token — the void button keeps a warm-red literal ring at roughly 1.7:1 — so copy the secondary button's edge, not the void button's, when building a new control.
+
 The perforation is the second signature form: a dashed 1px rule bitten at both ends by 16px circular holes that are filled with the stock colour and ringed in the coupon's own `--edge`, so the ticket reads as genuinely punched through to the ground beneath.
 
 ## Components
@@ -395,15 +405,15 @@ The perforation is the second signature form: a dashed 1px rule bitten at both e
 ### Buttons
 - **Shape:** Softly squared (8px radius), 44px minimum height, 14px horizontal padding, 14px/600 label with a 17px inline icon.
 - **Primary:** Navy fill, white label, a 1px navy seat shadow. Hovers to Rail Navy Light; presses 1px down (`translateY(1px)`).
-- **Secondary (the default variant):** Coupon-white fill, navy label, 1px warm inset ring (`#cbc5b7`) that tightens to navy on hover.
+- **Secondary (the default variant):** Coupon-white fill, navy label, 1px Control Edge inset ring (`{colors.control-edge}`) that tightens to navy on hover.
 - **Void:** Void wash fill, void ink label, warm-red inset ring tightening to void red. For destructive and decline actions only.
 - **Quiet:** Transparent, Ink Two label, 38px tall, 8px padding. Hovers to a 6% navy wash.
 - **Disabled / loading:** 0.45 opacity and `not-allowed`; loading dims only the label to 0.6 and sets `aria-busy`.
 - **Leg:** The compact in-row variant — still 44px tall, 12px padding, 13px label.
 
 ### Chips and Pills
-- **Chip:** Coupon-white, 42px tall, 8px radius, 1px warm inset ring, 13.5px/500 label, often with a 26px avatar. Selected (`aria-pressed="true"`) inverts to navy with a white label and rings the avatar in 60% white. The wide stacked variant is 52px tall and left-aligned with a two-line name block.
-- **Pill:** The filter row — transparent, 34px tall, pill radius, warm inset ring, Ink Two label with a mono count at 0.75 opacity. Selected inverts to navy. The row scrolls horizontally with its scrollbar hidden.
+- **Chip:** Coupon-white, 42px tall, 8px radius, 1px Control Edge inset ring, 13.5px/500 label, often with a 26px avatar. Selected (`aria-pressed="true"`) inverts to navy with a white label and rings the avatar in 60% white. The wide stacked variant is 52px tall and left-aligned with a two-line name block.
+- **Pill:** The filter row — transparent, 34px tall, pill radius, Control Edge inset ring (3.15:1 on stock, the build's tightest rendered boundary), Ink Two label with a mono count at 0.75 opacity. Selected inverts to navy. The row scrolls horizontally with its scrollbar hidden.
 
 ### Coupons (the primary container)
 - **Corner Style:** 14px notched cut on all four corners, zero radius. See Shapes for the two-layer construction.
@@ -416,9 +426,9 @@ The perforation is the second signature form: a dashed 1px rule bitten at both e
 - **Hit behaviour:** A tappable coupon takes a full-bleed transparent hit layer above the paper; the paper's children are `pointer-events: none` and interactive descendants opt back in. Focus moves the ring onto the edge layer in navy, not onto an outline.
 
 ### Inputs / Fields
-- **Style:** Coupon-white, 8px radius, 1px warm inset ring, 44px minimum height, 14.5px text, 10×12px padding. Labels sit above in 9px mono tab-caps; hints below in 11.5px Ink Three. Textareas are 84px minimum and vertically resizable; selects suppress the native arrow and draw a 5px chevron from two linear-gradient triangles.
+- **Style:** Coupon-white, 8px radius, 1px Control Edge inset ring, 44px minimum height, 14.5px text, 10×12px padding. Labels sit above in 9px mono tab-caps; hints below in 11.5px Ink Three. Textareas are 84px minimum and vertically resizable; selects suppress the native arrow and draw a 5px chevron from two linear-gradient triangles.
 - **Focus:** The inset ring doubles to 2px navy and the native outline is suppressed — no glow, no size change.
-- **Placeholder:** `#9aa3a9` — 2.57:1 on coupon white, below AA. Carried by the build; not a value to reuse as text.
+- **Placeholder:** Placeholder (`{colors.placeholder}`) at 4.90:1 on the field's coupon-white ground. **Caret:** navy.
 
 ### Navigation
 - **Rail:** Navy, 54px safe top, holding the wordmark (15px/800, -0.045em, gold accent dash), icon tools at 38px, the day headline, a 13px lede capped at 32ch with gold emphasis, and a 10px mono meta row. Closes on the gold dashed tear edge.
@@ -433,7 +443,7 @@ The system's memorable move. A state change stamps itself onto the coupon.
 
 - **Form:** Inline mono caps, 700 weight, +0.14em tracking, 2px `currentColor` border, 3px radius, 4×7px padding, rotated -7deg by default (`--tilt`, overridable per instance).
 - **Words:** UNCLAIMED, WAITING, ACCEPTED, DECLINED, HANDLED. The word is the state; colour is confirmation.
-- **Variants:** Accepted (go on go-wash, 25% inner ring), Waiting (gold ink on gold wash, gold border, 50% inner ring), Declined (void ink on void wash, void border, 25% inner ring), Unclaimed (Ink Three on a **dashed** `#b4ad9c` border, transparent, no ring), Handled (spent on spent-wash, flat, no ring). The small size drops to 9px with a 1.5px border and +0.1em.
+- **Variants:** Accepted (go on go-wash, 25% inner ring), Waiting (gold ink on gold wash, gold border, 50% inner ring), Declined (void ink on void wash, void border, 25% inner ring), Unclaimed (Ink Three on a **dashed** Control Edge border at 3.56:1 on paper, transparent, no ring), Handled (spent on spent-wash, flat, no ring). The small size drops to 9px with a 1.5px border and +0.1em.
 - **Ink:** `filter: url(#ink-impression)` — fractal-noise turbulence, a colour-matrix threshold, an `out` composite that starves the ink, and a displacement map that breaks the edges. Defined once in the app shell, applied to stamps and nothing else, with a `@supports not` fallback to no filter.
 - **Entrance:** `stamp-down` over 200ms — rotated 9deg further out at 1.45 scale and zero opacity, overshooting to 0.97 scale at 55%, settling at rest. It plays on the state change, not on mount decoration.
 - **Placement:** Inline at the end of a leg row, or absolutely at the coupon's top-right corner (`.stamp--corner`), which reserves 104px of title padding so the headline never runs under the impression.
@@ -454,7 +464,9 @@ Three durations and one curve: 140ms (`--fast`) for colour and ring changes, 200
 - **Do** keep gold to waiting, the current tab and the single accent mark; keep void red to declined and overdue.
 - **Do** commit colour at region scale — a whole tinted ground, like the Handled screen — rather than scattering accent dots.
 - **Do** put the primary action inside the coupon it belongs to.
-- **Do** re-run the whole ink-by-ground contrast matrix when adding an ink or a ground; the tightest pair in the build is Ink Three on the Handled tinted ground at 4.70:1.
+- **Do** verify contrast against the rendered DOM, not only the token matrix; the matrix flags pairs the build never composites.
+- **Do** give every interactive boundary Control Edge (`{colors.control-edge}`) so it clears 3:1, and leave decorative hairlines light.
+- **Do** re-check Control Edge (2.77:1) and Placeholder (3.82:1) before putting a control or an input on the Handled tinted ground; that ground is the constraining case and needs a darker boundary first.
 - **Do** draw every icon from the one 24-box stroked SVG set at 1.6px weight.
 
 ### Don't:
@@ -463,6 +475,7 @@ Three durations and one curve: 140ms (`--fast`) for colour and ring changes, 200
 - **Don't** introduce a gradient, a glass blur, or a backdrop-filter inside the product shell. The three that exist (the desk texture, the device body, the demo panel) are all outside the phone.
 - **Don't** use a shadow with spread and no offset. Every shadow is offset plus blur.
 - **Don't** add a third type family, a system display face, or an emoji or glyph icon in place of the drawn SVG set.
+- **Don't** read a control's faint resting edge as licence for a new one: the void button's warm-red literal ring (~1.7:1) is a defect the build carries, not the pattern to copy.
 - **Don't** introduce a kicker or eyebrow above a heading. No kicker pattern is licensed by this system; the coupon head's classification line is the kind and day the system already holds, not a label invented for a surface.
 - **Don't** put the primary action in a floating button over the content.
 - **Don't** let a status be carried by a small coloured pill alone, and don't let an item quietly leave the plan — it gets stamped HANDLED and moves to the log.
