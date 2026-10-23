@@ -1,8 +1,8 @@
-# Week screen — iPhone Pro Max concept
+# Week screen — iPhone 18 Pro Max
 
 ![Daylight week screen in a notched iPhone Pro Max concept frame](week-iphone-pro-max-concept.png)
 
-Generated on 2026-10-24 with the built-in `image_gen` tool, editing the user-supplied Daylight week-screen mockup. The iPhone 19 Pro Max frame is an imagined concept, not an official hardware specification.
+The image above is the earlier concept, generated on 2026-10-24 with the built-in `image_gen` tool from the user-supplied Daylight mockup. Its notched iPhone 19 Pro Max frame is imagined. The app now uses the verified iPhone 18 Pro Max screen reference described below.
 
 The layout reserves notch and home-indicator space, moves ownership beneath task notes, adds Assign/Reassign cues, replaces the misleading open count, and removes the repeated permission-slip entry from the unanswered list.
 
@@ -10,11 +10,15 @@ The layout reserves notch and home-indicator space, moves ownership beneath task
 
 The Departures theme implements this direction with live demo data. Counts include all actual items; unanswered items on the selected day appear only in that day's schedule. Assign and Reassign open the existing family assignment sheet for parents; rides keep their separate drop-off and pickup actions in the detail view. A missing time remains labeled "No time" rather than implying the obligation can happen anytime.
 
-The shared demo frame uses a 440×956 screen inside a 464×980 shell at full size, scales its dimensions to the available viewport, and keeps the app content scrollable above the navigation. The hardware radii (64/52px on desktop, 48/40px on mobile), black notch and side buttons belong to `frame.css`, outside the themes' product design tokens. At very narrow widths, the day strip scrolls horizontally to preserve 44px targets.
+Apple's [iPhone 18 Pro Max specifications](https://www.apple.com/iphone-18-pro/specs/) list a 6.9-inch OLED display, 1320×2868 portrait resolution and Dynamic Island. Apple's [launch announcement](https://www.apple.com/newsroom/2026/09/apple-debuts-iphone-18-pro-and-iphone-18-pro-max/) confirms the smaller island. The floating pill and rounded corners were checked against Apple's [official front image](https://cdsassets.apple.com/live/7WUAS350/images/tech-specs/iphone-18-pro-max.png).
+
+The preview uses a 440×956 design coordinate system (the published resolution divided by three). The screen itself preserves the exact 1320:2868 aspect ratio at every responsive width; the outer padding no longer changes that ratio. The floating island is visually matched at approximately 94×36 in those coordinates with a 14px gap above it. Island and corner measurements are visual approximations, not published Apple dimensions. Hardware styling stays in `frame.css`, outside the product themes. At very narrow widths, the day strip scrolls horizontally to preserve 44px targets.
 
 Verified with the production build and Chrome browser assertions: assignment and acceptance update ownership and unanswered counts; Reassign opens the existing sheet; Tab/Shift+Tab stay in the sheet and Escape restores focus; children receive no parent assignment controls; empty days preserve the week's unanswered queue. All four themes were checked on desktop. Departures was also checked at 320×740, 390×844 and 768×1024 for horizontal overflow and 44px targets. Physical iPhone touch and Safari were not tested.
 
-## Generation prompt
+The corrected geometry was checked in Chrome at full size (440×956 screen) and at 440px, 390px and 320px browser widths. Assertions verify the display aspect ratio, the island's gap from the top edge, and clear space around the status indicators.
+
+## Original concept generation prompt
 
 ```text
 Use case: ui-mockup.

@@ -41,6 +41,7 @@ function Phone() {
   return (
     <div className="phone" data-world={world.id}>
       {world.id === 'coupon' && <InkDefs />}
+      <span className="phone__island" aria-hidden="true" />
       <div className="phone__status" aria-hidden="true">
         <span className="tnum">9:41</span>
         <span className="phone__signals">
