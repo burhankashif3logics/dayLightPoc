@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=390,initial-scale=1">
+<title>Almanac</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Barlow:wght@400;500;600;700&family=Roboto+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --slate:#1b2a31; --slate-2:#2a3d46; --rule-dk:#3d525c;
+    --paper:#f6f3ea; --paper-2:#ebe6d8; --rule:#cdc5b2; --rule-soft:#ded8c8;
+    --ink:#15211f; --ink-2:#4a5a5c; --ink-3:#6d7b7c;
+    --amber:#d98d12; --amber-band:#f2d9a4; --amber-wash:#fbf1dc;
+    --taken:#15655a; --taken-wash:#e4efeb;
+    --declined:#a8352a; --declined-wash:#f7e8e5;
+    --unowned:#7b8788;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{width:390px;height:844px;overflow:hidden;background:var(--paper);
+    font-family:Barlow,system-ui,sans-serif;color:var(--ink);-webkit-font-smoothing:antialiased}
+  .lbl{font-family:'Roboto Mono',monospace;font-size:10px;font-weight:700;letter-spacing:.16em;text-transform:uppercase}
+  .num{font-family:'Roboto Mono',monospace;font-variant-numeric:tabular-nums;font-weight:500}
+  .cond{font-family:'Barlow Condensed',sans-serif}
+
+  /* ── masthead ── */
+  header{background:var(--slate);color:#fff;padding:14px 18px 16px}
+  .mast{display:flex;align-items:baseline;justify-content:space-between;
+    border-bottom:1px solid var(--rule-dk);padding-bottom:9px}
+  .wm{font-family:'Barlow Condensed',sans-serif;font-size:21px;font-weight:700;
+    letter-spacing:.1em;text-transform:uppercase}
+  .wm b{color:var(--amber)}
+  .mast .lbl{color:#9db0b6;font-size:9.5px}
+  h1{font-family:'Barlow Condensed',sans-serif;font-size:38px;font-weight:700;
+    line-height:.95;letter-spacing:-.01em;margin:12px 0 5px}
+  .lede{font-size:14.5px;line-height:1.35;color:#c3d2d6;max-width:30ch}
+  .lede em{font-style:normal;color:var(--amber);font-weight:600}
+
+  /* ── signature move: the daylight band ── */
+  .band-wrap{background:var(--slate);padding:0 18px 16px}
+  .band-head{display:flex;justify-content:space-between;color:#8ca1a8;padding:14px 0 7px}
+  .band{position:relative;height:62px;background:#122025;border:1px solid var(--rule-dk)}
+  .day{position:absolute;top:0;bottom:0;left:9%;right:7%;background:var(--amber-band)}
+  .tick{position:absolute;top:0;bottom:0;width:1px;background:rgba(27,42,49,.22)}
+  .hr{position:absolute;bottom:3px;font-family:'Roboto Mono',monospace;font-size:8px;
+    font-weight:700;color:#5e6f63;transform:translateX(-50%)}
+  .pin{position:absolute;top:9px;width:26px;height:26px;border-radius:50%;
+    transform:translateX(-50%);display:grid;place-items:center;
+    font-family:'Roboto Mono',monospace;font-size:11px;font-weight:700;border:2px solid}
+  .pin.t{background:var(--taken);border-color:#0c4b42;color:#fff}
+  .pin.w{background:var(--amber);border-color:#8a5906;color:#fff}
+  .pin.u{border-color:#5d6a5c;color:#3c4a3f;
+    background:repeating-linear-gradient(45deg,#e8d3a3 0 3px,#c9b183 3px 6px)}
+
+  /* ── the key (permanent, all-ages) ── */
+  .key{display:flex;gap:0;border-bottom:1px solid var(--rule);background:var(--paper-2)}
+  .key div{flex:1;padding:9px 4px;text-align:center;border-right:1px solid var(--rule-soft)}
+  .key div:last-child{border-right:0}
+  .key i{display:block;width:17px;height:17px;border-radius:50%;margin:0 auto 5px;border:2px solid}
+  .key .k1 i{background:var(--taken);border-color:#0c4b42}
+  .key .k2 i{background:var(--amber);border-color:#8a5906}
+  .key .k3 i{border-color:#8d8571;background:repeating-linear-gradient(45deg,#e3dcca 0 3px,#c8bfa6 3px 6px)}
+  .key .k4 i{background:var(--declined);border-color:#7d2219}
+  .key span{font-family:'Roboto Mono',monospace;font-size:8.5px;font-weight:700;
+    letter-spacing:.1em;color:var(--ink-2)}
+
+  /* ── today's table ── */
+  .sec{display:flex;align-items:center;justify-content:space-between;padding:15px 18px 8px}
+  .sec .lbl{color:var(--ink-3)}
+  .sec .n{font-family:'Roboto Mono',monospace;font-size:10px;font-weight:700;color:var(--ink-3)}
+  .row{display:grid;grid-template-columns:52px 30px 1fr;gap:10px;align-items:start;
+    padding:13px 18px;border-top:1px solid var(--rule-soft);min-height:62px}
+  .row:first-of-type{border-top:1px solid var(--rule)}
+  .row.hi{background:var(--amber-wash)}
+  .tm{font-family:'Roboto Mono',monospace;font-size:13px;font-weight:700;
+    font-variant-numeric:tabular-nums;padding-top:2px}
+  .tm small{display:block;font-size:9px;font-weight:500;color:var(--ink-3);letter-spacing:.06em}
+  .dot{width:22px;height:22px;border-radius:50%;border:2px solid;margin-top:1px}
+  .dot.t{background:var(--taken);border-color:#0c4b42}
+  .dot.w{background:var(--amber);border-color:#8a5906}
+  .dot.u{border-color:#8d8571;background:repeating-linear-gradient(45deg,#e3dcca 0 3px,#c8bfa6 3px 6px)}
+  .ttl{font-size:16.5px;font-weight:600;line-height:1.25;letter-spacing:-.005em}
+  .sub{font-size:13px;color:var(--ink-2);margin-top:3px;line-height:1.3}
+  .sub b{font-weight:600;color:var(--ink)}
+  .act{margin-top:9px;display:flex;gap:7px}
+  .btn{min-height:40px;padding:0 15px;display:inline-flex;align-items:center;
+    font-size:14px;font-weight:600;border:1.5px solid var(--taken);background:var(--taken);color:#fff}
+  .btn.o{background:transparent;color:var(--declined);border-color:var(--declined)}
+
+  /* ── tabs ── */
+  nav{position:absolute;left:0;right:0;bottom:0;height:76px;background:var(--slate);
+    border-top:1px solid var(--rule-dk);display:flex;padding-bottom:12px}
+  nav a{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;
+    gap:5px;text-decoration:none;color:#89a0a7;position:relative}
+  nav a span{font-family:'Roboto Mono',monospace;font-size:9px;font-weight:700;letter-spacing:.09em}
+  nav a i{width:21px;height:21px;border:1.8px solid currentColor;border-radius:3px}
+  nav a.on{color:var(--amber)}
+  nav a.on:before{content:"";position:absolute;top:0;width:30px;height:2.5px;background:var(--amber)}
+  nav .bdg{position:absolute;top:9px;margin-left:19px;background:var(--declined);color:#fff;
+    font-family:'Roboto Mono',monospace;font-size:9px;font-weight:700;
+    padding:1px 4px;border-radius:7px;border:1.5px solid var(--slate)}
+</style></head><body>
+
+<header>
+  <div class="mast"><div class="wm">Day<b>light</b></div><div class="lbl">Thu · Oct 23</div></div>
+  <h1>Today</h1>
+  <p class="lede">Four open. <em>One waiting on Taylor</em> since 8:10 this morning.</p>
+</header>
+
+<div class="band-wrap">
+  <div class="band-head"><span class="lbl">Sun up 7:21</span><span class="lbl">Sun down 6:09</span></div>
+  <div class="band">
+    <div class="day"></div>
+    <div class="tick" style="left:25%"></div><div class="tick" style="left:50%"></div><div class="tick" style="left:75%"></div>
+    <div class="hr" style="left:9%">7a</div><div class="hr" style="left:33%">11a</div>
+    <div class="hr" style="left:57%">3p</div><div class="hr" style="left:81%">7p</div>
+    <div class="pin t" style="left:14%">8</div>
+    <div class="pin u" style="left:40%">12</div>
+    <div class="pin w" style="left:62%">4</div>
+    <div class="pin t" style="left:78%">6</div>
+  </div>
+</div>
+
+<div class="key">
+  <div class="k1"><i></i><span>Taken</span></div>
+  <div class="k2"><i></i><span>Waiting</span></div>
+  <div class="k3"><i></i><span>No one</span></div>
+  <div class="k4"><i></i><span>Said no</span></div>
+</div>
+
+<div class="sec"><span class="lbl">The day in order</span><span class="n">4 OPEN</span></div>
+
+<div class="row">
+  <div class="tm">8:00<small>AM</small></div><div class="dot t"></div>
+  <div><div class="ttl">Crazy Hat Day — hat on Parker</div>
+  <div class="sub">School dress-up · <b>Parker</b> has it</div></div>
+</div>
+
+<div class="row hi">
+  <div class="tm">4:15<small>PM</small></div><div class="dot w"></div>
+  <div><div class="ttl">Basketball ride — pickup</div>
+  <div class="sub">Westlake Gym · asked <b>Taylor</b> 8:10 AM, no answer</div>
+  <div class="act"><button class="btn">I'll drive</button><button class="btn o">Ask Nana</button></div></div>
+</div>
+
+<div class="row">
+  <div class="tm">6:30<small>PM</small></div><div class="dot u"></div>
+  <div><div class="ttl">Soccer team fruit — 24 pieces</div>
+  <div class="sub">Nobody has this yet · due before Saturday</div></div>
+</div>
+
+<nav>
+  <a href="#" class="on"><i></i><span>TODAY</span></a>
+  <a href="#"><i></i><span>WEEK</span></a>
+  <a href="#"><i></i><span>MINE</span><em class="bdg">2</em></a>
+  <a href="#"><i></i><span>FAMILY</span></a>
+  <a href="#"><i></i><span>HANDLED</span></a>
+</nav>
+</body></html>

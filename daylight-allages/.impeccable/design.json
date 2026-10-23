@@ -1,0 +1,867 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-10-23T18:55:06Z",
+  "title": "Design System: Daylight — all-ages POC",
+  "extensions": {
+    "worlds": [
+      {
+        "id": "almanac",
+        "name": "Almanac",
+        "lineage": "The newspaper weather page and its key",
+        "thesis": "The day read as a forecast: conditions reported, never praised.",
+        "swatch": [
+          "#1b2a31",
+          "#f6f3ea",
+          "#c47d0c",
+          "#115d52"
+        ],
+        "signature": "The daylight band — a 62px night track with a wheat day block from sun-up to sun-down, every timed obligation pinned at its hour as a 27px state circle — plus a permanent four-symbol key (Taken / Waiting / No one / Said no).",
+        "ground": "light",
+        "line": "1px hairline, 1.5px state edges",
+        "corners": "2/3/4px, 6px sheet",
+        "focusRing": "2px solid #1b2a31 at 2px offset"
+      },
+      {
+        "id": "primer",
+        "name": "Primer",
+        "lineage": "Mid-century picture-book printing",
+        "thesis": "Five flat inks and one line: a four-year-old and an adult read the same page.",
+        "swatch": [
+          "#ffffff",
+          "#1f4fa8",
+          "#d8402e",
+          "#e0a000"
+        ],
+        "signature": "The person-token — a flat two-ink glyph (circle, bottom-46% body block in the person's ink, 40% head circle in ink) used at 48px and 30px, with a dashed empty token printing '?' for nobody. Cards carry a flat ink head band tinted by the state's wash, never a coloured side stripe.",
+        "ground": "light",
+        "line": "2.5px (--line) on every container",
+        "corners": "0px everywhere, 99px pill for chips only",
+        "focusRing": "3px solid #15161a at 2px offset"
+      },
+      {
+        "id": "departures",
+        "name": "Departures",
+        "lineage": "Public transport signage programs",
+        "thesis": "Every obligation has a time, a destination and a named driver.",
+        "swatch": [
+          "#11151a",
+          "#f5a623",
+          "#4ec8d6",
+          "#f6f8fa"
+        ],
+        "signature": "The status plate — the lead unanswered item raised out of the board with its state word as a plate, the elapsed time since it was asked, a 26px/800 title, and time · place · for whom. Board rows reserve a fixed 84px end column so the right edge stays a straight line.",
+        "ground": "near-black",
+        "line": "1px hairline, 1.5px state edges",
+        "corners": "1/2px, 3px sheet",
+        "focusRing": "2px solid #f5a623 at 2px offset"
+      }
+    ],
+    "stateContract": {
+      "mechanism": "Every state is carried by a word, a colour and a shape simultaneously. Word from STATUS_WORD in src/domain/rules.ts; colour from --s-*/--s-*-wash; shape from .mark--* plus dashed-vs-solid edges. Marks ship role=\"img\" with the status word as aria-label.",
+      "states": [
+        {
+          "status": "unowned",
+          "word": "No one",
+          "shape": "dashed circle filled with 45° hatching; dashed state-word edge",
+          "almanac": {
+            "ink": "#6f7b70",
+            "wash": "#e9e4d4"
+          },
+          "primer": {
+            "ink": "#5e636c",
+            "wash": "#eceade"
+          },
+          "departures": {
+            "ink": "#97a3ae",
+            "wash": "#222a32"
+          }
+        },
+        {
+          "status": "waiting",
+          "word": "Waiting",
+          "shape": "solid filled circle, no glyph",
+          "almanac": {
+            "ink": "#a66505",
+            "wash": "#fbf0d9"
+          },
+          "primer": {
+            "ink": "#8a6300",
+            "wash": "#fbefcc"
+          },
+          "departures": {
+            "ink": "#f5a623",
+            "wash": "#2e2515",
+            "note": "state word inverts to solid amber on #241803"
+          }
+        },
+        {
+          "status": "accepted",
+          "word": "Taken",
+          "shape": "solid circle with a drawn check at stroke 3",
+          "almanac": {
+            "ink": "#115d52",
+            "wash": "#e2eeea"
+          },
+          "primer": {
+            "ink": "#1a5f3f",
+            "wash": "#e2f0e7"
+          },
+          "departures": {
+            "ink": "#4ec8d6",
+            "wash": "#162c30",
+            "note": "state word inverts to solid cyan on #06272b"
+          }
+        },
+        {
+          "status": "declined",
+          "word": "Said no",
+          "shape": "solid circle with a drawn cross at stroke 3",
+          "almanac": {
+            "ink": "#9d2f24",
+            "wash": "#f8e9e6"
+          },
+          "primer": {
+            "ink": "#b0291a",
+            "wash": "#fae7e4"
+          },
+          "departures": {
+            "ink": "#ff7a63",
+            "wash": "#331c18"
+          }
+        },
+        {
+          "status": "asked-out",
+          "word": "Asked out",
+          "shape": "solid filled circle; helper person mark takes the same ink",
+          "almanac": {
+            "ink": "#4b3a86",
+            "wash": "#eeeaf8"
+          },
+          "primer": {
+            "ink": "#4a3391",
+            "wash": "#ebe7f8"
+          },
+          "departures": {
+            "ink": "#b49bf0",
+            "wash": "#241f33"
+          }
+        },
+        {
+          "status": "handled",
+          "word": "Handled",
+          "shape": "solid circle with a drawn check; the Handled screen takes the wash as its ground",
+          "almanac": {
+            "ink": "#5a6366",
+            "wash": "#e8e5db"
+          },
+          "primer": {
+            "ink": "#5e636c",
+            "wash": "#e8e6d9"
+          },
+          "departures": {
+            "ink": "#8b97a2",
+            "wash": "#1d242a"
+          }
+        }
+      ]
+    },
+    "typographyMeta": {
+      "h1": {
+        "displayName": "Masthead H1",
+        "purpose": "The screen's own name; 38px in Almanac, 32px/800 in Departures."
+      },
+      "h2": {
+        "displayName": "Sheet / Lead H2",
+        "purpose": "Sheet titles; Departures lead panel raises it to 26px/800."
+      },
+      "title": {
+        "displayName": "Obligation Title",
+        "purpose": "The name of a task, event or ride in a row; 19px on a Primer card."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Ledes, sentences, comments; ledes capped 28–32ch."
+      },
+      "fine": {
+        "displayName": "Fine",
+        "purpose": "Meta, hints, prose timestamps in --ink-3."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "Section heads, field labels, kind tags. Primer resets all of them to sentence case."
+      },
+      "data": {
+        "displayName": "Data",
+        "purpose": "Clock times and counts; always with tabular numerals."
+      }
+    },
+    "shadows": [
+      {
+        "name": "shadow-1-almanac",
+        "value": "0 1px 2px rgba(21,33,31,.08), 0 2px 6px rgba(21,33,31,.05)",
+        "purpose": "A card at rest on newsprint."
+      },
+      {
+        "name": "shadow-1-primer",
+        "value": "0 2px 0 rgba(21,22,26,.10), 0 3px 8px rgba(21,22,26,.07)",
+        "purpose": "A Primer card at rest. The leading layer has zero blur; recorded as the build's value, not promoted to a rule."
+      },
+      {
+        "name": "shadow-1-departures",
+        "value": "0 1px 2px rgba(0,0,0,.45), 0 2px 8px rgba(0,0,0,.35)",
+        "purpose": "The lead panel at rest on near-black."
+      },
+      {
+        "name": "shadow-2-primer",
+        "value": "0 3px 0 rgba(21,22,26,.12), 0 10px 24px rgba(21,22,26,.12)",
+        "purpose": "Primer card hover — the only hover lift in the product."
+      },
+      {
+        "name": "shadow-sheet-almanac",
+        "value": "0 -2px 8px rgba(21,33,31,.08), 0 -18px 50px rgba(21,33,31,.18)",
+        "purpose": "Upward shadow under the bottom sheet."
+      },
+      {
+        "name": "shadow-sheet-primer",
+        "value": "0 -3px 0 rgba(21,22,26,.10), 0 -20px 52px rgba(21,22,26,.22)",
+        "purpose": "Upward shadow under the bottom sheet."
+      },
+      {
+        "name": "shadow-sheet-departures",
+        "value": "0 -2px 10px rgba(0,0,0,.5), 0 -22px 60px rgba(0,0,0,.6)",
+        "purpose": "Upward shadow under the bottom sheet."
+      },
+      {
+        "name": "backdrop",
+        "value": "rgba(10,16,18,.42)",
+        "purpose": "The flat scrim behind a sheet, identical in all three worlds."
+      }
+    ],
+    "motion": [
+      {
+        "name": "ease",
+        "value": "cubic-bezier(0.16, 1, 0.3, 1)",
+        "purpose": "The only easing in the product."
+      },
+      {
+        "name": "fast",
+        "value": "150ms",
+        "purpose": "Background, border and colour transitions on buttons, rows, chips, inputs."
+      },
+      {
+        "name": "base",
+        "value": "240ms",
+        "purpose": "The sheet backdrop fade."
+      },
+      {
+        "name": "slow",
+        "value": "380ms",
+        "purpose": "The sheet rise (28px translateY)."
+      },
+      {
+        "name": "reduced-motion",
+        "value": "fast/base/slow all become 1ms; animations, transitions and scroll-behavior forced flat",
+        "purpose": "prefers-reduced-motion: reduce collapses the whole motion system."
+      }
+    ],
+    "focusRings": [
+      {
+        "world": "almanac",
+        "value": "outline: 2px solid #1b2a31; outline-offset: 2px"
+      },
+      {
+        "world": "primer",
+        "value": "outline: 3px solid #15161a; outline-offset: 2px"
+      },
+      {
+        "world": "departures",
+        "value": "outline: 2px solid #f5a623; outline-offset: 2px"
+      },
+      {
+        "world": "all",
+        "value": "inputs additionally shift their border to var(--accent) on :focus-visible"
+      }
+    ],
+    "tapTargets": [
+      {
+        "component": ".iconBtn",
+        "size": "44px square"
+      },
+      {
+        "component": ".btn",
+        "size": "46px min-height"
+      },
+      {
+        "component": ".input / .textarea / .select",
+        "size": "46px min-height"
+      },
+      {
+        "component": ".check__row",
+        "size": "46px min-height"
+      },
+      {
+        "component": ".miniRow",
+        "size": "52px min-height"
+      },
+      {
+        "component": ".pickRow",
+        "size": "60px min-height"
+      },
+      {
+        "component": ".alm-row / .dep-row",
+        "size": "66px / ~62px effective row height"
+      }
+    ],
+    "iconSet": {
+      "source": "src/ui/Icon.tsx",
+      "box": "24×24 viewBox, default render 22px",
+      "stroke": "1.75 default, round caps and joins, fill: none",
+      "names": [
+        "sun",
+        "week",
+        "person",
+        "family",
+        "archive",
+        "car",
+        "clock",
+        "pin",
+        "flag",
+        "alert",
+        "message",
+        "check",
+        "cross",
+        "chevron-right",
+        "chevron-left",
+        "chevron-down",
+        "plus",
+        "phone",
+        "hand",
+        "repeat",
+        "list",
+        "bell"
+      ],
+      "rule": "Every glyph in the product comes from here. No emoji, no icon fonts, no raster icons."
+    },
+    "breakpoints": [
+      {
+        "name": "phone",
+        "value": "390px",
+        "note": "The only width. 390×844 fixed; no responsive breakpoints exist in the product."
+      }
+    ],
+    "outOfScope": [
+      "src/styles/frame.css — the device frame and the world/role demo rig sit outside the product and are not part of this design system."
+    ],
+    "colorMeta": {
+      "almanac-newsprint": {
+        "role": "neutral",
+        "displayName": "Warm Newsprint",
+        "purpose": "The Almanac ground; the page the record is printed on.",
+        "canonical": "oklch(96.4% 0.012 91.5)",
+        "tonalRamp": [
+          "oklch(15% 0.012 91.5)",
+          "oklch(26% 0.012 91.5)",
+          "oklch(38% 0.012 91.5)",
+          "oklch(49% 0.012 91.5)",
+          "oklch(61% 0.012 91.5)",
+          "oklch(72% 0.012 91.5)",
+          "oklch(84% 0.012 91.5)",
+          "oklch(95% 0.012 91.5)"
+        ]
+      },
+      "almanac-slate": {
+        "role": "secondary",
+        "displayName": "Masthead Slate",
+        "purpose": "The only dark field in the Almanac: masthead, daylight band, tab bar.",
+        "canonical": "oklch(27.5% 0.024 228.6)",
+        "tonalRamp": [
+          "oklch(15% 0.024 228.6)",
+          "oklch(26% 0.024 228.6)",
+          "oklch(38% 0.024 228.6)",
+          "oklch(49% 0.024 228.6)",
+          "oklch(61% 0.024 228.6)",
+          "oklch(72% 0.024 228.6)",
+          "oklch(84% 0.024 228.6)",
+          "oklch(95% 0.024 228.6)"
+        ]
+      },
+      "almanac-ochre": {
+        "role": "primary",
+        "displayName": "Almanac Ochre",
+        "purpose": "The Almanac's single accent: selected chips, caret, active day.",
+        "canonical": "oklch(64.9% 0.138 69.4)",
+        "tonalRamp": [
+          "oklch(15% 0.138 69.4)",
+          "oklch(26% 0.138 69.4)",
+          "oklch(38% 0.138 69.4)",
+          "oklch(49% 0.138 69.4)",
+          "oklch(61% 0.138 69.4)",
+          "oklch(72% 0.138 69.4)",
+          "oklch(84% 0.138 69.4)",
+          "oklch(95% 0.138 69.4)"
+        ]
+      },
+      "almanac-ink": {
+        "role": "neutral",
+        "displayName": "Almanac Ink",
+        "purpose": "Titles and primary text on newsprint.",
+        "canonical": "oklch(23.6% 0.017 183.4)",
+        "tonalRamp": [
+          "oklch(15% 0.017 183.4)",
+          "oklch(26% 0.017 183.4)",
+          "oklch(38% 0.017 183.4)",
+          "oklch(49% 0.017 183.4)",
+          "oklch(61% 0.017 183.4)",
+          "oklch(72% 0.017 183.4)",
+          "oklch(84% 0.017 183.4)",
+          "oklch(95% 0.017 183.4)"
+        ]
+      },
+      "almanac-band-day": {
+        "role": "tertiary",
+        "displayName": "Daylight Wheat",
+        "purpose": "The lit part of the daylight band, sun-up to sun-down.",
+        "canonical": "oklch(89.3% 0.074 85.6)",
+        "tonalRamp": [
+          "oklch(15% 0.074 85.6)",
+          "oklch(26% 0.074 85.6)",
+          "oklch(38% 0.074 85.6)",
+          "oklch(49% 0.074 85.6)",
+          "oklch(61% 0.074 85.6)",
+          "oklch(72% 0.074 85.6)",
+          "oklch(84% 0.074 85.6)",
+          "oklch(95% 0.074 85.6)"
+        ]
+      },
+      "almanac-state-accepted": {
+        "role": "primary",
+        "displayName": "Record Green",
+        "purpose": "Accepted state ink; also the Yes button's fill.",
+        "canonical": "oklch(43.2% 0.072 180.4)",
+        "tonalRamp": [
+          "oklch(15% 0.072 180.4)",
+          "oklch(26% 0.072 180.4)",
+          "oklch(38% 0.072 180.4)",
+          "oklch(49% 0.072 180.4)",
+          "oklch(61% 0.072 180.4)",
+          "oklch(72% 0.072 180.4)",
+          "oklch(84% 0.072 180.4)",
+          "oklch(95% 0.072 180.4)"
+        ]
+      },
+      "almanac-state-waiting": {
+        "role": "primary",
+        "displayName": "Waiting Ochre",
+        "purpose": "Waiting state ink and the open-row wash's parent.",
+        "canonical": "oklch(56.6% 0.124 66.5)",
+        "tonalRamp": [
+          "oklch(15% 0.124 66.5)",
+          "oklch(26% 0.124 66.5)",
+          "oklch(38% 0.124 66.5)",
+          "oklch(49% 0.124 66.5)",
+          "oklch(61% 0.124 66.5)",
+          "oklch(72% 0.124 66.5)",
+          "oklch(84% 0.124 66.5)",
+          "oklch(95% 0.124 66.5)"
+        ]
+      },
+      "almanac-state-declined": {
+        "role": "primary",
+        "displayName": "Said-No Red",
+        "purpose": "Declined state ink, priority flag, tab badge.",
+        "canonical": "oklch(47.1% 0.148 29.4)",
+        "tonalRamp": [
+          "oklch(15% 0.148 29.4)",
+          "oklch(26% 0.148 29.4)",
+          "oklch(38% 0.148 29.4)",
+          "oklch(49% 0.148 29.4)",
+          "oklch(61% 0.148 29.4)",
+          "oklch(72% 0.148 29.4)",
+          "oklch(84% 0.148 29.4)",
+          "oklch(95% 0.148 29.4)"
+        ]
+      },
+      "almanac-state-asked-out": {
+        "role": "primary",
+        "displayName": "Outside Violet",
+        "purpose": "Asked-out state ink and the outside-helper person mark.",
+        "canonical": "oklch(40.8% 0.122 290.2)",
+        "tonalRamp": [
+          "oklch(15% 0.122 290.2)",
+          "oklch(26% 0.122 290.2)",
+          "oklch(38% 0.122 290.2)",
+          "oklch(49% 0.122 290.2)",
+          "oklch(61% 0.122 290.2)",
+          "oklch(72% 0.122 290.2)",
+          "oklch(84% 0.122 290.2)",
+          "oklch(95% 0.122 290.2)"
+        ]
+      },
+      "almanac-state-unowned": {
+        "role": "neutral",
+        "displayName": "Unowned Grey-Green",
+        "purpose": "The dashed, hatched state: nobody has this.",
+        "canonical": "oklch(57.0% 0.022 147.7)",
+        "tonalRamp": [
+          "oklch(15% 0.022 147.7)",
+          "oklch(26% 0.022 147.7)",
+          "oklch(38% 0.022 147.7)",
+          "oklch(49% 0.022 147.7)",
+          "oklch(61% 0.022 147.7)",
+          "oklch(72% 0.022 147.7)",
+          "oklch(84% 0.022 147.7)",
+          "oklch(95% 0.022 147.7)"
+        ]
+      },
+      "primer-paper": {
+        "role": "neutral",
+        "displayName": "Primer Paper",
+        "purpose": "The picture book ground; cards sit whiter on top of it.",
+        "canonical": "oklch(96.1% 0.010 93.6)",
+        "tonalRamp": [
+          "oklch(15% 0.010 93.6)",
+          "oklch(26% 0.010 93.6)",
+          "oklch(38% 0.010 93.6)",
+          "oklch(49% 0.010 93.6)",
+          "oklch(61% 0.010 93.6)",
+          "oklch(72% 0.010 93.6)",
+          "oklch(84% 0.010 93.6)",
+          "oklch(95% 0.010 93.6)"
+        ]
+      },
+      "primer-blue": {
+        "role": "primary",
+        "displayName": "Flat Blue",
+        "purpose": "Primer's one flat ink accent; fills the whole header block.",
+        "canonical": "oklch(44.9% 0.153 261.4)",
+        "tonalRamp": [
+          "oklch(15% 0.153 261.4)",
+          "oklch(26% 0.153 261.4)",
+          "oklch(38% 0.153 261.4)",
+          "oklch(49% 0.153 261.4)",
+          "oklch(61% 0.153 261.4)",
+          "oklch(72% 0.153 261.4)",
+          "oklch(84% 0.153 261.4)",
+          "oklch(95% 0.153 261.4)"
+        ]
+      },
+      "primer-line": {
+        "role": "secondary",
+        "displayName": "Drawn Black Line",
+        "purpose": "Primer's 2.5px container line and its body ink; one value, two jobs.",
+        "canonical": "oklch(20.1% 0.008 274.5)",
+        "tonalRamp": [
+          "oklch(15% 0.008 274.5)",
+          "oklch(26% 0.008 274.5)",
+          "oklch(38% 0.008 274.5)",
+          "oklch(49% 0.008 274.5)",
+          "oklch(61% 0.008 274.5)",
+          "oklch(72% 0.008 274.5)",
+          "oklch(84% 0.008 274.5)",
+          "oklch(95% 0.008 274.5)"
+        ]
+      },
+      "primer-person-1": {
+        "role": "tertiary",
+        "displayName": "Primer Vermilion",
+        "purpose": "Person ink one in the token set.",
+        "canonical": "oklch(59.2% 0.192 30.3)",
+        "tonalRamp": [
+          "oklch(15% 0.192 30.3)",
+          "oklch(26% 0.192 30.3)",
+          "oklch(38% 0.192 30.3)",
+          "oklch(49% 0.192 30.3)",
+          "oklch(61% 0.192 30.3)",
+          "oklch(72% 0.192 30.3)",
+          "oklch(84% 0.192 30.3)",
+          "oklch(95% 0.192 30.3)"
+        ]
+      },
+      "primer-person-3": {
+        "role": "tertiary",
+        "displayName": "Primer Chrome Yellow",
+        "purpose": "Person ink three and the watermark dot.",
+        "canonical": "oklch(74.8% 0.155 79.8)",
+        "tonalRamp": [
+          "oklch(15% 0.155 79.8)",
+          "oklch(26% 0.155 79.8)",
+          "oklch(38% 0.155 79.8)",
+          "oklch(49% 0.155 79.8)",
+          "oklch(61% 0.155 79.8)",
+          "oklch(72% 0.155 79.8)",
+          "oklch(84% 0.155 79.8)",
+          "oklch(95% 0.155 79.8)"
+        ]
+      },
+      "departures-night": {
+        "role": "neutral",
+        "displayName": "Signage Night",
+        "purpose": "The glance screen's ground; surfaces sit lighter than it.",
+        "canonical": "oklch(19.4% 0.012 254.1)",
+        "tonalRamp": [
+          "oklch(15% 0.012 254.1)",
+          "oklch(26% 0.012 254.1)",
+          "oklch(38% 0.012 254.1)",
+          "oklch(49% 0.012 254.1)",
+          "oklch(61% 0.012 254.1)",
+          "oklch(72% 0.012 254.1)",
+          "oklch(84% 0.012 254.1)",
+          "oklch(95% 0.012 254.1)"
+        ]
+      },
+      "departures-amber": {
+        "role": "primary",
+        "displayName": "Signal Amber",
+        "purpose": "Waiting, active tab, focus ring, selection. The one siren.",
+        "canonical": "oklch(78.4% 0.159 73.0)",
+        "tonalRamp": [
+          "oklch(15% 0.159 73.0)",
+          "oklch(26% 0.159 73.0)",
+          "oklch(38% 0.159 73.0)",
+          "oklch(49% 0.159 73.0)",
+          "oklch(61% 0.159 73.0)",
+          "oklch(72% 0.159 73.0)",
+          "oklch(84% 0.159 73.0)",
+          "oklch(95% 0.159 73.0)"
+        ]
+      },
+      "departures-ink": {
+        "role": "neutral",
+        "displayName": "Board White",
+        "purpose": "Titles and times on the board.",
+        "canonical": "oklch(97.8% 0.003 247.9)",
+        "tonalRamp": [
+          "oklch(15% 0.003 247.9)",
+          "oklch(26% 0.003 247.9)",
+          "oklch(38% 0.003 247.9)",
+          "oklch(49% 0.003 247.9)",
+          "oklch(61% 0.003 247.9)",
+          "oklch(72% 0.003 247.9)",
+          "oklch(84% 0.003 247.9)",
+          "oklch(95% 0.003 247.9)"
+        ]
+      },
+      "departures-state-accepted": {
+        "role": "primary",
+        "displayName": "Board Cyan",
+        "purpose": "Accepted on near-black, where green would die.",
+        "canonical": "oklch(77.0% 0.108 205.8)",
+        "tonalRamp": [
+          "oklch(15% 0.108 205.8)",
+          "oklch(26% 0.108 205.8)",
+          "oklch(38% 0.108 205.8)",
+          "oklch(49% 0.108 205.8)",
+          "oklch(61% 0.108 205.8)",
+          "oklch(72% 0.108 205.8)",
+          "oklch(84% 0.108 205.8)",
+          "oklch(95% 0.108 205.8)"
+        ]
+      },
+      "departures-state-declined": {
+        "role": "primary",
+        "displayName": "Board Coral",
+        "purpose": "Declined on near-black, held off pure red.",
+        "canonical": "oklch(73.0% 0.167 31.5)",
+        "tonalRamp": [
+          "oklch(15% 0.167 31.5)",
+          "oklch(26% 0.167 31.5)",
+          "oklch(38% 0.167 31.5)",
+          "oklch(49% 0.167 31.5)",
+          "oklch(61% 0.167 31.5)",
+          "oklch(72% 0.167 31.5)",
+          "oklch(84% 0.167 31.5)",
+          "oklch(95% 0.167 31.5)"
+        ]
+      }
+    }
+  },
+  "components": [
+    {
+      "name": "Yes / No answer pair",
+      "kind": "button",
+      "refersTo": "button-yes",
+      "description": "The two-sided act the product is built on: accept wears the accepted ink, decline wears the declined edge.",
+      "html": "<div class=\"ds-btnRow\"><button class=\"ds-btn ds-btn--yes\">Yes, I've got it</button><button class=\"ds-btn ds-btn--no\">Can't</button></div>",
+      "css": ".ds-btnRow { display: flex; gap: 9px; } .ds-btn { min-height: 46px; padding: 0 16px; display: inline-flex; align-items: center; justify-content: center; gap: 8px; font-family: var(--font-body, system-ui); font-size: 15.5px; font-weight: 600; letter-spacing: -.012em; border: var(--line, 1.5px) solid transparent; border-radius: var(--r-md, 3px); cursor: pointer; transition: background-color 150ms cubic-bezier(.16,1,.3,1), border-color 150ms cubic-bezier(.16,1,.3,1), color 150ms cubic-bezier(.16,1,.3,1); } .ds-btn--yes { background: var(--s-accepted, #115d52); border-color: var(--s-accepted, #115d52); color: #fff; } .ds-btn--yes:hover { background: color-mix(in srgb, var(--s-accepted, #115d52) 86%, #000); } .ds-btn--no { background: transparent; border-color: var(--s-declined, #9d2f24); color: var(--s-declined, #9d2f24); } .ds-btn--no:hover { background: var(--s-declined-wash, #f8e9e6); } .ds-btn:focus-visible { outline: var(--focus-width, 2px) solid var(--focus-ring, #1b2a31); outline-offset: 2px; }"
+    },
+    {
+      "name": "State word",
+      "kind": "chip",
+      "refersTo": "state-word",
+      "description": "The primary state carrier: the word, in its own ink, on its own wash, inside an edge of the same ink. Unowned is dashed.",
+      "html": "<span class=\"ds-state ds-state--waiting\">Waiting</span> <span class=\"ds-state ds-state--accepted\">Taken</span> <span class=\"ds-state ds-state--unowned\">No one</span>",
+      "css": ".ds-state { display: inline-flex; align-items: center; gap: 6px; font-family: var(--font-data, ui-monospace); font-size: 11px; font-weight: 700; letter-spacing: .09em; text-transform: uppercase; padding: 4px 8px; border-radius: var(--r-sm, 2px); border: 1.5px solid; white-space: nowrap; } .ds-state--waiting { color: var(--s-waiting, #a66505); background: var(--s-waiting-wash, #fbf0d9); border-color: var(--s-waiting, #a66505); } .ds-state--accepted { color: var(--s-accepted, #115d52); background: var(--s-accepted-wash, #e2eeea); border-color: var(--s-accepted, #115d52); } .ds-state--unowned { color: var(--s-unowned, #6f7b70); background: var(--s-unowned-wash, #e9e4d4); border-color: var(--s-unowned, #6f7b70); border-style: dashed; }"
+    },
+    {
+      "name": "State mark",
+      "kind": "custom",
+      "refersTo": "mark",
+      "description": "The same six states as a shape, for dense rows where a word will not fit. Carries the status word as its aria-label.",
+      "html": "<span class=\"ds-mark ds-mark--accepted\" role=\"img\" aria-label=\"Taken\"><svg width=\"13\" height=\"13\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M5.5 12.6 10 17l8.5-9.5\"/></svg></span> <span class=\"ds-mark ds-mark--waiting\" role=\"img\" aria-label=\"Waiting\"></span> <span class=\"ds-mark ds-mark--unowned\" role=\"img\" aria-label=\"No one\"></span> <span class=\"ds-mark ds-mark--declined\" role=\"img\" aria-label=\"Said no\"><svg width=\"12\" height=\"12\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M6.5 6.5l11 11M17.5 6.5l-11 11\"/></svg></span>",
+      "css": ".ds-mark { width: 22px; height: 22px; border-radius: 50%; border: 2px solid; flex: none; display: inline-grid; place-items: center; color: #fff; vertical-align: middle; } .ds-mark--waiting { border-color: var(--s-waiting, #a66505); background: var(--s-waiting, #a66505); } .ds-mark--accepted { border-color: var(--s-accepted, #115d52); background: var(--s-accepted, #115d52); } .ds-mark--declined { border-color: var(--s-declined, #9d2f24); background: var(--s-declined, #9d2f24); } .ds-mark--unowned { border-color: var(--s-unowned, #6f7b70); border-style: dashed; background: var(--hatch, repeating-linear-gradient(45deg, #e3dcca 0 4px, #c9bfa6 4px 8px)); }"
+    },
+    {
+      "name": "Person mark",
+      "kind": "custom",
+      "refersTo": "person-mark",
+      "description": "A person as a 30px circle in one of four inks; the hatched dashed variant is 'nobody has this'.",
+      "html": "<span class=\"ds-person\" title=\"Alicia\">A</span> <span class=\"ds-person ds-person--none\" role=\"img\" aria-label=\"Nobody has this\"><svg width=\"15\" height=\"15\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M12 11.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7ZM5.5 19.5a6.5 6.5 0 0 1 13 0\"/></svg></span>",
+      "css": ".ds-person { width: 30px; height: 30px; border-radius: 50%; display: inline-grid; place-items: center; background: var(--people-1, #a8392b); color: #fff; font-family: var(--font-body, system-ui); font-size: 12.5px; font-weight: 700; vertical-align: middle; } .ds-person--none { background: var(--hatch, repeating-linear-gradient(45deg, #e3dcca 0 4px, #c9bfa6 4px 8px)); color: var(--ink-3, #69777a); border: 1.75px dashed var(--s-unowned, #6f7b70); }"
+    },
+    {
+      "name": "Obligation row",
+      "kind": "card",
+      "refersTo": "row",
+      "description": "The Almanac row: fixed time column, state mark, title with place and owner sentence, chevron. An unanswered row takes the waiting wash.",
+      "html": "<button class=\"ds-row ds-row--open\"><span class=\"ds-row__time\">4:15<em>PM</em></span><span class=\"ds-mark2\"></span><span class=\"ds-row__main\"><span class=\"ds-row__title\">Basketball pickup</span><span class=\"ds-row__sub\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.75\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M5 16.5h14M6.5 16.5v2M17.5 16.5v2M4.5 16.5v-4l2-4.5h11l2 4.5v4zM4.8 12.5h14.4\"/></svg>Lincoln Middle School</span><span class=\"ds-row__owner\">Waiting on Taylor</span></span><svg class=\"ds-row__go\" width=\"17\" height=\"17\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.75\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M9.5 5.5 16 12l-6.5 6.5\"/></svg></button>",
+      "css": ".ds-row { display: grid; grid-template-columns: 50px 22px 1fr 18px; gap: 11px; align-items: start; width: 100%; min-height: 66px; padding: 13px 18px; text-align: left; background: transparent; border: 0; border-bottom: 1px solid var(--rule-soft, #ded8c8); cursor: pointer; font-family: var(--font-body, system-ui); transition: background-color 150ms cubic-bezier(.16,1,.3,1); } .ds-row:hover { background: var(--surface-2, #efebdf); } .ds-row--open { background: var(--s-waiting-wash, #fbf0d9); } .ds-row__time { font-family: var(--font-data, ui-monospace); font-size: 13.5px; font-weight: 700; font-variant-numeric: tabular-nums; line-height: 1.2; padding-top: 2px; color: var(--ink, #15211f); } .ds-row__time em { display: block; font-style: normal; font-size: 9px; letter-spacing: .1em; text-transform: uppercase; color: var(--ink-3, #69777a); margin-top: 2px; } .ds-mark2 { width: 22px; height: 22px; border-radius: 50%; border: 2px solid var(--s-waiting, #a66505); background: var(--s-waiting, #a66505); } .ds-row__title { display: block; font-size: 17px; font-weight: 600; line-height: 1.25; letter-spacing: -.016em; color: var(--ink, #15211f); } .ds-row__sub { display: flex; align-items: center; gap: 5px; margin-top: 5px; font-size: 13px; color: var(--ink-2, #4a5a5c); } .ds-row__owner { display: block; margin-top: 3px; font-size: 12.5px; color: var(--ink-3, #69777a); } .ds-row__go { color: var(--ink-3, #69777a); margin-top: 4px; } .ds-row:focus-visible { outline: var(--focus-width, 2px) solid var(--focus-ring, #1b2a31); outline-offset: 2px; }"
+    },
+    {
+      "name": "Almanac key",
+      "kind": "custom",
+      "refersTo": "mark",
+      "description": "The permanent four-symbol key under the daylight band. Learn it once; it never leaves the screen.",
+      "html": "<div class=\"ds-key\" aria-label=\"What the symbols mean\"><div class=\"ds-key__cell\"><span class=\"ds-k ds-k--accepted\"></span><span>Taken</span></div><div class=\"ds-key__cell\"><span class=\"ds-k ds-k--waiting\"></span><span>Waiting</span></div><div class=\"ds-key__cell\"><span class=\"ds-k ds-k--unowned\"></span><span>No one</span></div><div class=\"ds-key__cell\"><span class=\"ds-k ds-k--declined\"></span><span>Said no</span></div></div>",
+      "css": ".ds-key { display: flex; background: var(--surface-2, #efebdf); border-bottom: 1px solid var(--rule, #c9c0ab); } .ds-key__cell { flex: 1; display: flex; flex-direction: column; align-items: center; gap: 5px; padding: 9px 4px; border-right: 1px solid var(--rule-soft, #ded8c8); } .ds-key__cell:last-child { border-right: 0; } .ds-key__cell span:last-child { font-family: var(--font-data, ui-monospace); font-size: 8.5px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--ink-2, #4a5a5c); } .ds-k { width: 17px; height: 17px; border-radius: 50%; border: 1.75px solid; } .ds-k--accepted { border-color: var(--s-accepted, #115d52); background: var(--s-accepted, #115d52); } .ds-k--waiting { border-color: var(--s-waiting, #a66505); background: var(--s-waiting, #a66505); } .ds-k--declined { border-color: var(--s-declined, #9d2f24); background: var(--s-declined, #9d2f24); } .ds-k--unowned { border-color: var(--s-unowned, #6f7b70); border-style: dashed; background: var(--hatch, repeating-linear-gradient(45deg, #e3dcca 0 4px, #c9bfa6 4px 8px)); }"
+    },
+    {
+      "name": "Primer person-token",
+      "kind": "custom",
+      "refersTo": "person-mark",
+      "description": "Primer's signature: a flat two-ink glyph per family member, with a dashed empty token for nobody.",
+      "html": "<span class=\"ds-token\" role=\"img\" aria-label=\"Alicia\"><span class=\"ds-token__body\"></span><span class=\"ds-token__head\"></span></span> <span class=\"ds-token ds-token--empty\" role=\"img\" aria-label=\"Nobody\"><span class=\"ds-token__q\">?</span></span>",
+      "css": ".ds-token { position: relative; display: inline-block; width: 48px; height: 48px; border-radius: 50%; border: 3px solid #15161a; background: #fff; overflow: hidden; vertical-align: middle; } .ds-token__body { position: absolute; left: 0; right: 0; bottom: 0; height: 46%; background: var(--people-1, #d8402e); } .ds-token__head { position: absolute; left: 50%; top: 8px; transform: translateX(-50%); width: 19px; height: 19px; border-radius: 50%; background: #15161a; } .ds-token--empty { border-style: dashed; border-color: #5e636c; background: #eceade; display: inline-grid; place-items: center; } .ds-token__q { font-family: var(--font-body, system-ui); font-size: 19px; font-weight: 700; color: #5e636c; line-height: 1; }"
+    },
+    {
+      "name": "Primer card",
+      "kind": "card",
+      "refersTo": "card",
+      "description": "Primer sets its list as cards. The state owns a flat head band across the card's full width — never a coloured side stripe.",
+      "html": "<button class=\"ds-pcard\"><span class=\"ds-pcard__band\"><span class=\"ds-token ds-token--sm\"><span class=\"ds-token__body\"></span><span class=\"ds-token__head2\"></span></span><span class=\"ds-pstate\">Waiting on Taylor</span><span class=\"ds-pcard__when\">4:15</span></span><span class=\"ds-pcard__body\"><span class=\"ds-pcard__title\">Basketball pickup</span><span class=\"ds-pcard__detail\">Practice runs long; the gym empties fast.</span></span></button>",
+      "css": ".ds-pcard { display: block; width: 100%; text-align: left; background: #fff; border: 2.5px solid #15161a; border-radius: 0; cursor: pointer; font-family: var(--font-body, system-ui); box-shadow: 0 2px 0 rgba(21,22,26,.10), 0 3px 8px rgba(21,22,26,.07); transition: box-shadow 150ms cubic-bezier(.16,1,.3,1); } .ds-pcard:hover { box-shadow: 0 3px 0 rgba(21,22,26,.12), 0 10px 24px rgba(21,22,26,.12); } .ds-pcard:focus-visible { outline: 3px solid #15161a; outline-offset: 2px; } .ds-pcard__band { display: flex; align-items: center; gap: 9px; padding: 10px 13px; border-bottom: 2.5px solid #15161a; background: #fbefcc; } .ds-token--sm { width: 30px; height: 30px; border-width: 2px; } .ds-token__head2 { position: absolute; left: 50%; top: 5px; transform: translateX(-50%); width: 12px; height: 12px; border-radius: 50%; background: #15161a; } .ds-pstate { font-size: 12px; font-weight: 600; letter-spacing: .04em; padding: 4px 9px; border: 2.5px solid #8a6300; color: #8a6300; background: #fbefcc; } .ds-pcard__when { margin-left: auto; font-size: 13.5px; font-weight: 600; color: #4e535c; font-variant-numeric: tabular-nums; } .ds-pcard__body { display: block; padding: 13px 15px 15px; } .ds-pcard__title { display: block; font-size: 19px; font-weight: 600; line-height: 1.2; letter-spacing: -.028em; color: #15161a; } .ds-pcard__detail { display: block; margin-top: 6px; font-size: 14px; line-height: 1.35; color: #4e535c; }"
+    },
+    {
+      "name": "Departures status plate",
+      "kind": "custom",
+      "refersTo": "sheet",
+      "description": "Departures' signature: the lead unanswered item, its state plate, and how long it has sat. Elapsed time is the pressure; there is no nag copy.",
+      "html": "<section class=\"ds-lead\" aria-label=\"The next thing without an answer\"><div class=\"ds-lead__plate\"><span class=\"ds-dstate\">Waiting</span><span class=\"ds-lead__since\">asked Taylor 2h ago</span></div><h2 class=\"ds-lead__title\">Basketball pickup</h2><p class=\"ds-lead__meta\">16:15 · Lincoln Middle School · for <b>Parker</b></p></section>",
+      "css": ".ds-lead { display: block; padding: 13px 14px 15px; background: #1a2026; border: 1px solid #39434d; border-radius: 2px; box-shadow: 0 1px 2px rgba(0,0,0,.45), 0 2px 8px rgba(0,0,0,.35); font-family: var(--font-body, system-ui); } .ds-lead__plate { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; } .ds-dstate { font-size: 11px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; padding: 4px 8px; border: 1.5px solid #f5a623; border-radius: 1px; background: #f5a623; color: #241803; } .ds-lead__since { font-size: 12.5px; font-weight: 500; color: #8b97a2; } .ds-lead__title { margin: 11px 0 0; font-size: 26px; font-weight: 800; line-height: 1.08; letter-spacing: -.032em; color: #f6f8fa; } .ds-lead__meta { margin: 8px 0 0; font-size: 14px; line-height: 1.35; color: #aeb9c4; font-variant-numeric: tabular-nums; } .ds-lead__meta b { color: #f6f8fa; font-weight: 600; }"
+    },
+    {
+      "name": "Reason chip",
+      "kind": "chip",
+      "refersTo": "chip",
+      "description": "A one-tap reason for declining. Selected fills the world accent.",
+      "html": "<div class=\"ds-chips\"><button class=\"ds-chip\">Working</button><button class=\"ds-chip\" aria-pressed=\"true\">Already driving</button><button class=\"ds-chip\">Not home</button></div>",
+      "css": ".ds-chips { display: flex; flex-wrap: wrap; gap: 8px; } .ds-chip { min-height: 42px; padding: 0 13px; display: inline-flex; align-items: center; font-family: var(--font-body, system-ui); font-size: 14.5px; font-weight: 500; color: var(--ink, #15211f); background: var(--surface, #fffdf7); border: var(--line, 1.5px) solid var(--rule, #c9c0ab); border-radius: var(--r-pill, 2px); cursor: pointer; transition: background-color 150ms cubic-bezier(.16,1,.3,1), border-color 150ms cubic-bezier(.16,1,.3,1); } .ds-chip:hover { background: var(--surface-2, #efebdf); } .ds-chip[aria-pressed=\"true\"] { background: var(--accent, #c47d0c); border-color: var(--accent, #c47d0c); color: var(--on-accent, #fff); font-weight: 600; } .ds-chip:focus-visible { outline: var(--focus-width, 2px) solid var(--focus-ring, #1b2a31); outline-offset: 2px; }"
+    },
+    {
+      "name": "Text field",
+      "kind": "input",
+      "refersTo": "input",
+      "description": "The only field style in the product; focus shifts the border to the accent and the world ring draws outside it.",
+      "html": "<label class=\"ds-field\"><span class=\"ds-field__label\">Why not?</span><input class=\"ds-input\" placeholder=\"A short reason helps\"><span class=\"ds-field__hint\">They'll see this with your answer.</span></label>",
+      "css": ".ds-field { display: block; } .ds-field__label { display: block; margin-bottom: 7px; font-family: var(--font-data, ui-monospace); font-size: 11px; font-weight: 700; letter-spacing: .11em; text-transform: uppercase; color: var(--ink-2, #4a5a5c); } .ds-input { width: 100%; min-height: 46px; padding: 11px 13px; font-family: var(--font-body, system-ui); font-size: 15.5px; line-height: 1.35; background: var(--surface, #fffdf7); color: var(--ink, #15211f); border: var(--line, 1.5px) solid var(--rule, #c9c0ab); border-radius: var(--r-md, 3px); transition: border-color 150ms cubic-bezier(.16,1,.3,1); } .ds-input::placeholder { color: var(--ink-3, #69777a); } .ds-input:focus-visible { border-color: var(--accent, #c47d0c); outline: var(--focus-width, 2px) solid var(--focus-ring, #1b2a31); outline-offset: 2px; } .ds-field__hint { display: block; margin-top: 7px; font-family: var(--font-body, system-ui); font-size: 13px; color: var(--ink-3, #69777a); }"
+    },
+    {
+      "name": "Tab bar",
+      "kind": "nav",
+      "refersTo": "tab-bar",
+      "description": "Four tabs on the world's nav chrome; the active tab takes the nav accent and draws a bar at the top of its own column.",
+      "html": "<nav class=\"ds-tabs\"><button class=\"ds-tab\" aria-current=\"page\"><svg width=\"22\" height=\"22\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.75\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M12 4.2v2M12 17.8v2M4.2 12h2M17.8 12h2M6.5 6.5l1.4 1.4M16.1 16.1l1.4 1.4M17.5 6.5l-1.4 1.4M7.9 16.1l-1.4 1.4M12 8.4a3.6 3.6 0 1 0 0 7.2 3.6 3.6 0 0 0 0-7.2Z\"/></svg><span>Today</span></button><button class=\"ds-tab\"><svg width=\"22\" height=\"22\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.75\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M4.5 7.5h15v12h-15zM4.5 11.5h15M8.5 4.5v4M15.5 4.5v4M9 15h2M14 15h1.5\"/></svg><span>Week</span></button><button class=\"ds-tab\"><svg width=\"22\" height=\"22\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.75\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M12 11.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7ZM5.5 19.5a6.5 6.5 0 0 1 13 0\"/></svg><span>Mine</span><i class=\"ds-tab__badge\">3</i></button><button class=\"ds-tab\"><svg width=\"22\" height=\"22\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.75\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M4.5 7.5h15M5.5 7.5v11a1 1 0 0 0 1 1h11a1 1 0 0 0 1-1v-11M4.5 7.5l1.3-3h12.4l1.3 3M9.5 12l1.8 1.8 3.2-3.4\"/></svg><span>Handled</span></button></nav>",
+      "css": ".ds-tabs { display: flex; height: 76px; background: var(--nav-bg, #1b2a31); border-top: var(--line, 1px) solid var(--nav-rule, #3d525c); padding-bottom: 12px; } .ds-tab { position: relative; flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 5px; background: none; border: 0; cursor: pointer; color: var(--nav-dim, #8ca1a8); transition: color 150ms cubic-bezier(.16,1,.3,1); } .ds-tab:hover { color: var(--nav-ink-2, #b2c3c9); } .ds-tab[aria-current=\"page\"] { color: var(--nav-on, #f0ad2a); } .ds-tab[aria-current=\"page\"]::before { content: \"\"; position: absolute; top: 0; width: 30px; height: 2.5px; background: var(--nav-on, #f0ad2a); } .ds-tab span { font-family: var(--font-data, ui-monospace); font-size: 10px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; } .ds-tab__badge { position: absolute; top: 8px; margin-left: 22px; min-width: 17px; height: 17px; padding: 0 4px; display: grid; place-items: center; font-style: normal; background: var(--s-declined, #9d2f24); color: #fff; font-family: var(--font-data, ui-monospace); font-size: 10px; font-weight: 700; border-radius: 99px; border: 1.5px solid var(--nav-bg, #1b2a31); }"
+    }
+  ],
+  "narrative": {
+    "northStar": "One Record, Three Printings",
+    "overview": "One family record, set three times by three different print shops. The domain, the flows and every shared component are written once; data-world on .phone swaps a complete token fill, and the same list of obligations comes out as a newspaper weather page, a mid-century picture book, or a departures board. The three worlds are peers. None is a theme of another, and none is a colour variant: they differ in type, ground, density, line weight, corner language and signature move.\n\nThe product is read by six-year-olds and by adults in the same minute, so legibility is solved structurally rather than stylistically. No world softens into cartoon. Every state is printed as a word and a colour and a shape at the same time, so the screen survives greyscale, a colour-blind parent and a pre-reader. \"Nobody has this\" is a material — 45° hatching and a dashed edge — not an absence. Icons are one drawn 24-box SVG set at 1.75 stroke; there are no emoji and no font glyphs anywhere in the product.\n\nDensity is phone-native and unapologetically informational: 390×844, a flat scrolling column under a world masthead, a 76px tab bar, and rows that carry time, state, owner and place without a card around them (except in Primer, where the card is the row). Decoration is near zero; what looks like ornament — the daylight band, the key, the status plate — is always reporting data.",
+    "keyCharacteristics": [
+      "Three complete worlds behind one token contract, switched at runtime",
+      "State = word + colour + shape, always, simultaneously",
+      "Hatching and a dashed edge mean \"open / nobody\"",
+      "One drawn SVG icon set, 1.75 stroke, 24-box; no emoji, no glyph fonts",
+      "Flat informational density; type does the hierarchy, not elevation",
+      "Light grounds for the two reading worlds, near-black for the glance world"
+    ],
+    "rules": [
+      {
+        "name": "The Three-Carrier Rule",
+        "body": "Every state — unowned, waiting, accepted, declined, asked-out, handled — is carried by a word (STATUS_WORD in src/domain/rules.ts: No one / Waiting / Taken / Said no / Asked out / Handled), a colour (--s-*), and a shape (.mark--*, and dashed vs. solid edges) at the same time. No state may ever be carried by colour alone, in any world, on any surface. The audit test: desaturate the screen and read it; if a state became unreadable, the surface is wrong.",
+        "section": "colors"
+      },
+      {
+        "name": "The Hatch Rule",
+        "body": "45° hatching (--hatch) plus a dashed edge means \"open — the record has no owner\". It is the texture of unowned in every world: the mark, the empty person mark, the Almanac pin, the Primer card band. Hatching is never decorative, and never used for anything else.",
+        "section": "colors"
+      },
+      {
+        "name": "The Wash Pairing Rule",
+        "body": "A state ink is never used as a fill behind text. Each --s-* ink ships with an --s-*-wash ground, and that pair is the only legal combination — except in Departures, where waiting deliberately inverts to solid amber with departures-on-amber text because the glance screen wants one siren.",
+        "section": "colors"
+      },
+      {
+        "name": "The Tabular Column Rule",
+        "body": "Any number that sits in a column — clock times, day numbers, elapsed counts, the message timestamp — carries .tnum (font-variant-numeric: tabular-nums). Times must not shift width between rows.",
+        "section": "typography"
+      },
+      {
+        "name": "The No-Shouting-In-Primer Rule",
+        "body": "Uppercase tracked micro-type is Almanac's and Departures' voice. In Primer, [data-world='primer'] resets every label, divider, tab and state word to sentence case — because a picture book sets its captions, it does not stamp them.",
+        "section": "typography"
+      },
+      {
+        "name": "The Lede Rule",
+        "body": "Every masthead carries one line of what is actually true right now, in body size, capped at 28–32ch, with the single most important noun in <b> and the world's accent colour. One bold phrase per lede, never two.",
+        "section": "typography"
+      },
+      {
+        "name": "The One-Column Rule",
+        "body": "There is no multi-column layout and no responsive breakpoint in this product. Everything is one 390px column; density is solved by row height, not by splitting the page.",
+        "section": "layout"
+      },
+      {
+        "name": "The Flat-Row Rule",
+        "body": "A list row never lifts. .row:hover and .dep-row:hover change background only, and an unanswered row is marked by a wash (.row--open → --s-waiting-wash), never by elevation.",
+        "section": "elevation"
+      },
+      {
+        "name": "The Tone-Over-Lift Rule",
+        "body": "When a surface needs to read as a different plane, change its ground (--surface-2, --surface-sunk, a state wash) and give it a rule. Handled is a destination, so the whole screen takes --s-handled-wash as its ground; it does not take a shadow.",
+        "section": "elevation"
+      },
+      {
+        "name": "The Dashed-Edge Rule",
+        "body": "A dashed border means unowned. It appears on .state--unowned, .mark--unowned, .person--none, .alm-pin--unowned and .pri-token.is-empty, and nowhere else.",
+        "section": "shapes"
+      }
+    ],
+    "dos": [
+      "Do print every state with its word, its colour and its shape at once — STATUS_WORD for the word, --s-* for the colour, .mark--* or a dashed edge for the shape.",
+      "Do take the state word from STATUS_WORD (No one / Waiting / Taken / Said no / Asked out / Handled). A world may lengthen it into a sentence (\"Waiting on Taylor\"), never rename the state.",
+      "Do style a new shared component entirely from the token contract (--ink, --surface, --rule, --line, --r-*, --s-*, --font-*), so it works in all three worlds unseen.",
+      "Do put world-specific overrides behind [data-world='…'] in the shared stylesheet or in the world's own CSS file.",
+      "Do give every interactive control a box of at least 44px (.iconBtn 44px, .btn 46px, .input 46px, .check__row 46px, .pickRow 60px).",
+      "Do mark hatching + a dashed edge as the only way to say \"nobody has this\".",
+      "Do draw new icons into src/ui/Icon.tsx on the 24 box at 1.75 stroke with round caps and joins.",
+      "Do add .tnum to any number that sits in a column.",
+      "Do keep the three motion durations and let them collapse to 1ms under reduced motion.",
+      "Do cap a lede at 28–32ch and bold exactly one phrase in it.",
+      "Do use color-mix(in srgb, …) against an existing token for a hover darkening, rather than introducing a new hex."
+    ],
+    "donts": [
+      "Don't let colour alone carry a state, a count, or an owner — not in a dot, not in a stripe, not in a bar.",
+      "Don't ship an emoji or an icon-font glyph. Every glyph in the product comes from the drawn set.",
+      "Don't give a Primer card a coloured side stripe or a rounded corner; that world states colour as a flat head band at region scale and keeps every corner at 0px.",
+      "Don't soften a radius to signal friendliness. The radius belongs to the world (--r-*); legibility is the all-ages mechanism, roundness is not.",
+      "Don't lift a list row, a header, a key or a plate on hover. Change its ground.",
+      "Don't mix a state ink with a surface other than its paired --s-*-wash.",
+      "Don't add a fourth ink step, a fifth person colour, or a second accent to a world.",
+      "Don't collapse, hide or shorten the Almanac key — it is permanent and four-symbol.",
+      "Don't replace a bottom sheet with a blocking centred modal.",
+      "Don't remove a focus ring or borrow another world's ring colour.",
+      "Don't introduce a hex literal in a component stylesheet; the only shared literals in the product are #fff on a state fill and the sheet backdrop.",
+      "Don't treat the device frame or the world/role rig (frame.css) as part of the product's visual system."
+    ]
+  }
+}
