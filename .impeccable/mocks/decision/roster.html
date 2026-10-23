@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=390,initial-scale=1">
+<title>Roster</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Barlow+Semi+Condensed:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --board:#1d3a30; --board-2:#16302a; --board-3:#27483c; --rule:#3f6355;
+    --chalk:#f1efe4; --chalk-2:#b9c6bd;
+    --orange:#e8622a; --court:#e8c33c; --court-ink:#3a2d00;
+    --red:#cf3b2c;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{width:390px;height:844px;overflow:hidden;background:var(--board);
+    font-family:'Barlow Semi Condensed',system-ui,sans-serif;color:var(--chalk);
+    -webkit-font-smoothing:antialiased}
+  .anton{font-family:Anton,sans-serif;font-weight:400;text-transform:uppercase}
+
+  header{padding:15px 16px 14px;border-bottom:2px solid var(--rule)}
+  .top{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}
+  .wm{font-family:Anton;font-size:19px;letter-spacing:.09em;text-transform:uppercase}
+  .wm b{color:var(--court)}
+  .date{font-size:14px;font-weight:600;color:var(--chalk-2);letter-spacing:.05em;text-transform:uppercase}
+  h1{font-family:Anton;font-size:40px;line-height:.9;letter-spacing:.005em}
+  .lede{font-size:15.5px;font-weight:500;color:var(--chalk-2);margin-top:6px;line-height:1.3;max-width:30ch}
+  .lede b{color:var(--court);font-weight:600}
+
+  /* ── filter row (standard control) ── */
+  .filters{display:flex;gap:8px;padding:12px 16px;overflow:hidden;border-bottom:2px solid var(--rule)}
+  .chip{min-height:38px;padding:0 14px;display:inline-flex;align-items:center;flex:none;
+    border:1.5px solid #5d8273;background:transparent;color:var(--chalk);
+    font-family:'Barlow Semi Condensed';font-size:14.5px;font-weight:600;letter-spacing:.03em}
+  .chip.on{background:var(--court);border-color:var(--court);color:var(--court-ink);font-weight:700}
+
+  /* ── signature move: the roster columns ── */
+  .cols{display:flex;gap:10px;padding:14px 16px;overflow:hidden;align-items:flex-start}
+  .col{width:118px;flex:none}
+  .ch{border:2px solid var(--chalk);padding:8px 9px 7px;display:flex;align-items:center;gap:8px}
+  .ch .n{font-family:Anton;font-size:22px;line-height:1;color:var(--board);
+    background:var(--chalk);padding:3px 6px 1px}
+  .ch p{font-family:Anton;font-size:15px;letter-spacing:.04em;text-transform:uppercase;line-height:1}
+  .ch em{display:block;font-family:'Barlow Semi Condensed';font-size:11.5px;font-weight:600;
+    font-style:normal;letter-spacing:.09em;color:var(--chalk-2);margin-top:2px}
+  .col.open .ch{border-style:dashed;border-color:#7e9a8e}
+  .col.open .ch .n{background:transparent;color:#7e9a8e;border:2px dashed #7e9a8e;padding:1px 5px}
+  .col.open .ch p{color:#9fb3a9}
+
+  .plate{margin-top:9px;background:var(--board-3);border:1.5px solid var(--rule);
+    border-top:4px solid var(--chalk-2);padding:9px 10px 10px}
+  .plate .tm{font-family:Anton;font-size:14px;letter-spacing:.06em;color:var(--court)}
+  .plate .pt{font-size:15px;font-weight:600;line-height:1.2;margin-top:4px;letter-spacing:-.005em}
+  .plate .ps{font-size:12.5px;font-weight:400;color:var(--chalk-2);margin-top:4px;line-height:1.25}
+  .plate.wait{border-top-color:var(--court);background:#2d4a28}
+  .plate.wait .tm{color:var(--court)}
+  .plate.open{border-style:dashed;border-top:4px dashed #7e9a8e;
+    background:repeating-linear-gradient(45deg,#1f3b32 0 5px,#27483c 5px 10px)}
+  .plate.open .tm{color:#9fb3a9}
+  .tag{display:inline-block;font-family:Anton;font-size:10.5px;letter-spacing:.13em;
+    text-transform:uppercase;margin-top:8px;padding:3px 7px 2px}
+  .tag.w{background:var(--court);color:var(--court-ink)}
+  .tag.o{border:1.5px dashed #7e9a8e;color:#9fb3a9}
+  .act{display:flex;gap:7px;margin-top:10px}
+  .btn{flex:1;min-height:42px;border:0;background:var(--orange);color:#fff;
+    font-family:Anton;font-size:13px;letter-spacing:.09em;text-transform:uppercase}
+  .btn.sec{background:transparent;border:1.5px solid #7e9a8e;color:var(--chalk)}
+
+  nav{position:absolute;left:0;right:0;bottom:0;height:76px;background:var(--board-2);
+    border-top:2px solid var(--rule);display:flex;padding-bottom:12px}
+  nav a{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;
+    gap:5px;text-decoration:none;color:#8aa39a;position:relative}
+  nav a i{width:21px;height:21px;border:2px solid currentColor}
+  nav a span{font-family:Anton;font-size:10px;letter-spacing:.11em;text-transform:uppercase}
+  nav a.on{color:var(--court)}
+  nav a.on:before{content:"";position:absolute;top:0;width:34px;height:3px;background:var(--court)}
+  nav .bdg{position:absolute;top:9px;margin-left:20px;background:var(--red);color:#fff;
+    font-family:'Barlow Semi Condensed';font-size:10px;font-weight:700;padding:0 5px;border-radius:8px}
+</style></head><body>
+
+<header>
+  <div class="top"><div class="wm">Day<b>light</b></div><div class="date">Thu 23 Oct</div></div>
+  <h1>The board</h1>
+  <p class="lede"><b>One plate has no name on it.</b> One is waiting on Taylor.</p>
+</header>
+
+<div class="filters">
+  <button class="chip on">Today</button>
+  <button class="chip">This week</button>
+  <button class="chip">Unanswered 2</button>
+  <button class="chip">Rides</button>
+</div>
+
+<div class="cols">
+  <div class="col open">
+    <div class="ch"><span class="n">0</span><p>No one<em>1 plate</em></p></div>
+    <div class="plate open">
+      <div class="tm">Sat 9 AM</div>
+      <div class="pt">Soccer team fruit</div>
+      <div class="ps">24 pieces, to the field</div>
+      <span class="tag o">Needs a name</span>
+      <div class="act"><button class="btn">Take it</button></div>
+    </div>
+  </div>
+
+  <div class="col">
+    <div class="ch"><span class="n">2</span><p>Taylor<em>1 waiting</em></p></div>
+    <div class="plate wait">
+      <div class="tm">4:15 PM</div>
+      <div class="pt">Basketball pickup</div>
+      <div class="ps">Westlake Gym, court 2</div>
+      <span class="tag w">No answer yet</span>
+      <div class="act"><button class="btn">I'll go</button><button class="btn sec">Nana</button></div>
+    </div>
+  </div>
+
+  <div class="col">
+    <div class="ch"><span class="n">3</span><p>Alicia<em>2 today</em></p></div>
+    <div class="plate">
+      <div class="tm">6:30 PM</div>
+      <div class="pt">Tournament cash</div>
+      <div class="ps">$40 in exact notes</div>
+    </div>
+    <div class="plate">
+      <div class="tm">8:00 PM</div>
+      <div class="pt">Sign the permission slip</div>
+    </div>
+  </div>
+</div>
+
+<nav>
+  <a href="#" class="on"><i></i><span>Board</span></a>
+  <a href="#"><i></i><span>Week</span></a>
+  <a href="#"><i></i><span>Mine</span><em class="bdg">2</em></a>
+  <a href="#"><i></i><span>Family</span></a>
+  <a href="#"><i></i><span>Done</span></a>
+</nav>
+</body></html>

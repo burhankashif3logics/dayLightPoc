@@ -1,0 +1,84 @@
+/* ── reset ──────────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; }
+* { margin: 0; padding: 0; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  min-height: 100vh;
+  font-family: var(--font-body);
+  color: var(--ink);
+  background: var(--bg);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+button, input, textarea, select { font: inherit; color: inherit; }
+button { background: none; border: 0; cursor: pointer; }
+ul, ol { list-style: none; }
+svg { display: block; }
+
+/* ── browser surfaces, themed from the active world ─────────── */
+
+::selection {
+  background: var(--selection-bg);
+  color: var(--selection-ink);
+}
+
+:where(input, textarea) { caret-color: var(--accent); }
+
+:where(a) {
+  color: var(--accent-ink);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.18em;
+}
+
+/* Focus is always visible, and always the world's own ring. */
+:focus { outline: none; }
+:focus-visible {
+  outline: var(--focus-width) solid var(--focus-ring);
+  outline-offset: var(--focus-offset);
+  border-radius: var(--focus-radius, 2px);
+}
+
+.scroll {
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: var(--scroll-thumb) transparent;
+  overscroll-behavior: contain;
+}
+.scroll::-webkit-scrollbar { width: 10px; height: 10px; }
+.scroll::-webkit-scrollbar-track { background: transparent; }
+.scroll::-webkit-scrollbar-thumb {
+  background: var(--scroll-thumb);
+  border: 3px solid transparent;
+  background-clip: content-box;
+  border-radius: 99px;
+}
+.scroll::-webkit-scrollbar-thumb:hover { background-color: var(--scroll-thumb-hover); background-clip: content-box; }
+
+/* Every number that sits in a column lines up. */
+.tnum { font-variant-numeric: tabular-nums; }
+
+/* ── motion ─────────────────────────────────────────────────── */
+:root {
+  --ease: cubic-bezier(0.16, 1, 0.3, 1);
+  --fast: 150ms;
+  --base: 240ms;
+  --slow: 380ms;
+}
+@media (prefers-reduced-motion: reduce) {
+  :root { --fast: 1ms; --base: 1ms; --slow: 1ms; }
+  *, *::before, *::after {
+    animation-duration: 1ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 1ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+.sr-only {
+  position: absolute; width: 1px; height: 1px;
+  padding: 0; margin: -1px; overflow: hidden;
+  clip-path: inset(50%); white-space: nowrap;
+}

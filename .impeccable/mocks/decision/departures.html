@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=390,initial-scale=1">
+<title>Departures</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --panel:#13171c; --panel-2:#1c2228; --panel-3:#262e36; --rule:#38424c;
+    --white:#f7f9fa; --dim:#9aa7b2;
+    --amber:#f5a623; --amber-ink:#2a1c00;
+    --cyan:#33b6c4; --cyan-ink:#06272b;
+    --red:#e0533f;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{width:390px;height:844px;overflow:hidden;background:var(--panel);
+    font-family:'Public Sans',system-ui,sans-serif;color:var(--white);-webkit-font-smoothing:antialiased;
+    font-variant-numeric:tabular-nums}
+
+  header{padding:14px 16px 0;display:flex;align-items:center;justify-content:space-between}
+  .wm{font-size:15px;font-weight:800;letter-spacing:.2em;text-transform:uppercase}
+  .wm b{color:var(--amber)}
+  .clock{font-size:15px;font-weight:700;color:var(--dim);letter-spacing:.04em}
+
+  /* ── signature move: the status plate, on the lead departure ── */
+  .lead{margin:14px 16px 0;background:var(--panel-2);border:1px solid var(--rule);
+    border-left:5px solid var(--amber)}
+  .lead .r1{display:flex;align-items:center;gap:10px;padding:13px 14px 0}
+  .plate{font-size:12px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;
+    background:var(--amber);color:var(--amber-ink);padding:5px 9px}
+  .plate.go{background:var(--cyan);color:var(--cyan-ink)}
+  .plate.none{background:transparent;color:var(--dim);border:1.5px dashed #5c6973;padding:3.5px 8px}
+  .el{margin-left:auto;font-size:12.5px;font-weight:600;color:var(--dim)}
+  .lead h2{font-size:28px;font-weight:800;letter-spacing:-.03em;line-height:1.05;padding:10px 14px 0}
+  .lead .mt{font-size:14px;color:var(--dim);padding:7px 14px 0;line-height:1.35}
+  .lead .mt b{color:var(--white);font-weight:600}
+  .lead .act{display:flex;gap:9px;padding:14px}
+  .btn{flex:1;min-height:46px;border:0;background:var(--cyan);color:var(--cyan-ink);
+    font-family:'Public Sans';font-size:15px;font-weight:700;letter-spacing:.02em}
+  .btn.sec{background:transparent;color:var(--white);border:1.5px solid var(--rule)}
+
+  /* ── the board: departures table ── */
+  .sec{display:flex;align-items:center;justify-content:space-between;padding:22px 16px 8px}
+  .sec span{font-size:11px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--dim)}
+  thead th{font-size:10px;font-weight:800;letter-spacing:.15em;text-transform:uppercase;
+    color:#788693;text-align:left;padding:0 0 8px;border-bottom:1px solid var(--rule)}
+  table{width:100%;border-collapse:collapse;padding:0 16px}
+  .tw{padding:0 16px}
+  tbody td{padding:13px 0;border-bottom:1px solid #222a31;vertical-align:top}
+  .t-time{width:60px;font-size:17px;font-weight:800;letter-spacing:-.01em}
+  .t-time em{display:block;font-size:10.5px;font-weight:600;font-style:normal;color:#788693;letter-spacing:.1em}
+  .t-what{font-size:15.5px;font-weight:600;letter-spacing:-.012em;line-height:1.25;padding-right:10px}
+  .t-what em{display:block;font-size:12.5px;font-weight:400;font-style:normal;color:var(--dim);margin-top:3px}
+  .t-who{width:66px;text-align:right}
+  .glyph{display:inline-flex;align-items:center;gap:5px;font-size:13px;font-weight:700}
+  .glyph i{width:9px;height:9px;border-radius:50%;display:block}
+  .st{width:30px;text-align:right}
+  .mark{display:inline-block;width:20px;height:20px;border:2px solid;border-radius:50%}
+  .mark.go{background:var(--cyan);border-color:var(--cyan)}
+  .mark.w{background:var(--amber);border-color:var(--amber)}
+  .mark.n{border-style:dashed;border-color:#5c6973}
+  .mark.no{background:var(--red);border-color:var(--red)}
+
+  nav{position:absolute;left:0;right:0;bottom:0;height:76px;background:#0d1115;
+    border-top:1px solid var(--rule);display:flex;padding-bottom:12px}
+  nav a{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;
+    gap:5px;text-decoration:none;color:#7c8a95;position:relative}
+  nav a i{width:21px;height:21px;border:1.8px solid currentColor}
+  nav a span{font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase}
+  nav a.on{color:var(--amber)}
+  nav a.on:before{content:"";position:absolute;top:0;width:100%;height:3px;background:var(--amber)}
+  nav .bdg{position:absolute;top:9px;margin-left:20px;background:var(--red);color:#fff;
+    font-size:9.5px;font-weight:800;padding:1px 5px;border-radius:8px}
+</style></head><body>
+
+<header><div class="wm">Day<b>light</b></div><div class="clock">Thu 23 Oct · 9:42</div></header>
+
+<div class="lead">
+  <div class="r1"><span class="plate">Waiting</span><span class="el">asked Taylor 1h 32m ago</span></div>
+  <h2>Basketball pickup</h2>
+  <p class="mt">16:15 · Westlake Gym · for <b>Parker</b></p>
+  <div class="act"><button class="btn">I'll drive</button><button class="btn sec">Ask Nana</button></div>
+</div>
+
+<div class="sec"><span>Today · 4 departures</span><span>2 unanswered</span></div>
+
+<div class="tw"><table>
+  <thead><tr><th>Time</th><th>What</th><th style="text-align:right">Who</th><th></th></tr></thead>
+  <tbody>
+    <tr>
+      <td class="t-time">08:00<em>AM</em></td>
+      <td class="t-what">Crazy Hat Day<em>Hat packed in the blue bag</em></td>
+      <td class="t-who"><span class="glyph"><i style="background:var(--sun,#f2b31d)"></i>Parker</span></td>
+      <td class="st"><span class="mark go"></span></td>
+    </tr>
+    <tr>
+      <td class="t-time">16:15<em>PM</em></td>
+      <td class="t-what">Basketball pickup<em>Westlake Gym, court 2</em></td>
+      <td class="t-who"><span class="glyph"><i style="background:var(--amber)"></i>Taylor</span></td>
+      <td class="st"><span class="mark w"></span></td>
+    </tr>
+    <tr>
+      <td class="t-time">18:30<em>PM</em></td>
+      <td class="t-what">Tournament cash — $40<em>Exact notes, hand to coach</em></td>
+      <td class="t-who"><span class="glyph"><i style="background:var(--red)"></i>Alicia</span></td>
+      <td class="st"><span class="mark go"></span></td>
+    </tr>
+    <tr>
+      <td class="t-time">—<em>SAT</em></td>
+      <td class="t-what">Soccer team fruit<em>24 pieces before 9 AM</em></td>
+      <td class="t-who"><span class="glyph" style="color:#788693">No one</span></td>
+      <td class="st"><span class="mark n"></span></td>
+    </tr>
+  </tbody>
+</table></div>
+
+<nav>
+  <a href="#" class="on"><i></i><span>Today</span></a>
+  <a href="#"><i></i><span>Week</span></a>
+  <a href="#"><i></i><span>Mine</span><em class="bdg">2</em></a>
+  <a href="#"><i></i><span>Family</span></a>
+  <a href="#"><i></i><span>Done</span></a>
+</nav>
+</body></html>

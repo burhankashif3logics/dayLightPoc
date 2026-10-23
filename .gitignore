@@ -19,3 +19,6 @@ Family OS kick off meeting.docx
 
 # Decision-page session logs
 .impeccable/questions/
+
+# impeccable browser captures
+.playwright-mcp/

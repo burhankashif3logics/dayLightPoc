@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=390,initial-scale=1">
+<title>Primer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --line:#15161a; --ground:#ffffff; --ground-2:#f3f1ea;
+    --red:#d8402e; --blue:#1f4fa8; --sun:#f2b31d; --forest:#1f6b45; --slate:#6e7580;
+    --ink:#15161a; --ink-2:#4e535c;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{width:390px;height:844px;overflow:hidden;background:var(--ground);
+    font-family:Lexend,system-ui,sans-serif;color:var(--ink);-webkit-font-smoothing:antialiased}
+
+  header{background:var(--blue);border-bottom:3px solid var(--line);padding:16px 20px 20px;color:#fff}
+  .top{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px}
+  .wm{font-size:17px;font-weight:700;letter-spacing:-.02em;display:flex;align-items:center;gap:8px}
+  .wm i{width:17px;height:17px;background:var(--sun);border:2.5px solid var(--line);border-radius:50%;display:block}
+  .date{font-size:13.5px;font-weight:500;color:#cfdcf4}
+  h1{font-size:34px;font-weight:700;letter-spacing:-.025em;line-height:1.02}
+  .lede{font-size:15px;font-weight:400;line-height:1.35;color:#d6e2f6;margin-top:7px;max-width:28ch}
+
+  /* ── signature move: the person token ── */
+  .fam{display:flex;gap:12px;padding:16px 20px;background:var(--ground-2);
+    border-bottom:3px solid var(--line);align-items:flex-start}
+  .who{flex:1;display:flex;flex-direction:column;align-items:center;gap:7px;min-width:0}
+  .tok{width:50px;height:50px;border:3px solid var(--line);border-radius:50%;
+    position:relative;overflow:hidden;background:#fff}
+  .tok b{position:absolute;left:0;right:0;bottom:0;height:46%;display:block}
+  .tok s{position:absolute;left:50%;top:9px;width:20px;height:20px;border-radius:50%;
+    transform:translateX(-50%);background:var(--line);display:block}
+  .tok.empty{border-style:dashed;border-color:#9aa0a8;background:var(--ground-2)}
+  .who p{font-size:13px;font-weight:600;letter-spacing:-.01em}
+  .who em{font-size:11.5px;font-weight:500;font-style:normal;color:var(--ink-2)}
+
+  .sec{padding:18px 20px 10px;font-size:12px;font-weight:700;
+    letter-spacing:.11em;text-transform:uppercase;color:var(--ink-2)}
+
+  .card{margin:0 20px 14px;border:3px solid var(--line);background:#fff;
+    box-shadow:5px 5px 0 var(--line);display:flex}
+  .card .stripe{width:14px;border-right:3px solid var(--line);flex:none}
+  .card .body{padding:14px 15px;flex:1;min-width:0}
+  .card.wait .stripe{background:var(--sun)}
+  .card.none .stripe{background:repeating-linear-gradient(45deg,#fff 0 5px,#cfd3d8 5px 10px)}
+  .card.done .stripe{background:var(--forest)}
+  .head{display:flex;align-items:center;gap:9px;margin-bottom:8px}
+  .mini{width:30px;height:30px;border:2.5px solid var(--line);border-radius:50%;
+    position:relative;overflow:hidden;background:#fff;flex:none}
+  .mini b{position:absolute;left:0;right:0;bottom:0;height:46%}
+  .mini s{position:absolute;left:50%;top:5px;width:12px;height:12px;border-radius:50%;
+    transform:translateX(-50%);background:var(--line)}
+  .mini.empty{border-style:dashed;border-color:#9aa0a8}
+  .state{font-size:11.5px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;
+    border:2.5px solid var(--line);padding:3px 8px}
+  .state.w{background:var(--sun)} .state.n{background:#fff;color:var(--ink-2);border-color:#9aa0a8;border-style:dashed}
+  .when{margin-left:auto;font-size:13px;font-weight:600;color:var(--ink-2)}
+  .ttl{font-size:19px;font-weight:600;letter-spacing:-.025em;line-height:1.2}
+  .sub{font-size:14px;font-weight:400;color:var(--ink-2);margin-top:5px;line-height:1.3}
+  .act{display:flex;gap:10px;margin-top:13px}
+  .btn{flex:1;min-height:46px;border:3px solid var(--line);background:var(--forest);color:#fff;
+    font-family:Lexend;font-size:15px;font-weight:600;letter-spacing:-.01em}
+  .btn.no{background:#fff;color:var(--red)}
+
+  nav{position:absolute;left:0;right:0;bottom:0;height:78px;background:#fff;
+    border-top:3px solid var(--line);display:flex;padding-bottom:12px}
+  nav a{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;
+    gap:5px;text-decoration:none;color:var(--ink-2);position:relative}
+  nav a i{width:22px;height:22px;border:2.5px solid currentColor;border-radius:50%}
+  nav a span{font-size:11px;font-weight:600}
+  nav a.on{color:var(--line)}
+  nav a.on i{background:var(--sun)}
+  nav .bdg{position:absolute;top:10px;margin-left:21px;background:var(--red);color:#fff;
+    font-size:10px;font-weight:700;padding:1px 5px;border-radius:9px;border:2px solid #fff}
+</style></head><body>
+
+<header>
+  <div class="top"><div class="wm"><i></i>Daylight</div><div class="date">Thursday, Oct 23</div></div>
+  <h1>Today</h1>
+  <p class="lede">Four things. One has nobody yet.</p>
+</header>
+
+<div class="fam">
+  <div class="who"><div class="tok" style="background:#fff"><b style="background:var(--red)"></b><s></s></div><p>Alicia</p><em>2 today</em></div>
+  <div class="who"><div class="tok"><b style="background:var(--blue)"></b><s></s></div><p>Taylor</p><em>1 waiting</em></div>
+  <div class="who"><div class="tok"><b style="background:var(--sun)"></b><s></s></div><p>Parker</p><em>1 today</em></div>
+  <div class="who"><div class="tok"><b style="background:var(--forest)"></b><s></s></div><p>Becker</p><em>Clear</em></div>
+  <div class="who"><div class="tok empty"></div><p>No one</p><em>1 item</em></div>
+</div>
+
+<div class="sec">Needs an answer</div>
+
+<div class="card wait">
+  <div class="stripe"></div>
+  <div class="body">
+    <div class="head">
+      <div class="mini"><b style="background:var(--blue)"></b><s></s></div>
+      <span class="state w">Waiting on Taylor</span><span class="when">4:15 PM</span>
+    </div>
+    <div class="ttl">Basketball pickup</div>
+    <div class="sub">Westlake Gym. Asked this morning, no answer yet.</div>
+    <div class="act"><button class="btn">I'll drive</button><button class="btn no">Ask Nana</button></div>
+  </div>
+</div>
+
+<div class="card none">
+  <div class="stripe"></div>
+  <div class="body">
+    <div class="head">
+      <div class="mini empty"></div>
+      <span class="state n">Nobody has this</span><span class="when">Sat</span>
+    </div>
+    <div class="ttl">Soccer team fruit</div>
+    <div class="sub">24 pieces, bring to the field by 9 AM.</div>
+  </div>
+</div>
+
+<nav>
+  <a href="#" class="on"><i></i><span>Today</span></a>
+  <a href="#"><i></i><span>Week</span></a>
+  <a href="#"><i></i><span>Mine</span><em class="bdg">2</em></a>
+  <a href="#"><i></i><span>Family</span></a>
+  <a href="#"><i></i><span>Done</span></a>
+</nav>
+</body></html>

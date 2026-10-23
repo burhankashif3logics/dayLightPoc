@@ -1,0 +1,87 @@
+/* ── Almanac ──────────────────────────────────────────────────
+   The newspaper weather page: a slate masthead over newsprint,
+   a printed key, and hatching where the record is uncertain.
+   Light ground, because this is read in a kitchen at 7am and in
+   a car at 4pm — ambient daylight, not a dark room.
+──────────────────────────────────────────────────────────────*/
+[data-world='almanac'] {
+  --font-display: 'Barlow Condensed', system-ui, sans-serif;
+  --font-body: 'Barlow', system-ui, sans-serif;
+  --font-data: 'Roboto Mono Variable', 'Roboto Mono', ui-monospace, monospace;
+
+  --bg: #f6f3ea;
+  --surface: #fffdf7;
+  --surface-2: #efebdf;
+  --surface-sunk: #e7e2d3;
+
+  --rule: #c9c0ab;
+  --rule-soft: #ded8c8;
+
+  --ink: #15211f;
+  --ink-2: #4a5a5c;
+  --ink-3: #69777a;
+
+  --accent: #c47d0c;
+  --accent-ink: #8a5906;
+  --accent-wash: #fbf1dc;
+  --on-accent: #ffffff;
+
+  --nav-bg: #1b2a31;
+  --nav-surface: #24363e;
+  --nav-rule: #3d525c;
+  --nav-ink: #ffffff;
+  --nav-ink-2: #b2c3c9;
+  --nav-dim: #8ca1a8;
+  --nav-on: #f0ad2a;
+
+  /* the five states, each with a word, an ink and a ground */
+  --s-unowned: #6f7b70;
+  --s-unowned-wash: #e9e4d4;
+  --s-waiting: #a66505;
+  --s-waiting-wash: #fbf0d9;
+  --s-accepted: #115d52;
+  --s-accepted-wash: #e2eeea;
+  --s-declined: #9d2f24;
+  --s-declined-wash: #f8e9e6;
+  --s-asked-out: #4b3a86;
+  --s-asked-out-wash: #eeeaf8;
+  --s-handled: #5a6366;
+  --s-handled-wash: #e8e5db;
+
+  /* hatching is this world's signature for "the record is open" */
+  --hatch: repeating-linear-gradient(45deg,
+    #e3dcca 0 4px, #c9bfa6 4px 8px);
+  --hatch-dark: repeating-linear-gradient(45deg,
+    #2b3c36 0 4px, #1f2e2a 4px 8px);
+
+  --people-1: #a8392b;
+  --people-2: #1b4f73;
+  --people-3: #9a6a05;
+  --people-4: #185c45;
+
+  --r-sm: 2px;
+  --r-md: 3px;
+  --r-lg: 4px;
+  --r-sheet: 6px;
+  --r-pill: 2px;
+
+  --shadow-1: 0 1px 2px rgba(21, 33, 31, .08), 0 2px 6px rgba(21, 33, 31, .05);
+  --shadow-2: 0 2px 4px rgba(21, 33, 31, .09), 0 8px 20px rgba(21, 33, 31, .09);
+  --shadow-sheet: 0 -2px 8px rgba(21, 33, 31, .08), 0 -18px 50px rgba(21, 33, 31, .18);
+
+  /* the operand a hover darkens toward, and the ink that sits on an accepted fill */
+  --shade: #000000;
+  --on-accepted: #ffffff;
+
+  --selection-bg: #f3dca6;
+  --selection-ink: #15211f;
+  --focus-ring: #1b2a31;
+  --focus-width: 2px;
+  --focus-offset: 2px;
+  --scroll-thumb: #c2b9a3;
+  --scroll-thumb-hover: #a79d85;
+
+  --band-night: #15241f;
+  --band-day: #f2d9a4;
+  --band-hour: #5d6e5e;
+}

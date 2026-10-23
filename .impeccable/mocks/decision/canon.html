@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=390,initial-scale=1">
+<title>Category standard</title>
+<style>
+  :root{
+    --bg:#f5f6f8; --card:#ffffff; --rule:#e3e6ea; --rule-2:#d2d7dd;
+    --ink:#101418; --ink-2:#5b646f; --ink-3:#848d98;
+    --brand:#3864d8; --brand-wash:#eef2fd;
+    --amber:#c2740a; --amber-wash:#fdf3e3;
+    --green:#1a7a4e; --green-wash:#eaf6ef;
+    --red:#c0392b;
+    --p-alicia:#c0392b; --p-taylor:#3864d8; --p-parker:#b07d00; --p-becker:#1a7a4e;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{width:390px;height:844px;overflow:hidden;background:var(--bg);color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text","Segoe UI",Roboto,sans-serif;
+    -webkit-font-smoothing:antialiased}
+
+  header{background:var(--card);padding:14px 20px 16px;border-bottom:1px solid var(--rule)}
+  .top{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px}
+  .wm{font-size:17px;font-weight:700;letter-spacing:-.025em;display:flex;align-items:center;gap:7px}
+  .wm i{width:18px;height:18px;border-radius:5px;background:var(--brand);display:block}
+  .av{width:34px;height:34px;border-radius:50%;background:var(--p-alicia);color:#fff;
+    display:grid;place-items:center;font-size:14px;font-weight:600}
+  h1{font-size:30px;font-weight:700;letter-spacing:-.03em;line-height:1.05}
+  .sub{font-size:15px;color:var(--ink-2);margin-top:4px}
+  .segs{display:flex;background:#eceef1;border-radius:9px;padding:2.5px;margin-top:15px}
+  .segs button{flex:1;min-height:36px;border:0;border-radius:7px;background:transparent;
+    font-family:inherit;font-size:14px;font-weight:500;color:var(--ink-2)}
+  .segs button.on{background:#fff;color:var(--ink);font-weight:600;
+    box-shadow:0 1px 3px rgba(16,20,24,.14)}
+
+  .sec{display:flex;align-items:baseline;justify-content:space-between;padding:20px 20px 9px}
+  .sec h2{font-size:13px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:var(--ink-3)}
+  .sec a{font-size:14px;font-weight:500;color:var(--brand);text-decoration:none}
+
+  .card{margin:0 16px 11px;background:var(--card);border:1px solid var(--rule);
+    border-radius:14px;padding:14px 15px;box-shadow:0 1px 2px rgba(16,20,24,.05)}
+  .r1{display:flex;align-items:center;gap:8px;margin-bottom:9px}
+  .pill{font-size:12px;font-weight:600;padding:4px 9px;border-radius:99px}
+  .pill.w{background:var(--amber-wash);color:var(--amber)}
+  .pill.g{background:var(--green-wash);color:var(--green)}
+  .pill.n{background:#eef0f2;color:var(--ink-2)}
+  .tm{margin-left:auto;font-size:14px;font-weight:600;color:var(--ink-2);
+    font-variant-numeric:tabular-nums}
+  .ttl{font-size:17.5px;font-weight:600;letter-spacing:-.02em;line-height:1.25}
+  .meta{font-size:14.5px;color:var(--ink-2);margin-top:5px;line-height:1.35}
+  .own{display:flex;align-items:center;gap:7px;margin-top:11px;
+    padding-top:11px;border-top:1px solid var(--rule)}
+  .own .a{width:26px;height:26px;border-radius:50%;color:#fff;display:grid;place-items:center;
+    font-size:11.5px;font-weight:600}
+  .own .a.none{background:#fff;border:1.5px dashed var(--rule-2);color:var(--ink-3)}
+  .own p{font-size:14px;color:var(--ink-2)}
+  .own p b{color:var(--ink);font-weight:600}
+  .act{display:flex;gap:9px;margin-top:12px}
+  .btn{flex:1;min-height:44px;border:0;border-radius:11px;background:var(--brand);color:#fff;
+    font-family:inherit;font-size:15.5px;font-weight:600;letter-spacing:-.01em}
+  .btn.sec{background:#fff;color:var(--ink);border:1px solid var(--rule-2)}
+
+  nav{position:absolute;left:0;right:0;bottom:0;height:80px;background:rgba(255,255,255,.96);
+    border-top:1px solid var(--rule);display:flex;padding-bottom:16px}
+  nav a{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;
+    gap:4px;text-decoration:none;color:var(--ink-3);position:relative}
+  nav a i{width:22px;height:22px;border:1.9px solid currentColor;border-radius:6px}
+  nav a span{font-size:10.5px;font-weight:500;letter-spacing:-.005em}
+  nav a.on{color:var(--brand)}
+  nav .bdg{position:absolute;top:8px;margin-left:20px;background:var(--red);color:#fff;
+    font-size:10px;font-weight:600;padding:1px 5px;border-radius:9px;border:1.5px solid #fff}
+</style></head><body>
+
+<header>
+  <div class="top"><div class="wm"><i></i>Daylight</div><div class="av">A</div></div>
+  <h1>Today</h1>
+  <p class="sub">Thursday, October 23 · 4 open</p>
+  <div class="segs"><button class="on">Today</button><button>Tomorrow</button><button>This week</button></div>
+</header>
+
+<div class="sec"><h2>Needs an answer</h2><a href="#">See all</a></div>
+
+<div class="card">
+  <div class="r1"><span class="pill w">Waiting on Taylor</span><span class="tm">4:15 PM</span></div>
+  <div class="ttl">Basketball pickup</div>
+  <p class="meta">Westlake Gym, court 2 · for Parker</p>
+  <div class="own"><span class="a" style="background:var(--p-taylor)">T</span>
+    <p>Asked <b>Taylor</b> at 8:10 AM · no answer</p></div>
+  <div class="act"><button class="btn">I'll drive</button><button class="btn sec">Ask Nana</button></div>
+</div>
+
+<div class="card">
+  <div class="r1"><span class="pill n">No owner</span><span class="tm">Sat</span></div>
+  <div class="ttl">Soccer team fruit</div>
+  <p class="meta">24 pieces, at the field before 9 AM</p>
+  <div class="own"><span class="a none">?</span><p>Nobody has taken this yet</p></div>
+</div>
+
+<div class="sec"><h2>Taken care of</h2><a href="#">See all</a></div>
+
+<div class="card">
+  <div class="r1"><span class="pill g">Accepted</span><span class="tm">8:00 AM</span></div>
+  <div class="ttl">Crazy Hat Day</div>
+  <div class="own"><span class="a" style="background:var(--p-parker)">P</span>
+    <p><b>Parker</b> has the hat</p></div>
+</div>
+
+<nav>
+  <a href="#" class="on"><i></i><span>Today</span></a>
+  <a href="#"><i></i><span>Week</span></a>
+  <a href="#"><i></i><span>My tasks</span><em class="bdg">2</em></a>
+  <a href="#"><i></i><span>Family</span></a>
+  <a href="#"><i></i><span>Handled</span></a>
+</nav>
+</body></html>
