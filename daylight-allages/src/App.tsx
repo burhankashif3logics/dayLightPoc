@@ -41,6 +41,14 @@ function Phone() {
   return (
     <div className="phone" data-world={world.id}>
       {world.id === 'coupon' && <InkDefs />}
+      <div className="phone__status" aria-hidden="true">
+        <span className="tnum">9:41</span>
+        <span className="phone__signals">
+          <Icon name="signal" size={18} />
+          <Icon name="wifi" size={18} />
+          <Icon name="battery" size={25} />
+        </span>
+      </div>
       <div className="phone__body">
         {openId ? (
           <ItemDetail id={openId} onBack={() => setOpenId(null)} />

@@ -1,23 +1,28 @@
 import { useState } from 'react'
-import { usePlan } from '../store/store'
+import { usePlan, useSheet } from '../store/store'
 import { useWorld } from '../worlds'
 import { AlmanacDayStrip, almanacCountFor } from '../worlds/almanac'
 import {
-  conflicts, itemStatus, needsAnswer, onDate, visibleItems,
+  conflicts, itemStatus, needsAnswer, onDate, STATUS_WORD, visibleItems,
 } from '../domain/rules'
 import { monthDay, relativeDay, weekdayLong, weekdayShort, weekOf, dayNumber } from '../domain/dates'
 import { Empty, Flag, Mark, SectionHead } from '../ui/bits'
+import { Icon } from '../ui/Icon'
+import { ReassignSheet, type Target } from '../ui/sheets'
 
 export function Week({ onOpen }: { onOpen: (id: string) => void }) {
-  const { plan } = usePlan()
+  const { plan, viewer } = usePlan()
   const { world } = useWorld()
   const { Header, Row } = world
   const [active, setActive] = useState(plan.today)
+  const reassigning = useSheet<Target>()
 
   const mine = visibleItems(plan, plan.viewer)
   const days = weekOf(plan.today)
+  const activeLabel = relativeDay(active, plan.today)
   const dayItems = onDate(mine, active)
   const weekOpen = days.flatMap((d) => onDate(mine, d)).filter(needsAnswer)
+  const otherOpen = weekOpen.filter((item) => item.date !== active)
   const flags = conflicts(plan, days[0], 7)
     .filter((c) => c.kind === 'overlap')
     .filter((c) => c.itemIds.some((id) => mine.some((i) => i.id === id)))
@@ -28,36 +33,39 @@ export function Week({ onOpen }: { onOpen: (id: string) => void }) {
     <div className="screen">
       <Header
         title="The week"
-        meta={`${monthDay(days[0])} – ${monthDay(days[6])}`}
+        meta={days[0].slice(0, 7) === days[6].slice(0, 7)
+          ? `${monthDay(days[0])}–${dayNumber(days[6])}`
+          : `${monthDay(days[0])} – ${monthDay(days[6])}`}
         lede={
           weekOpen.length === 0
             ? 'Every item this week has an answer.'
-            : <><b>{weekOpen.length}</b> {weekOpen.length === 1 ? 'item' : 'items'} this week still need an answer.</>
+            : <span className="week-summary">
+                {world.id === 'departures' && <Icon name="alert" size={18} />}
+                <span><b>{weekOpen.length}</b> {weekOpen.length === 1 ? 'item needs' : 'items need'} an answer</span>
+              </span>
         }
       />
 
       {world.id === 'almanac' ? (
         <AlmanacDayStrip dates={days} active={active} onPick={setActive} countFor={counts} />
       ) : (
-        <div className="weekStrip" role="tablist" aria-label="Pick a day">
+        <div className="weekStrip" role="group" aria-label="Pick a day">
           {days.map((d) => {
             const { total, open } = counts(d)
             return (
               <button
                 key={d}
-                role="tab"
-                aria-selected={d === active}
+                aria-pressed={d === active}
+                aria-label={`${weekdayLong(d)}, ${monthDay(d)}. ${total} ${total === 1 ? 'item' : 'items'}, ${open} ${open === 1 ? 'needs' : 'need'} an answer`}
                 className={`weekStrip__day${d === active ? ' is-on' : ''}${d === plan.today ? ' is-today' : ''}`}
                 onClick={() => setActive(d)}
               >
                 <span className="weekStrip__dow">{weekdayShort(d)}</span>
                 <span className="weekStrip__num tnum">{dayNumber(d)}</span>
-                <span className="weekStrip__dots">
-                  {total === 0
-                    ? <i className="weekStrip__none" />
-                    : Array.from({ length: Math.min(total, 4) }, (_, k) => (
-                        <i key={k} className={open > k ? 'is-open' : ''} />
-                      ))}
+                <span className="weekStrip__dots" aria-hidden="true">
+                  {Array.from({ length: Math.min(total, 4) }, (_, k) => (
+                    <i key={k} className={open > k ? 'is-open' : ''} />
+                  ))}
                 </span>
               </button>
             )
@@ -71,12 +79,12 @@ export function Week({ onOpen }: { onOpen: (id: string) => void }) {
         ))}
 
         <SectionHead
-          label={`${relativeDay(active, plan.today)}${
-            relativeDay(active, plan.today) === weekdayLong(active) ? '' : `, ${weekdayLong(active)}`
-          }`}
+          label={['Today', 'Tomorrow', 'Yesterday'].includes(activeLabel)
+            ? `${activeLabel}, ${weekdayLong(active)}`
+            : `${weekdayLong(active)}, ${monthDay(active)}`}
           right={
             <span className="sectionLabel tnum">
-              {dayItems.length ? `${dayItems.length} open` : 'clear'}
+              {dayItems.length ? `${dayItems.length} ${dayItems.length === 1 ? 'item' : 'items'}` : 'clear'}
             </span>
           }
         />
@@ -89,26 +97,44 @@ export function Week({ onOpen }: { onOpen: (id: string) => void }) {
           </div>
         ) : (
           <Empty icon="week">
-            <p>Nothing on {relativeDay(active, plan.today).toLowerCase()}.</p>
+            <p>Nothing planned for this day.</p>
             <p>Pick another day above.</p>
           </Empty>
         )}
 
-        {weekOpen.length > 0 && (
+        {otherOpen.length > 0 && (
           <>
-            <SectionHead label="Unanswered, anywhere this week" />
+            <SectionHead label="Unanswered on other days" right={<span className="sectionLabel tnum">{otherOpen.length}</span>} />
             <div className="rows">
-              {weekOpen.map((item) => (
-                <button key={item.id} className="miniRow" onClick={() => onOpen(item.id)}>
-                  <Mark status={itemStatus(item)} sm />
-                  <span className="miniRow__title">{item.title}</span>
-                  <span className="miniRow__day">{relativeDay(item.date, plan.today)}</span>
-                </button>
-              ))}
+              {otherOpen.map((item) => {
+                const status = itemStatus(item)
+                const canAssign = viewer.role !== 'child' && !item.legs && (status === 'unowned' || status === 'declined')
+                const action = status === 'declined' ? 'Reassign' : 'Assign'
+                return (
+                  <div key={item.id} className={`miniRow week-unanswered${canAssign ? ' week-unanswered--action' : ''}`}>
+                    <button className="week-unanswered__open" onClick={() => onOpen(item.id)}>
+                      <span aria-hidden="true"><Mark status={status} /></span>
+                      <span className="week-unanswered__main">
+                        <span className="miniRow__title">{item.title}</span>
+                        <span className="week-unanswered__status">{status === 'unowned' ? 'Unassigned' : STATUS_WORD[status]}</span>
+                      </span>
+                      <span className="miniRow__day">{relativeDay(item.date, plan.today)}</span>
+                    </button>
+                    {canAssign && (
+                      <button
+                        className="week-unanswered__action"
+                        aria-label={`${action}: ${item.title}`}
+                        onClick={() => reassigning.show({ item, leg: null })}
+                      >{action}</button>
+                    )}
+                  </div>
+                )
+              })}
             </div>
           </>
         )}
       </div>
+      {reassigning.open && <ReassignSheet target={reassigning.open} onClose={reassigning.hide} />}
     </div>
   )
 }

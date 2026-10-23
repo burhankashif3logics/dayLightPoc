@@ -1,5 +1,5 @@
 import type { WorldDef, HeaderProps, RowProps } from '../types'
-import { usePlan } from '../../store/store'
+import { usePlan, useSheet } from '../../store/store'
 import { clock24, elapsed, relativeDay } from '../../domain/dates'
 import {
   assignmentsOf, deciding, itemStatus, needsAnswer, onDate, personById,
@@ -7,6 +7,7 @@ import {
 } from '../../domain/rules'
 import { Mark, StateWord } from '../../ui/bits'
 import { Icon } from '../../ui/Icon'
+import { ReassignSheet, type Target } from '../../ui/sheets'
 import './departures.css'
 
 function Header({ title, lede, meta, tools }: HeaderProps) {
@@ -15,11 +16,13 @@ function Header({ title, lede, meta, tools }: HeaderProps) {
       <div className="dep-head__top">
         <span className="dep-wm">Day<b>light</b></span>
         <div className="dep-head__tools">
-          {meta && <span className="dep-head__clock tnum">{meta}</span>}
           {tools}
         </div>
       </div>
-      <h1 className="h1 dep-head__h1">{title}</h1>
+      <div className="dep-head__heading">
+        <h1 className="h1 dep-head__h1">{title}</h1>
+        {meta && <span className="dep-head__clock tnum">{meta}</span>}
+      </div>
       {lede && <p className="dep-head__lede">{lede}</p>}
     </header>
   )
@@ -73,40 +76,56 @@ function TodaySignature() {
 }
 
 function Row({ item, onOpen }: RowProps) {
-  const { plan } = usePlan()
+  const { plan, viewer } = usePlan()
+  const reassigning = useSheet<Target>()
   const s = itemStatus(item)
   const ownerId = deciding(item).owner
   const owner = ownerId ? personById(plan, ownerId) : null
-  const who = owner ? owner.name : s === 'asked-out' ? 'Outside' : 'No one'
+  const who = owner ? owner.name : s === 'asked-out' ? 'Outside' : null
+  const canAssign = viewer.role !== 'child' && !item.legs && (s === 'unowned' || s === 'declined')
+  const action = s === 'declined' ? 'Reassign' : 'Assign'
 
   return (
-    <button className="dep-row" onClick={onOpen}>
-      <span className="dep-row__time tnum">
-        {item.startTime ? clock24(item.startTime) : '—'}
-        {!item.startTime && (
-          <em>{item.date === plan.today ? 'no time' : relativeDay(item.date, plan.today)}</em>
+    <>
+      <div className={`dep-row${canAssign ? ' dep-row--action' : ''}`}>
+        <button className="dep-row__open" onClick={onOpen}>
+          <span className={`dep-row__time tnum${item.startTime ? '' : ' dep-row__time--unset'}`}>
+            {item.startTime ? clock24(item.startTime) : 'No time'}
+          </span>
+          <span className="dep-row__what">
+            <span className="dep-row__title">
+              {item.kind === 'ride' && <Icon name="car" size={17} />}
+              {item.title}
+            </span>
+            {(item.place || item.detail) && (
+              <span className="dep-row__sub">{item.place ?? item.detail}</span>
+            )}
+          </span>
+          <span className="dep-row__end">
+            {who && (
+              <span className="dep-row__who">
+                {owner && <i style={{ background: `var(--people-${owner.hue + 1})` }} aria-hidden="true" />}
+                {who}
+              </span>
+            )}
+            <span className="dep-row__st">
+              <span aria-hidden="true"><Mark status={s} sm /></span>
+              <span>{s === 'unowned' ? 'Unassigned' : STATUS_WORD[s]}</span>
+            </span>
+          </span>
+        </button>
+        {canAssign && (
+          <button
+            className="dep-row__action"
+            aria-label={`${action}: ${item.title}`}
+            onClick={() => reassigning.show({ item, leg: null })}
+          >
+            {action}<Icon name="chevron-right" size={16} />
+          </button>
         )}
-      </span>
-      <span className="dep-row__what">
-        <span className="dep-row__title">
-          {item.kind === 'ride' && <Icon name="car" size={15} />}
-          {item.title}
-        </span>
-        {(item.place || item.detail) && (
-          <span className="dep-row__sub">{item.place ?? item.detail}</span>
-        )}
-      </span>
-      <span className="dep-row__end">
-        <span className={`dep-row__who${owner ? '' : ' is-none'}`}>
-          {owner && <i style={{ background: `var(--people-${owner.hue + 1})` }} />}
-          {who}
-        </span>
-        <span className="dep-row__st">
-          <Mark status={s} sm />
-          <em>{STATUS_WORD[s]}</em>
-        </span>
-      </span>
-    </button>
+      </div>
+      {reassigning.open && <ReassignSheet target={reassigning.open} onClose={reassigning.hide} />}
+    </>
   )
 }
 

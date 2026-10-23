@@ -7,6 +7,7 @@ export type IconName =
   | 'car' | 'clock' | 'pin' | 'flag' | 'alert' | 'message'
   | 'check' | 'cross' | 'chevron-right' | 'chevron-left' | 'chevron-down'
   | 'plus' | 'phone' | 'hand' | 'repeat' | 'list' | 'bell'
+  | 'signal' | 'wifi' | 'battery'
 
 const P: Record<IconName, string> = {
   sun: 'M12 4.2v2M12 17.8v2M4.2 12h2M17.8 12h2M6.5 6.5l1.4 1.4M16.1 16.1l1.4 1.4M17.5 6.5l-1.4 1.4M7.9 16.1l-1.4 1.4M12 8.4a3.6 3.6 0 1 0 0 7.2 3.6 3.6 0 0 0 0-7.2Z',
@@ -31,6 +32,9 @@ const P: Record<IconName, string> = {
   repeat: 'M5 10.5A5 5 0 0 1 10 6h9M19 13.5a5 5 0 0 1-5 4.5H5M16 3.5 19.5 6 16 8.5M8 15.5 4.5 18 8 20.5',
   list: 'M5 7.5h.2M5 12h.2M5 16.5h.2M9 7.5h10M9 12h10M9 16.5h10',
   bell: 'M12 4.5a5.5 5.5 0 0 0-5.5 5.5c0 4-1.5 5.5-1.5 5.5h14s-1.5-1.5-1.5-5.5A5.5 5.5 0 0 0 12 4.5ZM10.3 18.5a1.9 1.9 0 0 0 3.4 0',
+  signal: 'M4 19v-3M9 19v-7M14 19V8M19 19V4',
+  wifi: 'M3 8.5a14 14 0 0 1 18 0M6.5 12a8.5 8.5 0 0 1 11 0M10 15.5a3 3 0 0 1 4 0M12 19h.01',
+  battery: 'M3 7h16v10H3zM22 10v4M6 10h10v4H6z',
 }
 
 const FILLED: IconName[] = []

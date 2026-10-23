@@ -2,9 +2,17 @@
 
 ![Daylight week screen in a notched iPhone Pro Max concept frame](week-iphone-pro-max-concept.png)
 
-Generated on 2026-10-24 with the built-in `image_gen` tool, editing the user-supplied Daylight week-screen mockup. The iPhone 19 Pro Max frame is an imagined concept, not an official hardware specification. This is a visual reference; the app implementation is unchanged.
+Generated on 2026-10-24 with the built-in `image_gen` tool, editing the user-supplied Daylight week-screen mockup. The iPhone 19 Pro Max frame is an imagined concept, not an official hardware specification.
 
 The layout reserves notch and home-indicator space, moves ownership beneath task notes, adds Assign/Reassign cues, replaces the misleading open count, and removes the repeated permission-slip entry from the unanswered list.
+
+## App implementation
+
+The Departures theme implements this direction with live demo data. Counts include all actual items; unanswered items on the selected day appear only in that day's schedule. Assign and Reassign open the existing family assignment sheet for parents; rides keep their separate drop-off and pickup actions in the detail view. A missing time remains labeled "No time" rather than implying the obligation can happen anytime.
+
+The shared demo frame uses a 440×956 screen inside a 464×980 shell at full size, scales its dimensions to the available viewport, and keeps the app content scrollable above the navigation. The hardware radii (64/52px on desktop, 48/40px on mobile), black notch and side buttons belong to `frame.css`, outside the themes' product design tokens. At very narrow widths, the day strip scrolls horizontally to preserve 44px targets.
+
+Verified with the production build and Chrome browser assertions: assignment and acceptance update ownership and unanswered counts; Reassign opens the existing sheet; Tab/Shift+Tab stay in the sheet and Escape restores focus; children receive no parent assignment controls; empty days preserve the week's unanswered queue. All four themes were checked on desktop. Departures was also checked at 320×740, 390×844 and 768×1024 for horizontal overflow and 44px targets. Physical iPhone touch and Safari were not tested.
 
 ## Generation prompt
 

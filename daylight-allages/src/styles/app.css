@@ -2,8 +2,8 @@
 
 .phone {
   position: relative;
-  width: 390px;
-  height: 844px;
+  width: 100%;
+  height: 100%;
   background: var(--bg);
   color: var(--ink);
   display: flex;
@@ -274,11 +274,11 @@
 
 .tabs {
   flex: none;
-  height: 76px;
+  height: 92px;
   display: flex;
   background: var(--nav-bg);
   border-top: var(--line, 1px) solid var(--nav-rule);
-  padding-bottom: 12px;
+  padding-bottom: max(28px, env(safe-area-inset-bottom));
 }
 .tab {
   flex: 1;
@@ -520,9 +520,13 @@
   display: flex;
   background: var(--surface-2);
   border-bottom: 1px solid var(--rule);
+  overflow-x: auto;
+  scrollbar-width: none;
 }
+.weekStrip::-webkit-scrollbar { display: none; }
 .weekStrip__day {
-  flex: 1;
+  flex: 1 0 44px;
+  min-width: 44px;
   min-height: 62px;
   display: flex;
   flex-direction: column;
@@ -555,7 +559,6 @@
 .weekStrip__dots i.is-open { background: var(--s-waiting); }
 .weekStrip__day.is-on .weekStrip__dots i { background: var(--on-accent); opacity: .55; }
 .weekStrip__day.is-on .weekStrip__dots i.is-open { opacity: 1; }
-.weekStrip__none { width: 5px; height: 1.5px !important; border-radius: 0 !important; opacity: .45; }
 
 /* ═══ family load row ═════════════════════════════════════════ */
 
@@ -661,6 +664,35 @@
   white-space: nowrap;
 }
 .miniRow__day.is-open { color: var(--s-waiting); }
+
+.week-unanswered { position: relative; padding: 0; }
+.week-unanswered__open {
+  display: grid;
+  grid-template-columns: 22px minmax(0, 1fr) auto;
+  align-items: start;
+  gap: 10px;
+  width: 100%;
+  min-height: 76px;
+  padding: 14px 18px;
+  text-align: left;
+}
+.week-unanswered__open > :first-child { margin-top: 3px; }
+.week-unanswered__main { min-width: 0; }
+.week-unanswered .miniRow__title { display: block; white-space: normal; overflow-wrap: anywhere; }
+.week-unanswered__status { display: block; margin-top: 5px; font-size: 12.5px; color: var(--ink-3); }
+.week-unanswered .miniRow__day { margin-top: 3px; }
+.week-unanswered__action {
+  position: absolute;
+  bottom: 0;
+  right: 8px;
+  min-height: 44px;
+  padding: 0 10px;
+  color: var(--accent-ink);
+  font-size: 13px;
+  font-weight: 600;
+}
+.week-unanswered--action .week-unanswered__status { padding-right: 60px; }
+.week-unanswered__action:hover { text-decoration: underline; text-underline-offset: 3px; }
 
 .reqRow {
   display: flex;
